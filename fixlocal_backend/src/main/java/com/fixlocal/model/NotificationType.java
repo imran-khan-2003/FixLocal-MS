@@ -1,0 +1,13 @@
+package com.fixlocal.model;
+
+public enum NotificationType {
+    BOOKING_CREATED,
+    BOOKING_ACCEPTED,
+    BOOKING_REJECTED,
+    BOOKING_EN_ROUTE,
+    BOOKING_ARRIVED,
+    BOOKING_COMPLETED,
+    BOOKING_CANCELLED,
+    OFFER_SUBMITTED,
+    OFFER_ACCEPTED
+}
