@@ -89,32 +89,32 @@ function WorkerProfile() {
   };
 
   if (error && !worker) return <p className="p-10 text-red-500">{error}</p>;
-  if (!worker) return <p className="p-10 text-slate-600">Loading...</p>;
+  if (!worker) return <p className="p-10 text-text-secondary">Loading...</p>;
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="bg-white rounded-3xl shadow p-8 border border-slate-100">
+    <div className="py-12">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="bg-white rounded-3xl shadow p-8 border border-gray-200">
           <div className="flex flex-col gap-2">
-            <p className="text-sm uppercase text-slate-500">Tradesperson</p>
-            <h1 className="text-4xl font-bold text-slate-900">{worker.name}</h1>
-            <p className="text-lg text-slate-600">{worker.occupation}</p>
+            <p className="text-sm uppercase text-text-secondary">Tradesperson</p>
+            <h1 className="text-4xl font-bold text-text-primary">{worker.name}</h1>
+            <p className="text-lg text-text-secondary">{worker.occupation}</p>
           </div>
-          <dl className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-700">
+          <dl className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4 text-text-primary">
             <div>
-              <dt className="text-sm text-slate-500">Location</dt>
+              <dt className="text-sm text-text-secondary">Location</dt>
               <dd className="text-base">📍 {worker.workingCity}</dd>
             </div>
             <div>
-              <dt className="text-sm text-slate-500">Experience</dt>
+              <dt className="text-sm text-text-secondary">Experience</dt>
               <dd className="text-base">🧰 {worker.experience || 0} years</dd>
             </div>
             <div>
-              <dt className="text-sm text-slate-500">Rating</dt>
+              <dt className="text-sm text-text-secondary">Rating</dt>
               <dd className="text-base">⭐ {worker.averageRating ?? "N/A"}</dd>
             </div>
             <div>
-              <dt className="text-sm text-slate-500">Status</dt>
+              <dt className="text-sm text-text-secondary">Status</dt>
               <dd>
                 <span
                   className={`inline-flex items-center px-3 py-1 text-xs rounded-full ${
@@ -130,26 +130,26 @@ function WorkerProfile() {
           </dl>
           <div className="mt-6 grid gap-4">
             <div>
-              <label className="text-sm text-slate-500">Your city</label>
+              <label className="text-sm text-text-secondary">Your city</label>
               <input
                 type="text"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
                 placeholder="Enter your city"
-                className="mt-1 w-full border border-slate-200 rounded-xl px-3 py-2"
+                className="mt-1 w-full border rounded-xl px-3 py-2 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
               />
             </div>
             <div className="flex flex-col gap-2">
               <button
                 type="button"
-                className="border border-slate-300 rounded-xl px-4 py-2 text-sm"
+                className="border rounded-xl px-4 py-2 text-sm text-text-secondary transition hover:bg-gray-100"
                 onClick={captureLocation}
               >
                 {coords.lat ? "Refresh my location" : "Capture my location"}
               </button>
-              {geoStatus && <p className="text-xs text-slate-500">{geoStatus}</p>}
+              {geoStatus && <p className="text-xs text-text-secondary">{geoStatus}</p>}
               {coords.lat && (
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-text-secondary">
                   Lat: {coords.lat}, Lng: {coords.lng}
                 </p>
               )}
@@ -158,7 +158,7 @@ function WorkerProfile() {
           {error && <p className="mt-4 text-sm text-red-500">{error}</p>}
           {success && <p className="mt-4 text-sm text-green-600">{success}</p>}
           <button
-            className="mt-8 bg-green-600 text-white px-6 py-3 rounded-xl disabled:opacity-50"
+            className="mt-8 bg-accent text-white px-6 py-3 rounded-xl disabled:opacity-50 transition hover:bg-blue-800"
             onClick={handleBook}
             disabled={submitting || worker.status !== "AVAILABLE"}
           >

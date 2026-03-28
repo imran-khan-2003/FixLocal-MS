@@ -38,13 +38,13 @@ function SearchResults() {
 
   return (
     <div className="max-w-6xl mx-auto py-12 px-6">
-      <h1 className="text-3xl font-bold mb-6">
+      <h1 className="text-3xl font-bold mb-6 text-text-primary">
         {occupation ? `${occupation} in ${city}` : `Tradespersons in ${city}`}
       </h1>
-      {loading && <p className="text-gray-500">Loading workers...</p>}
+      {loading && <p className="text-text-secondary">Loading workers...</p>}
       {error && <p className="text-red-500 mb-4">{error}</p>}
       {!loading && !error && workers.length === 0 && (
-        <p className="text-slate-600">No tradespersons found for this search.</p>
+        <p className="text-text-secondary">No tradespersons found for this search.</p>
       )}
       <div className="grid gap-6 md:grid-cols-3">
         {workers.map((worker) => (

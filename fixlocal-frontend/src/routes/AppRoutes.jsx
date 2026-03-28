@@ -10,6 +10,7 @@ import UserDashboard from "../pages/dashboard/UserDashboard";
 import TradespersonDashboard from "../pages/dashboard/TradespersonDashboard";
 import TradespersonRatings from "../pages/dashboard/TradespersonRatings";
 import AdminDashboard from "../pages/dashboard/AdminDashboard";
+import Disputes from "../pages/dashboard/Disputes";
 import Profile from "../pages/Profile";
 import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
@@ -81,6 +82,15 @@ function AppRoutes() {
             <ProtectedRoute
               allowedRoles={["ADMIN"]}
               element={<AdminDashboard />}
+            />
+          }
+        />
+        <Route
+          path="/dashboard/disputes"
+          element={
+            <ProtectedRoute
+              allowedRoles={["ADMIN"]}
+              element={<Disputes />}
             />
           }
         />

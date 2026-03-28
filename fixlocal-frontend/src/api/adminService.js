@@ -1,11 +1,14 @@
-import api from "./axios";
 
-const withPage = (page = 0, size = 10) => ({ params: { page, size } });
+import axios from './axios';
 
-export const adminService = {
-  getUsers: (page = 0, size = 10) => api.get("/admin/users", withPage(page, size)),
-  getTradespersons: (page = 0, size = 10) =>
-    api.get("/admin/tradespersons", withPage(page, size)),
-  blockUser: (userId) => api.patch(`/admin/users/${userId}/block`),
-  unblockUser: (userId) => api.patch(`/admin/users/${userId}/unblock`),
+export const getAdminStats = () => {
+  return axios.get("/api/admin/stats");
+};
+
+export const getAllDisputes = () => {
+  return axios.get('/api/disputes');
+};
+
+export const updateDispute = (id, data) => {
+  return axios.put(`/api/disputes/${id}`, data);
 };

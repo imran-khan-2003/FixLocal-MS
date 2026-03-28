@@ -11,12 +11,12 @@ function Navbar({ onToggleSidebar }) {
   };
 
   return (
-    <nav className="bg-white shadow">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+    <nav className="bg-primary shadow-md">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="rounded-lg border border-slate-200 p-2 text-slate-600 hover:bg-slate-100"
+            className="rounded-lg border border-slate-200 p-2 text-white hover:bg-accent"
             onClick={onToggleSidebar || (() => {})}
             aria-label="Toggle navigation"
           >
@@ -27,50 +27,50 @@ function Navbar({ onToggleSidebar }) {
           </Link>
         </div>
 
-        <div className="flex flex-wrap items-center justify-end gap-4 text-sm font-medium text-gray-700">
+        <div className="flex flex-wrap items-center justify-end gap-4 text-sm font-medium text-gray-200">
           {isAuthenticated ? (
             <>
-              <span className="text-gray-600">
+              <span className="text-white">
                 Signed in as <strong>{user?.name || "User"}</strong>
               </span>
               {user?.role === "TRADESPERSON" && (
-                <Link to="/dashboard/tradesperson" className="hover:text-blue-600">
+                <Link to="/dashboard/tradesperson" className="hover:text-white">
                   Tradesperson Console
                 </Link>
               )}
               {user?.role === "TRADESPERSON" && (
-                <Link to="/dashboard/tradesperson/ratings" className="hover:text-blue-600">
+                <Link to="/dashboard/tradesperson/ratings" className="hover:text-white">
                   My Ratings
                 </Link>
               )}
               {user?.role === "ADMIN" && (
-                <Link to="/dashboard/admin" className="hover:text-blue-600">
+                <Link to="/dashboard/admin" className="hover:text-white">
                   Admin
                 </Link>
               )}
               {user?.role === "USER" && (
-                <Link to="/dashboard" className="hover:text-blue-600">
+                <Link to="/dashboard" className="hover:text-white">
                   Dashboard
                 </Link>
               )}
-              <Link to="/profile" className="hover:text-blue-600">
+              <Link to="/profile" className="hover:text-white">
                 My Profile
               </Link>
               <button
                 onClick={handleLogout}
-                className="rounded-full bg-red-500 px-4 py-2 text-white transition hover:bg-red-600"
+                className="rounded-full bg-accent px-4 py-2 text-white transition hover:bg-blue-800"
               >
                 Logout
               </button>
             </>
           ) : (
             <>
-              <Link to="/login" className="text-blue-700 hover:text-blue-900">
+              <Link to="/login" className="text-white hover:text-gray-200">
                 Login
               </Link>
               <Link
                 to="/register"
-                className="rounded-full bg-blue-600 px-5 py-2 text-white transition hover:bg-blue-700"
+                className="rounded-full bg-accent px-5 py-2 text-white transition hover:bg-blue-800"
               >
                 Register
               </Link>

@@ -58,9 +58,9 @@ function Register() {
   const isTradesperson = form.role === "TRADESPERSON";
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
-      <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">Create an account</h1>
+    <div className="flex items-center justify-center py-12">
+      <div className="max-w-2xl w-full bg-white shadow-lg rounded-2xl p-8">
+        <h1 className="text-2xl font-bold mb-6 text-center text-text-primary">Create an account</h1>
         {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
         <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
           <input
@@ -68,7 +68,7 @@ function Register() {
             value={form.name}
             onChange={handleChange}
             placeholder="Full Name"
-            className="border rounded-lg p-3"
+            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             required
           />
           <input
@@ -77,7 +77,7 @@ function Register() {
             value={form.email}
             onChange={handleChange}
             placeholder="Email"
-            className="border rounded-lg p-3"
+            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             required
           />
           <input
@@ -86,12 +86,12 @@ function Register() {
             value={form.password}
             onChange={handleChange}
             placeholder="Password"
-            className="border rounded-lg p-3"
+            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             required
           />
           <div className="md:col-span-2">
             <label className="flex flex-col text-sm">
-              <span className="text-slate-600 mb-1">Phone number</span>
+              <span className="text-text-secondary mb-1">Phone number</span>
               <PhoneInputComponent
                 country={form.phone?.startsWith("+") ? undefined : "in"}
                 value={form.phone}
@@ -101,8 +101,8 @@ function Register() {
                 inputProps={{ required: true, name: "phone" }}
                 countryCodeEditable={false}
                 enableSearch
-                inputClass="!w-full !h-12 !text-base"
-                buttonClass="!h-12"
+                inputClass="!w-full !h-12 !text-base !border-gray-300 !rounded-lg focus:!border-primary focus:!outline-none focus:!ring-1 focus:!ring-primary"
+                buttonClass="!h-12 !border-gray-300 !rounded-lg"
                 dropdownClass="!text-sm"
               />
             </label>
@@ -111,7 +111,7 @@ function Register() {
             name="role"
             value={form.role}
             onChange={handleChange}
-            className="border rounded-lg p-3"
+            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
           >
             {roles.map((role) => (
               <option key={role.value} value={role.value}>
@@ -126,7 +126,7 @@ function Register() {
                 value={form.workingCity}
                 onChange={handleChange}
                 placeholder="City"
-                className="border rounded-lg p-3"
+                className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 required
               />
               <input
@@ -134,7 +134,7 @@ function Register() {
                 value={form.occupation}
                 onChange={handleChange}
                 placeholder="Occupation"
-                className="border rounded-lg p-3"
+                className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 required
               />
               <input
@@ -145,7 +145,7 @@ function Register() {
                 placeholder="Experience (years)"
                 min="0"
                 max="60"
-                className="border rounded-lg p-3"
+                className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
                 required
               />
             </>
@@ -154,7 +154,7 @@ function Register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg"
+              className="w-full bg-primary text-white py-3 rounded-lg transition hover:bg-accent"
             >
               {loading ? "Creating account..." : "Register"}
             </button>

@@ -27,9 +27,9 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-16">
-      <div className="max-w-md mx-auto bg-white shadow-lg rounded-2xl p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center">Login</h1>
+    <div className="flex items-center justify-center py-16">
+      <div className="max-w-md w-full bg-white shadow-lg rounded-2xl p-8">
+        <h1 className="text-2xl font-bold mb-6 text-center text-text-primary">Login</h1>
         {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <input
@@ -37,7 +37,7 @@ function Login() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border rounded-lg p-3"
+            className="w-full border rounded-lg p-3 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             required
           />
           <input
@@ -45,13 +45,13 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border rounded-lg p-3"
+            className="w-full border rounded-lg p-3 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
             required
           />
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg"
+            className="w-full bg-primary text-white py-3 rounded-lg transition hover:bg-accent"
           >
             {loading ? "Signing in..." : "Login"}
           </button>

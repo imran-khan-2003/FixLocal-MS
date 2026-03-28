@@ -5,19 +5,19 @@ function WorkerCard({ worker }) {
   const navigate = useNavigate();
 
   return (
-    <div className="p-5 border rounded-2xl shadow hover:shadow-xl transition">
+    <div className="p-5 bg-white border rounded-2xl shadow hover:shadow-xl transition">
 
-      <h2 className="text-xl font-bold">
+      <h2 className="text-xl font-bold text-text-primary">
         {worker.name}
       </h2>
 
-      <p className="text-gray-600">{worker.occupation}</p>
+      <p className="text-text-secondary">{worker.occupation}</p>
 
-      <p>📍 {worker.workingCity}</p>
+      <p className="text-text-secondary">📍 {worker.workingCity}</p>
 
-      <p>⭐ {worker.averageRating || 0}</p>
+      <p className="text-text-secondary">⭐ {worker.averageRating || 0}</p>
 
-      <p>🧰 {worker.experience || 0} yrs exp</p>
+      <p className="text-text-secondary">🧰 {worker.experience || 0} yrs exp</p>
 
       {/* ✅ Status Badge */}
       <span
@@ -37,7 +37,7 @@ function WorkerCard({ worker }) {
 
       <button
         onClick={() => navigate(`/worker/${worker.id}`)}
-        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-lg w-full"
+        className="mt-4 bg-accent text-white px-4 py-2 rounded-lg w-full transition hover:bg-blue-800"
       >
         View Profile
       </button>

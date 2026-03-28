@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import DisputeForm from './DisputeForm';
+
 function BookingCard({
   booking,
   onView,
@@ -18,7 +21,17 @@ function BookingCard({
   ratingSubmitting,
   ratingError,
   showCustomerDetails = false,
+  onDispute, 
 }) {
+  const [showDisputeForm, setShowDisputeForm] = useState(false);
+
+  const handleDisputeSubmit = (disputeData) => {
+    if (onDispute) {
+      onDispute(disputeData);
+    }
+    setShowDisputeForm(false);
+  };
+
   const price = booking.price ?? booking.initialOfferAmount;
   const contactDetails = [
     booking.userName && `Customer: ${booking.userName}`,
@@ -49,7 +62,7 @@ function BookingCard({
         </span>
       </div>
       <p className="text-sm text-slate-600">
-        {new Date(booking.bookingStartTime).toLocaleString()} → {" "}
+        {new Date(booking.bookingStartTime).toLocaleString()} →{" "}
         {new Date(booking.bookingEndTime).toLocaleString()}
       </p>
       <p className="text-sm font-semibold text-slate-700">Price: ₹ {price}</p>
@@ -158,6 +171,7 @@ function BookingCard({
             Chat
           </button>
         )}
+        <button onClick={() => setShowDisputeForm(true)} className="text-red-600 text-sm">Report an Issue</button>
         {onSecondaryAction && secondaryLabel && (
           <button
             className="border border-slate-200 text-sm px-3 py-1 rounded"
@@ -184,6 +198,13 @@ function BookingCard({
           </button>
         )}
       </div>
+      {showDisputeForm && (
+        <DisputeForm
+          bookingId={booking.id}
+          onSubmit={handleDisputeSubmit}
+          onCancel={() => setShowDisputeForm(false)}
+        />
+      )}
     </div>
   );
 }

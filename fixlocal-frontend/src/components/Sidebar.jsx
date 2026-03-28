@@ -19,6 +19,7 @@ function Sidebar({ open, onClose }) {
             label: "My Ratings",
           },
           user?.role === "ADMIN" && { to: "/dashboard/admin", label: "Admin" },
+          user?.role === "ADMIN" && { to: "/dashboard/disputes", label: "Disputes" },
           { to: "/profile", label: "Profile" },
         ]
       : [
