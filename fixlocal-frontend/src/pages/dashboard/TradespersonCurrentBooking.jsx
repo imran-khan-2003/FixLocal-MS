@@ -1,9 +1,12 @@
 import DashboardLayout from "../../components/DashboardLayout";
 import BookingCard from "../../components/BookingCard";
 import TradespersonLocationPanel from "../../components/TradespersonLocationPanel";
+import ChatThread from "../../components/ChatThread";
+import ConversationPanel from "../../components/ConversationPanel";
 import { useTradespersonBookings } from "../../hooks/useTradespersonBookings";
 import { bookingService } from "../../api/bookingService";
-import { useCallback, useMemo, useState } from "react";
+import chatService from "../../api/chatService";
+import { useCallback, useMemo, useState, useEffect } from "react";
 
 const ACTION_CONFIG = {
   ACCEPTED: {
@@ -32,6 +35,65 @@ function TradespersonCurrentBooking() {
     refresh,
   } = useTradespersonBookings();
   const [submitting, setSubmitting] = useState(false);
+  const [chatConversation, setChatConversation] = useState(null);
+  const [chatMessages, setChatMessages] = useState([]);
+  const [chatLoading, setChatLoading] = useState(false);
+  const [chatError, setChatError] = useState("");
+
+  const loadConversation = useCallback(
+    async (bookingId) => {
+      if (!bookingId) return;
+      setChatLoading(true);
+      setChatError("");
+      try {
+        const { data: conversation } = await chatService.getConversation(bookingId);
+        setChatConversation({
+          id: conversation.id,
+          bookingId,
+          tradespersonName: conversation.userName || "Customer",
+          lastMessageAt: conversation.lastMessage?.createdAt,
+        });
+        const { data } = await chatService.getMessages(conversation.id);
+        const items = data?.content || [];
+        setChatMessages(
+          items
+            .slice()
+            .reverse()
+            .map((msg) => ({
+              id: msg.id,
+              content: msg.content,
+              createdAt: msg.createdAt,
+              mine: msg.senderRole === "TRADESPERSON",
+              attachment: msg.attachment,
+            }))
+        );
+      } catch (err) {
+        setChatError("Failed to load chat");
+      } finally {
+        setChatLoading(false);
+      }
+    },
+    []
+  );
+
+  const sendMessage = useCallback(
+    async (bookingId, { content, attachment }) => {
+      if (!bookingId) return;
+      try {
+        await chatService.sendMessage(bookingId, { content, attachment });
+        loadConversation(bookingId);
+      } catch (err) {
+        setChatError("Failed to send message");
+      }
+    },
+    [loadConversation]
+  );
+
+  useEffect(() => {
+    if (currentBooking?.id) {
+      loadConversation(currentBooking.id);
+    }
+  }, [currentBooking?.id, loadConversation]);
 
   const handleAction = useCallback(
     async (booking, action) => {
@@ -113,8 +175,24 @@ function TradespersonCurrentBooking() {
                 CANCELABLE_STATUSES.has(currentBooking.status) ? "Cancel Booking" : undefined
               }
             />
+            <ChatThread
+              conversation={chatConversation}
+              messages={chatMessages}
+              loading={chatLoading}
+              error={chatError}
+              onSend={(content, attachment) =>
+                sendMessage(currentBooking.id, { content, attachment })
+              }
+            />
           </div>
-          <TradespersonLocationPanel booking={currentBooking} />
+          <div className="space-y-4">
+            <TradespersonLocationPanel booking={currentBooking} />
+            <ConversationPanel
+              conversations={currentBooking ? [currentBooking] : []}
+              activeConversationId={chatConversation?.id}
+              onSelect={() => loadConversation(currentBooking.id)}
+            />
+          </div>
         </div>
       )}
     </DashboardLayout>
