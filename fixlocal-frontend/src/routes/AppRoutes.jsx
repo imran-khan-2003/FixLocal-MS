@@ -9,7 +9,11 @@ import WorkerProfile from "../pages/WorkerProfile";
 import Terms from "../pages/Terms";
 import Privacy from "../pages/Privacy";
 import UserDashboard from "../pages/dashboard/UserDashboard";
+import CurrentBooking from "../pages/dashboard/CurrentBooking";
+import BookingHistory from "../pages/dashboard/BookingHistory";
 import TradespersonDashboard from "../pages/dashboard/TradespersonDashboard";
+import TradespersonCurrentBooking from "../pages/dashboard/TradespersonCurrentBooking";
+import TradespersonHistory from "../pages/dashboard/TradespersonHistory";
 import TradespersonRatings from "../pages/dashboard/TradespersonRatings";
 import TradespersonDisputes from "../pages/dashboard/TradespersonDisputes";
 import AdminDashboard from "../pages/dashboard/AdminDashboard";
@@ -87,6 +91,32 @@ function AppRoutes() {
           }
         />
         <Route
+          path="/dashboard/current"
+          element={
+            <ProtectedRoute
+              allowedRoles={["USER"]}
+              element={
+                <Shell>
+                  <CurrentBooking />
+                </Shell>
+              }
+            />
+          }
+        />
+        <Route
+          path="/dashboard/history"
+          element={
+            <ProtectedRoute
+              allowedRoles={["USER"]}
+              element={
+                <Shell>
+                  <BookingHistory />
+                </Shell>
+              }
+            />
+          }
+        />
+        <Route
           path="/dashboard/disputes/mine"
           element={
             <ProtectedRoute
@@ -107,6 +137,32 @@ function AppRoutes() {
               element={
                 <Shell>
                   <TradespersonDashboard />
+                </Shell>
+              }
+            />
+          }
+        />
+        <Route
+          path="/dashboard/tradesperson/current"
+          element={
+            <ProtectedRoute
+              allowedRoles={["TRADESPERSON"]}
+              element={
+                <Shell>
+                  <TradespersonCurrentBooking />
+                </Shell>
+              }
+            />
+          }
+        />
+        <Route
+          path="/dashboard/tradesperson/history"
+          element={
+            <ProtectedRoute
+              allowedRoles={["TRADESPERSON"]}
+              element={
+                <Shell>
+                  <TradespersonHistory />
                 </Shell>
               }
             />

@@ -2,17 +2,14 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { bookingService } from "../../api/bookingService";
 import reviewService from "../../api/reviewService";
 import { dashboardService } from "../../api/dashboardService";
+import { Link } from "react-router-dom";
 import DashboardLayout from "../../components/DashboardLayout";
 import BookingCard from "../../components/BookingCard";
 import ConversationPanel from "../../components/ConversationPanel";
 import ChatThread from "../../components/ChatThread";
 import chatService from "../../api/chatService";
 import { useAuth } from "../../context/AuthContext";
-import LiveLocationMap from "../../components/LiveLocationMap";
-import { useLiveLocation } from "../../hooks/useLiveLocation";
 import disputeService from "../../api/disputeService";
-import PaymentSummary from "../../components/PaymentSummary";
-import { Link } from "react-router-dom";
 import MyDisputesPanel from "../../components/MyDisputesPanel";
 
 function BookingDetailModal({ booking, onClose }) {
@@ -150,12 +147,6 @@ function UserDashboard() {
   const [chatError, setChatError] = useState("");
   const [chatVisible, setChatVisible] = useState(false);
   const [actionNotice, setActionNotice] = useState("");
-  const [ratingBooking, setRatingBooking] = useState(null);
-  const [ratingValue, setRatingValue] = useState(5);
-  const [ratingComment, setRatingComment] = useState("");
-  const [ratingError, setRatingError] = useState("");
-  const [ratingSubmitting, setRatingSubmitting] = useState(false);
-
   const [inlineRatingBookingId, setInlineRatingBookingId] = useState(null);
   const [inlineRatingValues, setInlineRatingValues] = useState({});
   const [inlineRatingComments, setInlineRatingComments] = useState({});
@@ -261,51 +252,6 @@ function UserDashboard() {
     () => bookings.find((booking) => booking.id === selectedBookingId) || null,
     [bookings, selectedBookingId]
   );
-
-  const paymentBooking = useMemo(() => {
-    if (selectedBooking) return selectedBooking;
-    if (activeConversation) {
-      const activeBooking = bookings.find(
-        (booking) => booking.id === activeConversation.bookingId
-      );
-      if (activeBooking) return activeBooking;
-    }
-    return bookings[0] || null;
-  }, [activeConversation, bookings, selectedBooking]);
-
-  const enRouteBooking = useMemo(
-    () =>
-      bookings.find((booking) =>
-        ["EN_ROUTE", "ARRIVED"].includes(booking.status)
-      ) || null,
-    [bookings]
-  );
-
-  const {
-    location: liveLocation,
-    loading: liveLocationLoading,
-    error: liveLocationError,
-    stale: liveLocationStale,
-  } = useLiveLocation(enRouteBooking?.id, { enabled: Boolean(enRouteBooking) });
-
-  const distanceToDestination = useMemo(() => {
-    if (!liveLocation || !enRouteBooking?.userLatitude || !enRouteBooking?.userLongitude) {
-      return null;
-    }
-
-    const toRadians = (deg) => (deg * Math.PI) / 180;
-    const R = 6371;
-    const dLat = toRadians(enRouteBooking.userLatitude - liveLocation.latitude);
-    const dLon = toRadians(enRouteBooking.userLongitude - liveLocation.longitude);
-    const lat1 = toRadians(liveLocation.latitude);
-    const lat2 = toRadians(enRouteBooking.userLatitude);
-
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
-  }, [liveLocation, enRouteBooking?.userLatitude, enRouteBooking?.userLongitude]);
 
   const handleConversationSelect = useCallback(
     (conversation, { toggleOnly } = {}) => {
@@ -521,60 +467,26 @@ function UserDashboard() {
             )}
           </div>
           <div className="space-y-4">
-            {enRouteBooking && (
-              <div className="bg-white border border-slate-100 rounded-2xl p-4 space-y-3 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-xs uppercase text-slate-500">Live tracking</p>
-                    <p className="text-base font-semibold text-slate-900">
-                      {enRouteBooking.tradespersonName || "Tradesperson"} is on the way
-                    </p>
-                  </div>
-                  {liveLocationStale ? (
-                    <span className="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-700">
-                      Awaiting update
-                    </span>
-                  ) : (
-                    <span className="text-xs px-2 py-1 rounded-full bg-emerald-100 text-emerald-700">
-                      Live
-                    </span>
-                  )}
-                </div>
-                {liveLocationError && (
-                  <p className="text-xs text-red-500">{liveLocationError}</p>
-                )}
-                <LiveLocationMap
-                  location={liveLocation}
-                  stale={liveLocationStale}
-                  userAddress={enRouteBooking.serviceAddress}
-                  destination={{
-                    latitude: enRouteBooking.userLatitude,
-                    longitude: enRouteBooking.userLongitude,
-                    label: enRouteBooking.userCity,
-                  }}
-                />
-                {liveLocationLoading && (
-                  <p className="text-xs text-slate-500">Fetching latest location…</p>
-                )}
-                {!liveLocation && !liveLocationLoading && (
-                  <p className="text-xs text-slate-500">
-                    Tradesperson hasn’t shared their location yet. We’ll update this view automatically.
-                  </p>
-                )}
-                {distanceToDestination !== null && !Number.isNaN(distanceToDestination) && (
-                  <p className="text-xs text-blue-600">
-                    ≈ {distanceToDestination.toFixed(2)} km away from your location
-                  </p>
-                )}
+            <div className="bg-white border border-slate-100 rounded-2xl p-4">
+              <h3 className="text-base font-semibold text-slate-900 mb-3">Need quick access?</h3>
+              <p className="text-sm text-slate-600 mb-4">
+                Jump to the dedicated current booking tracker or browse your past work orders.
+              </p>
+              <div className="flex flex-col gap-2">
+                <Link
+                  to="/dashboard/current"
+                  className="rounded-lg bg-blue-600 text-white text-center px-4 py-2 text-sm font-semibold"
+                >
+                  View current booking
+                </Link>
+                <Link
+                  to="/dashboard/history"
+                  className="rounded-lg border border-slate-200 text-center px-4 py-2 text-sm font-semibold text-slate-700"
+                >
+                  Browse history
+                </Link>
               </div>
-            )}
-            <PaymentSummary
-              booking={paymentBooking}
-              onInitiate={(booking) => handlePaymentAction(booking, "initiate")}
-              onAuthorize={(booking) => handlePaymentAction(booking, "authorize")}
-              onCapture={(booking) => handlePaymentAction(booking, "capture")}
-              onRefund={(booking) => handlePaymentAction(booking, "refund")}
-            />
+            </div>
             <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
               <div className="flex items-center justify-between mb-3">
                 <div>

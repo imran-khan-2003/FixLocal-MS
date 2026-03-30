@@ -9,10 +9,20 @@ function Sidebar({ open, onClose }) {
     { to: "/search", label: "Find Pros" },
     ...(isAuthenticated
       ? [
-          user?.role === "USER" && { to: "/dashboard", label: "My Dashboard" },
+          user?.role === "USER" && { to: "/dashboard", label: "Overview" },
+          user?.role === "USER" && { to: "/dashboard/current", label: "Current Booking" },
+          user?.role === "USER" && { to: "/dashboard/history", label: "History" },
           user?.role === "TRADESPERSON" && {
             to: "/dashboard/tradesperson",
             label: "Tradesperson Console",
+          },
+          user?.role === "TRADESPERSON" && {
+            to: "/dashboard/tradesperson/current",
+            label: "Current Booking",
+          },
+          user?.role === "TRADESPERSON" && {
+            to: "/dashboard/tradesperson/history",
+            label: "History",
           },
           user?.role === "TRADESPERSON" && {
             to: "/dashboard/tradesperson/ratings",

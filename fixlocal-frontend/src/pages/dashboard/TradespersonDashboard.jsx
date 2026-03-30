@@ -1,4 +1,3 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardLayout from "../../components/DashboardLayout";
 import BookingCard from "../../components/BookingCard";
@@ -6,10 +5,10 @@ import ConversationPanel from "../../components/ConversationPanel";
 import ChatThread from "../../components/ChatThread";
 import { bookingService } from "../../api/bookingService";
 import chatService from "../../api/chatService";
-import { dashboardService } from "../../api/dashboardService";
-import TradespersonLocationPanel from "../../components/TradespersonLocationPanel";
 import disputeService from "../../api/disputeService";
 import MyDisputesPanel from "../../components/MyDisputesPanel";
+
+const USER_CANCELABLE_STATUSES = new Set(["PENDING", "ACCEPTED", "EN_ROUTE", "ARRIVED"]);
 
 const ACTION_CONFIG = {
   PENDING: {
@@ -104,6 +103,27 @@ function TradespersonDashboard() {
     [fetchBookings]
   );
 
+  const handleCancelBooking = useCallback(
+    async (booking) => {
+      if (!booking) return;
+      const confirmation = window.confirm(
+        "Cancel this booking? The user will be notified and can rebook another professional."
+      );
+      if (!confirmation) return;
+      const reason =
+        window.prompt("Reason for cancellation?", "Tradesperson cancelled from console") ||
+        "Tradesperson cancelled from console";
+      try {
+        await bookingService.cancel(booking.id, reason);
+        setActionNotice("Booking cancelled.");
+        fetchBookings();
+      } catch (err) {
+        setActionNotice("Failed to cancel booking. Please retry.");
+      }
+    },
+    [fetchBookings]
+  );
+
   const conversations = useMemo(
     () =>
       bookings.map((booking) => ({
@@ -187,12 +207,6 @@ function TradespersonDashboard() {
 
   const filteredBookings = bookings;
 
-  const enRouteBooking = useMemo(
-    () =>
-      bookings.find((booking) => booking.status === "EN_ROUTE") || null,
-    [bookings]
-  );
-
   const getActionConfig = (status) => ACTION_CONFIG[status] || {};
 
   return (
@@ -252,6 +266,7 @@ function TradespersonDashboard() {
           <div className="lg:col-span-2 grid gap-4">
             {filteredBookings.map((booking) => {
               const actionConfig = getActionConfig(booking.status);
+              const canCancel = USER_CANCELABLE_STATUSES.has(booking.status);
               return (
                 <BookingCard
                   key={booking.id}
@@ -275,6 +290,8 @@ function TradespersonDashboard() {
                       : undefined
                   }
                   secondaryLabel={actionConfig.secondaryLabel}
+                  onDangerAction={canCancel ? handleCancelBooking : undefined}
+                  dangerLabel={canCancel ? "Cancel Booking" : undefined}
                   showCustomerDetails
                   onDispute={async (payload) =>
                     disputeService.create({
@@ -291,7 +308,26 @@ function TradespersonDashboard() {
             )}
           </div>
           <div className="space-y-4">
-            <TradespersonLocationPanel booking={enRouteBooking} />
+            <div className="bg-white border border-slate-100 rounded-2xl p-4">
+              <h3 className="text-base font-semibold text-slate-900 mb-3">Need quick access?</h3>
+              <p className="text-sm text-slate-600 mb-4">
+                Jump to the dedicated current job tracker or browse your past bookings.
+              </p>
+              <div className="flex flex-col gap-2">
+                <Link
+                  to="/dashboard/tradesperson/current"
+                  className="rounded-lg bg-blue-600 text-white text-center px-4 py-2 text-sm font-semibold"
+                >
+                  View current booking
+                </Link>
+                <Link
+                  to="/dashboard/tradesperson/history"
+                  className="rounded-lg border border-slate-200 text-center px-4 py-2 text-sm font-semibold text-slate-700"
+                >
+                  Browse history
+                </Link>
+              </div>
+            </div>
             <div className="bg-white border border-slate-100 rounded-2xl p-4 shadow-sm">
               <div className="flex items-center justify-between mb-3">
                 <div>

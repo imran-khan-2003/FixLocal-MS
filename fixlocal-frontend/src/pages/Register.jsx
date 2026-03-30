@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import "react-phone-input-2/lib/style.css";
@@ -24,6 +24,10 @@ function Register() {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [allCities, setAllCities] = useState([]);
+  const [citySuggestions, setCitySuggestions] = useState([]);
+  const [showCitySuggestions, setShowCitySuggestions] = useState(false);
+  const cityDropdownRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -56,6 +60,70 @@ function Register() {
   };
 
   const isTradesperson = form.role === "TRADESPERSON";
+
+  useEffect(() => {
+    let cancelled = false;
+    const controller = new AbortController();
+
+    async function fetchCities() {
+      try {
+        const response = await fetch("https://countriesnow.space/api/v0.1/countries/cities", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ country: "India" }),
+          signal: controller.signal,
+        });
+        const payload = await response.json();
+        if (!cancelled && payload?.data) {
+          const uniqueCities = Array.from(new Set(payload.data)).sort((a, b) => a.localeCompare(b));
+          setAllCities(uniqueCities);
+        }
+      } catch (err) {
+        if (!cancelled) {
+          console.warn("Failed to load city list", err);
+        }
+      }
+    }
+
+    fetchCities();
+
+    return () => {
+      cancelled = true;
+      controller.abort();
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (cityDropdownRef.current && !cityDropdownRef.current.contains(event.target)) {
+        setShowCitySuggestions(false);
+      }
+    }
+
+    if (showCitySuggestions) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showCitySuggestions]);
+
+  const handleWorkingCityInput = (value) => {
+    setForm((prev) => ({ ...prev, workingCity: value }));
+    if (!value.trim()) {
+      setCitySuggestions([]);
+      setShowCitySuggestions(false);
+      return;
+    }
+    const prefix = value.toLowerCase();
+    const matches = allCities.filter((city) => city.toLowerCase().startsWith(prefix));
+    setCitySuggestions(matches);
+    setShowCitySuggestions(matches.length > 0);
+  };
+
+  const handleSelectWorkingCity = (value) => {
+    setForm((prev) => ({ ...prev, workingCity: value }));
+    setShowCitySuggestions(false);
+  };
 
   return (
     <div className="flex items-center justify-center py-12">
@@ -121,14 +189,34 @@ function Register() {
           </select>
           {isTradesperson && (
             <>
-              <input
-                name="workingCity"
-                value={form.workingCity}
-                onChange={handleChange}
-                placeholder="City"
-                className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
-                required
-              />
+              <div className="relative" ref={cityDropdownRef}>
+                <input
+                  name="workingCity"
+                  value={form.workingCity}
+                  onChange={(e) => handleWorkingCityInput(e.target.value)}
+                  onFocus={() =>
+                    form.workingCity && setShowCitySuggestions(citySuggestions.length > 0)
+                  }
+                  placeholder="City"
+                  autoComplete="off"
+                  className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  required
+                />
+                {showCitySuggestions && citySuggestions.length > 0 && (
+                  <div className="absolute z-20 mt-1 max-h-60 w-full overflow-y-auto rounded-lg border border-slate-200 bg-white shadow-lg">
+                    {citySuggestions.map((city) => (
+                      <button
+                        key={city}
+                        type="button"
+                        className="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
+                        onClick={() => handleSelectWorkingCity(city)}
+                      >
+                        {city}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
               <input
                 name="occupation"
                 value={form.occupation}

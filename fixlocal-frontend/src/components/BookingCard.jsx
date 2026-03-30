@@ -9,6 +9,8 @@ function BookingCard({
   primaryLabel,
   secondaryLabel,
   onSecondaryAction,
+  dangerLabel,
+  onDangerAction,
   onRateStart,
   canRate,
   isRating,
@@ -207,6 +209,14 @@ function BookingCard({
             onClick={() => onSecondaryAction(booking)}
           >
             {secondaryLabel}
+          </button>
+        )}
+        {onDangerAction && dangerLabel && (
+          <button
+            className="border border-red-100 text-sm px-3 py-1 rounded text-red-600"
+            onClick={() => onDangerAction(booking)}
+          >
+            {dangerLabel}
           </button>
         )}
         {onPrimaryAction && primaryLabel && (
