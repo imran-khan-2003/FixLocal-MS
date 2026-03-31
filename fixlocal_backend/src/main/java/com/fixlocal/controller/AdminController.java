@@ -22,13 +22,19 @@ public class AdminController {
     private final AdminService adminService;
 
     @GetMapping("/users")
-    public ResponseEntity<Page<User>> getUsers(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllUsers(pageable));
+    public ResponseEntity<Page<User>> getUsers(
+            Pageable pageable,
+            @RequestParam(value = "search", required = false) String search
+    ) {
+        return ResponseEntity.ok(adminService.getAllUsers(pageable, search));
     }
 
     @GetMapping({"/tradespersons", "/trades"})
-    public ResponseEntity<Page<User>> getTradespersons(Pageable pageable) {
-        return ResponseEntity.ok(adminService.getAllTradespersons(pageable));
+    public ResponseEntity<Page<User>> getTradespersons(
+            Pageable pageable,
+            @RequestParam(value = "search", required = false) String search
+    ) {
+        return ResponseEntity.ok(adminService.getAllTradespersons(pageable, search));
     }
 
     @PatchMapping("/users/{id}/block")

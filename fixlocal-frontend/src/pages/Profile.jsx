@@ -105,6 +105,7 @@ function Profile() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             <InfoRow label="Occupation" value={user.occupation} />
             <InfoRow label="City" value={user.workingCity} />
+            <InfoRow label="Mobile" value={user.phone} />
             <InfoRow label="Experience" value={user.experience ? `${user.experience} yrs` : "—"} />
             <InfoRow label="Status" value={user.status} />
             <InfoRow label="Verified" value={user.verified ? "Yes" : "No"} />

@@ -5,9 +5,14 @@ const PAGE_SIZE = 10;
 
 export const adminService = {
   getStats: () => axios.get("/admin/stats"),
-  getUsers: (page = 0) => axios.get(`/admin/users?page=${page}&size=${PAGE_SIZE}`),
-  getTradespersons: (page = 0) =>
-    axios.get(`/admin/trades?page=${page}&size=${PAGE_SIZE}`),
+  getUsers: (page = 0, search = "") =>
+    axios.get(
+      `/admin/users?page=${page}&size=${PAGE_SIZE}${search ? `&search=${encodeURIComponent(search)}` : ""}`
+    ),
+  getTradespersons: (page = 0, search = "") =>
+    axios.get(
+      `/admin/trades?page=${page}&size=${PAGE_SIZE}${search ? `&search=${encodeURIComponent(search)}` : ""}`
+    ),
   blockUser: (userId) => axios.patch(`/admin/users/${userId}/block`),
   unblockUser: (userId) => axios.patch(`/admin/users/${userId}/unblock`),
   getDisputes: () => axios.get("/disputes"),

@@ -4,18 +4,30 @@ import api from "../../api/axios";
 import { adminService } from "../../api/adminService";
 
 const DEFAULT_PAGE = { content: [], number: 0, totalPages: 0, totalElements: 0 };
+const SEARCH_DEBOUNCE_MS = 300;
 
 function usePaginatedList(fetcher) {
   const [data, setData] = useState(DEFAULT_PAGE);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [page, setPage] = useState(0);
+  const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(search.trim());
+      setPage(0);
+    }, SEARCH_DEBOUNCE_MS);
+
+    return () => clearTimeout(handler);
+  }, [search]);
 
   const load = async () => {
     setLoading(true);
     setError("");
     try {
-      const response = await fetcher(page);
+      const response = await fetcher(page, debouncedSearch);
       setData(response.data || DEFAULT_PAGE);
     } catch (err) {
       setError("Failed to load data");
@@ -26,7 +38,7 @@ function usePaginatedList(fetcher) {
 
   useEffect(() => {
     load();
-  }, [page, fetcher]);
+  }, [page, fetcher, debouncedSearch]);
 
   return {
     data,
@@ -35,6 +47,8 @@ function usePaginatedList(fetcher) {
     reload: load,
     page,
     setPage,
+    search,
+    setSearch,
   };
 }
 
@@ -55,11 +69,12 @@ function AdminDashboard() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const fetchUsers = useCallback((page) => adminService.getUsers(page), []);
-  const fetchTrades = useCallback((page) => adminService.getTradespersons(page), []);
+  const fetchUsers = useCallback((page, search) => adminService.getUsers(page, search), []);
+  const fetchTrades = useCallback((page, search) => adminService.getTradespersons(page, search), []);
   const usersState = usePaginatedList(fetchUsers);
   const tradesState = usePaginatedList(fetchTrades);
   const [actionError, setActionError] = useState("");
+  const [selectedProfile, setSelectedProfile] = useState(null);
 
   const loadStats = useCallback(async () => {
     setLoading(true);
@@ -105,8 +120,27 @@ function AdminDashboard() {
     <div className="bg-white rounded-2xl shadow border border-slate-100 p-4">
       <div className="flex justify-between items-center mb-3">
         <h3 className="text-lg font-semibold">{title}</h3>
-        <div className="text-xs text-slate-500">
-          Page {pageData.number + 1} of {Math.max(pageData.totalPages, 1)}
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <input
+              type="text"
+              value={state.search}
+              onChange={(e) => state.setSearch(e.target.value)}
+              placeholder="Search by name or email"
+              className="border border-slate-200 rounded-full px-4 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-blue-100"
+            />
+            {state.search && (
+              <button
+                onClick={() => state.setSearch("")}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+          <div className="text-xs text-slate-500">
+            Page {pageData.number + 1} of {Math.max(pageData.totalPages, 1)}
+          </div>
         </div>
       </div>
       {state.error && <p className="text-red-500 text-sm mb-2">{state.error}</p>}
@@ -128,12 +162,26 @@ function AdminDashboard() {
               {pageData.content.map((user) => (
                 <tr key={user.id} className="border-t border-slate-100">
                   <td className="py-3">
-                    <div className="font-semibold text-slate-800">{user.name}</div>
-                    <div className="text-xs text-slate-500">
-                      {user.occupation || "-"}
-                    </div>
+                    <button
+                      className="text-left"
+                      onClick={() => setSelectedProfile(user)}
+                    >
+                      <div className="font-semibold text-slate-800 underline">
+                        {user.name}
+                      </div>
+                      <div className="text-xs text-slate-500">
+                        {user.occupation || "-"}
+                      </div>
+                    </button>
                   </td>
-                  <td className="text-slate-600">{user.email}</td>
+                  <td>
+                    <button
+                      className="text-left text-slate-600 underline"
+                      onClick={() => setSelectedProfile(user)}
+                    >
+                      {user.email}
+                    </button>
+                  </td>
                   <td className="text-slate-600">{user.role}</td>
                   <td>
                     {user.blocked ? (
@@ -208,6 +256,125 @@ function AdminDashboard() {
             {renderTable("Tradespersons", tradesState.data, tradesState)}
           </div>
         </>
+      )}
+      {selectedProfile && (
+        <div className="fixed inset-0 bg-slate-900/40 flex items-center justify-center z-40" onClick={() => setSelectedProfile(null)}>
+          <div
+            className="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-6 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="absolute top-3 right-3 text-slate-400 hover:text-slate-600"
+              onClick={() => setSelectedProfile(null)}
+            >
+              ✕
+            </button>
+            <div className="flex items-center gap-4 mb-4">
+              <div>
+                <p className="text-xs uppercase text-slate-500">Name</p>
+                <h2 className="text-2xl font-semibold text-slate-900">{selectedProfile.name}</h2>
+                <p className="text-sm text-slate-500">{selectedProfile.email}</p>
+              </div>
+              <div className="ml-auto flex flex-col items-end gap-2">
+                <span
+                  className={`px-3 py-1 text-xs rounded-full ${selectedProfile.blocked ? "bg-red-100 text-red-600" : "bg-emerald-50 text-emerald-700"}`}
+                >
+                  {selectedProfile.blocked ? "Blocked" : "Active"}
+                </span>
+                <button
+                  className={`text-xs font-semibold ${selectedProfile.blocked ? "text-emerald-600" : "text-red-600"}`}
+                  onClick={() => {
+                    handleBlockToggle(selectedProfile.id, selectedProfile.blocked);
+                    setSelectedProfile((prev) =>
+                      prev ? { ...prev, blocked: !prev.blocked } : prev
+                    );
+                  }}
+                >
+                  {selectedProfile.blocked ? "Unblock user" : "Block user"}
+                </button>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <p className="text-xs uppercase text-slate-500">Role</p>
+                <p className="font-semibold text-slate-800">{selectedProfile.role}</p>
+              </div>
+              <div>
+                <p className="text-xs uppercase text-slate-500">Status</p>
+                <p className="font-semibold text-slate-800">
+                  {selectedProfile.blocked ? "Blocked" : "Active"}
+                </p>
+              </div>
+              {selectedProfile.occupation && (
+                <div>
+                  <p className="text-xs uppercase text-slate-500">Occupation</p>
+                  <p className="font-semibold text-slate-800">{selectedProfile.occupation}</p>
+                </div>
+              )}
+              {selectedProfile.workingCity && (
+                <div>
+                  <p className="text-xs uppercase text-slate-500">City</p>
+                  <p className="font-semibold text-slate-800">{selectedProfile.workingCity}</p>
+                </div>
+              )}
+              {selectedProfile.phone && (
+                <div>
+                  <p className="text-xs uppercase text-slate-500">Phone</p>
+                  <p className="font-semibold text-slate-800">{selectedProfile.phone}</p>
+                </div>
+              )}
+              <div>
+                <p className="text-xs uppercase text-slate-500">Verified</p>
+                <p className="font-semibold text-slate-800">
+                  {selectedProfile.verified ? "Yes" : "No"}
+                </p>
+              </div>
+              {selectedProfile.role === "TRADESPERSON" && (
+                <>
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Experience</p>
+                    <p className="font-semibold text-slate-800">
+                      {selectedProfile.experience ?? "—"}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Completed Jobs</p>
+                    <p className="font-semibold text-slate-800">
+                      {selectedProfile.completedJobs ?? "—"}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Average Rating</p>
+                    <p className="font-semibold text-slate-800">
+                      {(selectedProfile.averageRating ?? 0).toFixed(1)} ★
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase text-slate-500">Total Reviews</p>
+                    <p className="font-semibold text-slate-800">
+                      {selectedProfile.totalReviews ?? 0}
+                    </p>
+                  </div>
+                </>
+              )}
+            </div>
+            {selectedProfile.skillTags?.length ? (
+              <div className="mt-4">
+                <p className="text-xs uppercase text-slate-500">Skills</p>
+                <div className="flex flex-wrap gap-2 mt-2 text-xs">
+                  {selectedProfile.skillTags.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 rounded-full bg-slate-100 text-slate-700"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
       )}
     </DashboardLayout>
   );

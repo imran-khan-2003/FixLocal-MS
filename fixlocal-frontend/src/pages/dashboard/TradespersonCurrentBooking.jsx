@@ -6,6 +6,7 @@ import ConversationPanel from "../../components/ConversationPanel";
 import { useTradespersonBookings } from "../../hooks/useTradespersonBookings";
 import { bookingService } from "../../api/bookingService";
 import chatService from "../../api/chatService";
+import disputeService from "../../api/disputeService";
 import { useCallback, useMemo, useState, useEffect } from "react";
 
 const ACTION_CONFIG = {
@@ -39,6 +40,7 @@ function TradespersonCurrentBooking() {
   const [chatMessages, setChatMessages] = useState([]);
   const [chatLoading, setChatLoading] = useState(false);
   const [chatError, setChatError] = useState("");
+  const [chatVisible, setChatVisible] = useState(false);
 
   const loadConversation = useCallback(
     async (bookingId) => {
@@ -160,6 +162,14 @@ function TradespersonCurrentBooking() {
             <BookingCard
               booking={currentBooking}
               showCustomerDetails
+              onChat={() => setChatVisible((prev) => !prev)}
+              onDispute={async (payload) =>
+                disputeService.create({
+                  bookingId: payload.bookingId,
+                  reason: payload.reason,
+                  desiredOutcome: payload.desiredOutcome,
+                })
+              }
               onPrimaryAction={
                 actionConfig.primaryAction
                   ? () => handleAction(currentBooking, actionConfig.primaryAction)
@@ -175,22 +185,27 @@ function TradespersonCurrentBooking() {
                 CANCELABLE_STATUSES.has(currentBooking.status) ? "Cancel Booking" : undefined
               }
             />
-            <ChatThread
-              conversation={chatConversation}
-              messages={chatMessages}
-              loading={chatLoading}
-              error={chatError}
-              onSend={(content, attachment) =>
-                sendMessage(currentBooking.id, { content, attachment })
-              }
-            />
+            {chatVisible && (
+              <ChatThread
+                conversation={chatConversation}
+                messages={chatMessages}
+                loading={chatLoading}
+                error={chatError}
+                onSend={(content, attachment) =>
+                  sendMessage(currentBooking.id, { content, attachment })
+                }
+              />
+            )}
           </div>
           <div className="space-y-4">
             <TradespersonLocationPanel booking={currentBooking} />
             <ConversationPanel
               conversations={currentBooking ? [currentBooking] : []}
               activeConversationId={chatConversation?.id}
-              onSelect={() => loadConversation(currentBooking.id)}
+              onSelect={() => {
+                setChatVisible(true);
+                loadConversation(currentBooking.id);
+              }}
             />
           </div>
         </div>

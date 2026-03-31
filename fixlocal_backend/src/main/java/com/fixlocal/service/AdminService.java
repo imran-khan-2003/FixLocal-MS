@@ -15,6 +15,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.regex.Pattern;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -24,12 +26,22 @@ public class AdminService {
     private final BookingRepository bookingRepository;
     private final ConversationRepository conversationRepository;
 
-    public Page<User> getAllUsers(Pageable pageable) {
-        return userRepository.findByRole(Role.USER, pageable);
+    public Page<User> getAllUsers(Pageable pageable, String search) {
+        if (search == null || search.isBlank()) {
+            return userRepository.findByRole(Role.USER, pageable);
+        }
+
+        String regex = buildPrefixRegex(search);
+        return userRepository.searchByRoleAndNameOrEmailRegex(Role.USER, regex, pageable);
     }
 
-    public Page<User> getAllTradespersons(Pageable pageable) {
-        return userRepository.findByRole(Role.TRADESPERSON, pageable);
+    public Page<User> getAllTradespersons(Pageable pageable, String search) {
+        if (search == null || search.isBlank()) {
+            return userRepository.findByRole(Role.TRADESPERSON, pageable);
+        }
+
+        String regex = buildPrefixRegex(search);
+        return userRepository.searchByRoleAndNameOrEmailRegex(Role.TRADESPERSON, regex, pageable);
     }
 
     @Transactional
@@ -141,5 +153,9 @@ public class AdminService {
         );
 
         return stats;
+    }
+
+    private String buildPrefixRegex(String prefix) {
+        return "^" + Pattern.quote(prefix);
     }
 }
