@@ -1,117 +1,139 @@
 # FixLocal
 
-FixLocal is a full-stack marketplace that connects homeowners with verified local tradespeople. The platform focuses on trust, transparency, and rapid dispatch by combining a React + Vite frontend with a Spring Boot backend, unified authentication, and live status tracking.
+FixLocal is a **location-aware marketplace** that lets homeowners discover, chat with, negotiate, and track verified tradespeople in real-time. The platform combines a Spring Boot + MongoDB backend with a React/Vite frontend, WebSocket messaging, escrow-style bookings, and dispute tooling for admins.
 
-## 🔑 Core Pillars
+```
+Frontend (React/Vite) ──▶ REST (Axios) ─┐
+                                         │
+WebSocket (STOMP/SockJS) ◀───────────────┼── Spring Boot 3 (Java 17)
+                                         │
+MongoDB + Aggregations ◀──────────────────┘
+```
 
-- **Unified Identity & Roles** – A single sign-on flow handles both customers and tradespeople. User records include roles, KYC status, live availability, and device-level booking locks to prevent double-booking.
-- **Geo-aware Discovery** – Search experiences are anchored around working cities and live coordinates. Homeowners see only the tradespeople who are actively servicing their postcode radius.
-- **Service Catalogs** – Tradespeople describe their offerings (scope, base price, duration) and skill tags so homeowners can understand expertise before booking.
-- **Operational Safety** – Availability toggles, verification badges, and admin visibility keep the marketplace healthy.
-- **Comprehensive Admin Insight** – Ops teams can audit disputes, deactivate malicious users, and spot churn patterns from a single dashboard.
+## 🔑 Product Pillars
 
-## 🧩 Feature Breakdown
+1. **Identity & Safety** – Unified registration with KYC fields, verification badges, availability toggles, role-based access, and JWT-secured APIs.
+2. **Search & Discovery** – City + skill aware search with rating/radius hints, inline service catalogs, and curated categories.
+3. **Bookings & Negotiation** – Multi-step booking lifecycle (request → offers → accept → en route → arrived → complete) with escrow hooks.
+4. **Live Tracking & Alerts** – Leaflet maps, OSRM routing, STOMP WebSockets for live ETA, and push-style notifications.
+5. **Trust & Recovery** – Dispute console, audit-ready notification history, admin workflows to suspend or verify tradespeople.
 
-### 1. Authentication & Authorization
-- Email-password login with persistent sessions powered by JWT cookies.
-- `AuthContext` hydrates the React tree with user payloads and auto-refreshes tokens.
-- Role-based feature flags (CUSTOMER vs TRADESPERSON vs ADMIN) to protect privileged routes.
+## 🧱 Architecture Deep Dive
 
-### 2. Onboarding & Profile Management
-| Capability | Customer | Tradesperson |
-|------------|----------|--------------|
-| Rich profile fields (name, bio, phone, photo) | ✅ | ✅ |
-| Working city selection with curated location constants | ✅ | ✅ |
-| Skill tags (up to 15 sanitized keywords) | — | ✅ |
-| Availability toggle & live status transitions | — | ✅ |
-| Service offerings CRUD (name, description, base price, duration) | — | ✅ |
+### Backend (Spring Boot 3)
 
-Implementation highlights:
-- `fixlocal-frontend/src/pages/Register.jsx` guides users through role selection and seed data capture.
-- `fixlocal_backend/src/main/java/com/fixlocal/service/UserService.java` orchestrates profile, skills, availability, and offerings with strict role validation.
-- Sanitization routines ensure tags are deduplicated, trimmed, and capped for UX cleanliness.
+| Concern | Implementation |
+|---------|----------------|
+| **Framework** | Spring Boot 3.5, Web, Validation, Actuator |
+| **Data Layer** | Spring Data MongoDB + custom aggregations (see `UserRepository`) |
+| **Auth** | Spring Security + JWT (custom filter, BCrypt), role-based endpoints |
+| **Realtime** | STOMP over WebSocket (`/ws` endpoint) with JWT channel interceptor |
+| **Domain** | Users, Bookings (+`PriceOffer`), LiveLocation, Dispute, Chat, Review, Testimonial |
+| **Services** | `BookingService`, `UserService`, `NotificationService`, `EscrowService`, etc. |
 
-### 3. Marketplace Discovery
-- `SearchResults.jsx` consumes `/api/users/search` (REST) to list tradespeople filtered by city, skill tags, or keyword.
-- Card layouts surface ratings, completed jobs, and distance hints.
-- Empty states nudge homeowners to broaden filters when inventory is sparse.
+Key backend highlights:
+- **Booking orchestration** (`BookingService`): concurrency-safe acceptance, counter-offers, escrow placeholders (`initiatePayment`, `capturePayment`), live location storage (`LiveLocationRepository`), and event fan-out via STOMP topics.
+- **User lifecycle** (`UserService` + `UserController`): profile editing, skill tag sanitization, service catalog CRUD, availability toggle syncing to `Status` enums.
+- **Notifications + Events** (`NotificationService`): persists Mongo documents and publishes Booking/Location events to `/topic/notifications/{userId}` and booking-specific topics.
+- **SecurityConfig**: stateless sessions, CORS enabled, JWT filter inserted before `UsernamePasswordAuthenticationFilter`, granular `requestMatchers` for public routes.
+- **WebSocketConfig**: `/ws` SockJS endpoint, `/topic` broker, `JwtChannelInterceptor` to validate STOMP connects.
+- **Repositories**: Mongo queries for city/occupation filtering, regex search, paginated stats, and custom aggregation for average ratings.
 
-### 4. Live Status & Availability
-- Tradespeople can switch between **Available**, **Offline**, and **On a Job** states from the dashboard.
-- Backend automatically aligns `Status` enums with availability toggles to keep booking logic consistent.
-- Homeowners only see professionals whose status allows new bookings, reducing failed contact attempts.
+### Frontend (React 18 + Vite)
 
-### 5. Service Offerings & Pricing Transparency
-- Tradespeople describe discrete services (e.g., “2BHK AC repair”) with base price & estimated duration.
-- Frontend surfaces offerings on profile detail pages so customers understand scope before requesting quotes.
-- Admins can audit offerings for quality or remove misleading entries.
+| Concern | Implementation |
+|---------|----------------|
+| **Router & Shell** | React Router v6 (`App.jsx`, `routes/`) |
+| **State** | Context API (`AuthContext` for token persistence + profile hydration), custom hooks for live location |
+| **UI** | TailwindCSS utility classes, custom component library under `src/components` |
+| **APIs** | Axios clients (`api/axios`, `adminService`, `userService`, `testimonialService`, booking/dispute services) with token injection |
+| **Realtime** | `@stomp/stompjs` + `sockjs-client` for WebSocket subscriptions; `react-leaflet` + `leaflet` for maps |
+| **UX Flows** | Pages for Home, Register, Login, SearchResults, Profile, WorkerProfile, dashboards (user/tradesperson/admin) |
 
-### 6. Disputes & Trust Layer
-- `pages/dashboard/Disputes.jsx` provides an inbox-like experience for open disputes, showing context, timestamps, and resolution controls.
-- Admin APIs allow tagging disputes with outcomes, issuing refunds, or banning repeat offenders.
-- Aggregated stats help operations teams spot systemic issues (e.g., repeated complaints about a specific service category).
+Notable frontend modules:
+- **Home.jsx**: marketing hero, service/category shortcuts, testimonial fetch (`testimonialApi`), concierge CTA.
+- **Register.jsx**: multi-role onboarding with location dropdown (`constants/locations.js`).
+- **Dashboard pages**: `UserDashboard`, `TradespersonDashboard`, `AdminDashboard`, `Disputes`, `MyDisputes`, `TradespersonHistory`, etc., reflecting backend booking/dispute APIs.
+- **Live Location Hooks**: subscription to `/topic/bookings/{id}/location`, map visualisation with stale detection (as documented in `docs/LIVE-LOCATION.md`).
+- **AuthContext.jsx**: localStorage token caching, `/users/me` hydration, normalized role inference for legacy payloads.
 
-### 7. Admin Controls
-- `adminService.js` exposes endpoints for:
-  - Fetching dispute queues, flagged accounts, and verification dossiers.
-  - Approving or rejecting tradesperson onboarding.
-  - Triggering manual verification reruns.
-- Admin dashboard surfaces cohorts (active, pending verification, suspended) with inline actions.
+### Docs & QA
+- `docs/VERIFICATION.md`: manual checklist for dispute workflow + live navigation QA.
+- `docs/LIVE-LOCATION.md`: describes REST + WebSocket payloads, dashboard behaviour, and manual QA steps.
+- `docs/api/`: REST reference (not shown here but mentioned for future maintainers).
 
-### 8. Location Intelligence & Live Tracking
-- `src/constants/locations.js` centralizes supported cities, postal codes, and display labels for consistent dropdowns.
-- Backend stores last-known latitude/longitude per user, enabling future real-time map views.
-- Architecture leaves space for socket-based live location streaming (documented in `docs/LIVE-LOCATION.md`).
+## End-to-end Feature Map
 
-### 9. API Design Highlights
-- REST endpoints for `/users/me`, `/users/service-offerings`, `/admin/disputes`, etc., secured via JWT.
-- DTO-centric responses (`UserResponseDTO`, `ServiceOfferingDTO`) keep payloads lean and frontend-friendly.
-- Error handling: domain-specific exceptions (e.g., `UnauthorizedException`, `ResourceNotFoundException`) map to precise HTTP status codes.
+1. **Account & Verification**
+   - Auth routes (`/api/v1/auth/**`) handle register/login, issuing JWT.
+   - Admin endpoints verify tradespeople, block/unblock users (`AdminController`).
+   - Data seeder populates testimonials for demo builds.
 
-### 10. Frontend Architecture
-- React + Vite with modular pages (`Home`, `Profile`, `Dashboard`, `SearchResults`).
-- Context providers for auth state, global toasts, and city filters.
-- API clients (`adminService`, `userService`) wrap Axios instances to include auth headers automatically.
-- TailwindCSS utility classes deliver responsive, mobile-first layouts.
+2. **Discovery & Profiles**
+   - `TradespersonController` + `UserRepository` filter by city/occupation/status.
+   - `Profile.jsx` & `WorkerProfile.jsx` show ratings, skill tags, service offerings.
 
-## 🛠️ Tech Stack
+3. **Booking Lifecycle**
+   - Users create bookings; tradespeople respond with counter-offers.
+   - Escrow hooks (initiate → authorize → capture/refund) built into `BookingService` for future payment gateway integration.
+   - Dashboard cards show statuses (`PENDING`, `ACCEPTED`, `EN_ROUTE`, `ARRIVED`, `COMPLETED`).
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | React 18, Vite, TailwindCSS, Context API, Axios |
-| Backend | Java 21, Spring Boot 3, Lombok, Spring Security, JPA |
-| Database | (Configurable) PostgreSQL / MySQL via Spring Data repos |
-| Auth | JWT (stateless) with refresh support |
-| Build & Tooling | Maven, npm, ESLint, Prettier |
+4. **Live Location & Notifications**
+   - Tradesperson sends coordinates via REST; backend stores TTL’d `LiveLocation` docs and emits WebSocket events.
+   - Users subscribe via STOMP, see Leaflet map + distance badge (OSRM route optional).
+   - NotificationService pushes booking/dispute events and unread counts to `/topic/notifications/{userId}`.
 
-## 🚀 Local Development
+5. **Disputes & Reviews**
+   - `DisputeController` surfaces creation, messaging, admin updates; frontends at `pages/dashboard/Disputes.jsx`, `MyDisputes.jsx`, `TradespersonDisputes.jsx`.
+   - `ReviewController` supports post-job feedback; aggregated rating accessible on profile cards.
 
-1. **Backend**
-   ```bash
-   cd fixlocal_backend
-   ./mvnw spring-boot:run
-   ```
+6. **Admin Visibility**
+   - `AdminController` returns paginated users/tradespersons, booking stats, verification toggles.
+   - `AdminDashboard.jsx` (plus `TradespersonRatings.jsx`, `TradespersonCurrentBooking.jsx`) provide cohort analytics, repeated offender views, and manual overrides.
 
-2. **Frontend**
-   ```bash
-   cd fixlocal-frontend
-   npm install
-   npm run dev
-   ```
+## Tech Stack (Detailed)
 
-3. Access the app at `http://localhost:5173` (default Vite port).
+| Layer | Libraries / Tools |
+|-------|-------------------|
+| **Frontend** | React 18, Vite 4, React Router 6, TailwindCSS 3, Axios, `@stomp/stompjs`, `sockjs-client`, `react-leaflet`, `leaflet`, `react-phone-input-2`, ESLint |
+| **Backend** | Java 17, Spring Boot 3.5, Spring Data MongoDB, Spring Security, Spring WebSocket, Lombok, jjwt, MongoTemplate Aggregations, Actuator |
+| **Database** | MongoDB (Bookings, Users, LiveLocation, Notifications, Reviews, Disputes, Testimonials) |
+| **Messaging** | STOMP over WebSocket with SockJS fallback |
+| **Build/Tooling** | Maven Wrapper, npm, ESLint, Tailwind CLI |
 
-## 🗺️ Future Enhancements
-- Realtime websockets for live technician tracking.
-- In-app booking & payment workflows.
-- AI-powered skill tagging during onboarding.
-- Push notifications for urgent jobs and dispute escalations.
+## Local Development
+
+```bash
+# Backend
+cd fixlocal_backend
+./mvnw spring-boot:run   # requires JDK 17+
+
+# Frontend
+cd fixlocal-frontend
+npm install
+npm run dev
+
+# Visit http://localhost:5173
+```
+
+MongoDB connection details are configured via Spring Boot application properties (not included in the repo). Ensure a local Mongo instance is running or update the connection string accordingly.
+
+## Observability & Ops
+- **Actuator** exposes health metrics for Kubernetes or VM probes.
+- **Auditability**: Notifications + Disputes persist message history for compliance.
+- **Role-based method security** (`@EnableMethodSecurity`) keeps service methods scoped even if endpoints evolve.
+
+## Roadmap Ideas
+- Native payment gateway + automatic escrow release.
+- Push notifications (FCM/Web Push) mirroring WebSocket events.
+- Auto-scheduling + route optimization for multi-job days.
+- AI-assisted skill tagging & pricing suggestions during onboarding.
 
 ---
 
-For more implementation notes, refer to the `/docs` directory:
-- `docs/VERIFICATION.md` – steps for vetting tradespeople.
-- `docs/LIVE-LOCATION.md` – blueprint for geolocation streaming.
-- `docs/api/` – REST endpoint catalogue.
+### Further Reading
+- [`docs/VERIFICATION.md`](docs/VERIFICATION.md) – manual QA for dispute + navigation flows.
+- [`docs/LIVE-LOCATION.md`](docs/LIVE-LOCATION.md) – how live tracking works end to end.
+- [`docs/api/`](docs/api/) – REST reference (endpoints, payloads, auth requirements).
 
 Happy fixing! 🔧
