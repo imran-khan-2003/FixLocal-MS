@@ -3,6 +3,7 @@ import DashboardLayout from "../components/DashboardLayout";
 import { useAuth } from "../context/AuthContext";
 import { dashboardService } from "../api/dashboardService";
 import reviewService from "../api/reviewService";
+import userService from "../api/userService";
 
 function InfoRow({ label, value }) {
   return (
@@ -14,12 +15,24 @@ function InfoRow({ label, value }) {
 }
 
 function Profile() {
-  const { user } = useAuth();
+  const { user, refreshUser } = useAuth() || {};
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [userStats, setUserStats] = useState(null);
   const [tradespersonStats, setTradespersonStats] = useState(null);
   const [tradespersonReviews, setTradespersonReviews] = useState([]);
+  const [form, setForm] = useState({
+    name: "",
+    workingCity: "",
+    phone: "",
+    bio: "",
+    skillTags: [],
+  });
+  const [skillInput, setSkillInput] = useState("");
+  const [skillError, setSkillError] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saveSuccess, setSaveSuccess] = useState("");
 
   useEffect(() => {
     let active = true;
@@ -51,6 +64,95 @@ function Profile() {
       active = false;
     };
   }, [user]);
+
+  useEffect(() => {
+    if (!user) return;
+    setForm({
+      name: user.name || "",
+      workingCity: user.workingCity || "",
+      phone: user.phone || "",
+      bio: user.bio || "",
+      skillTags: user.skillTags || [],
+    });
+    setSkillInput("");
+    setSkillError("");
+    setSaveSuccess("");
+    setSaveError("");
+  }, [user]);
+
+  const isTradesperson = user?.role === "TRADESPERSON";
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddSkill = () => {
+    const value = skillInput.trim();
+    if (!value) {
+      return;
+    }
+
+    if (form.skillTags.includes(value)) {
+      setSkillError("Skill already added");
+      return;
+    }
+
+    if (form.skillTags.length >= 15) {
+      setSkillError("You can add up to 15 skill tags");
+      return;
+    }
+
+    const normalized = value.length > 50 ? value.slice(0, 50) : value;
+    setForm((prev) => ({ ...prev, skillTags: [...prev.skillTags, normalized] }));
+    setSkillInput("");
+    setSkillError("");
+  };
+
+  const handleSkillKeyDown = (event) => {
+    if (event.key === "Enter" || event.key === ",") {
+      event.preventDefault();
+      handleAddSkill();
+    }
+  };
+
+  const handleRemoveSkill = (tag) => {
+    setForm((prev) => ({
+      ...prev,
+      skillTags: prev.skillTags.filter((item) => item !== tag),
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    if (!user) return;
+    setSaveError("");
+    setSaveSuccess("");
+    setSaving(true);
+    try {
+      const payload = {
+        name: form.name.trim(),
+        workingCity: form.workingCity.trim(),
+        bio: form.bio?.trim() || "",
+        phone: form.phone?.trim() || "",
+      };
+
+      if (isTradesperson) {
+        payload.skillTags = form.skillTags;
+      }
+
+      await userService.updateProfile(payload);
+      await (refreshUser ? refreshUser() : Promise.resolve());
+      setSaveSuccess("Profile updated successfully");
+    } catch (err) {
+      const message = err?.response?.data?.message || "Failed to update profile";
+      setSaveError(message);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const isSaveDisabled = saving || !form.name.trim() || !form.workingCity.trim();
 
   const metrics = useMemo(() => {
     if (user?.role === "USER" && userStats) {
@@ -115,23 +217,121 @@ function Profile() {
             ))}
           </div>
         )}
-        {(user.skillTags?.length || 0) > 0 && (
-          <div>
-            <p className="text-xs uppercase text-slate-500">Skills</p>
-            <div className="flex flex-wrap gap-2 mt-2">
-              {user.skillTags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 text-xs rounded-full bg-slate-100 text-slate-700"
-                >
-                  {tag}
-                </span>
-              ))}
+
+        <div className="pt-4 border-t border-slate-100">
+          <h3 className="text-lg font-semibold text-slate-900">Edit Details</h3>
+          <p className="text-sm text-slate-500">Update how clients see you on FixLocal.</p>
+          <form className="mt-4 space-y-4" onSubmit={handleSubmit}>
+            <div className="grid md:grid-cols-2 gap-4">
+              <label className="flex flex-col text-sm text-slate-600">
+                Full Name
+                <input
+                  name="name"
+                  type="text"
+                  className="mt-1 rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  value={form.name}
+                  onChange={handleInputChange}
+                  required
+                />
+              </label>
+              <label className="flex flex-col text-sm text-slate-600">
+                Working City
+                <input
+                  name="workingCity"
+                  type="text"
+                  className="mt-1 rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  value={form.workingCity}
+                  onChange={handleInputChange}
+                  required
+                />
+              </label>
+              <label className="flex flex-col text-sm text-slate-600">
+                Mobile Number
+                <input
+                  name="phone"
+                  type="tel"
+                  className="mt-1 rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  value={form.phone}
+                  onChange={handleInputChange}
+                  placeholder="Optional"
+                />
+              </label>
+              <label className="flex flex-col text-sm text-slate-600 md:col-span-2">
+                Bio
+                <textarea
+                  name="bio"
+                  rows={3}
+                  className="mt-1 rounded-lg border border-slate-200 px-3 py-2 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  value={form.bio}
+                  onChange={handleInputChange}
+                  placeholder="Tell customers about your expertise"
+                />
+              </label>
             </div>
-          </div>
-        )}
-        {user.role === "TRADESPERSON" && tradespersonReviews.length > 0 && (
-          <div>
+
+            {isTradesperson && (
+              <div>
+                <div className="flex items-center justify-between">
+                  <p className="text-sm font-medium text-slate-700">Skill tags</p>
+                  <p className="text-xs text-slate-500">{form.skillTags.length}/15</p>
+                </div>
+                <div className="mt-2 flex gap-2">
+                  <input
+                    type="text"
+                    value={skillInput}
+                    onChange={(e) => setSkillInput(e.target.value)}
+                    onKeyDown={handleSkillKeyDown}
+                    className="flex-1 rounded-lg border border-slate-200 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    placeholder="Add skill tag"
+                  />
+                  <button
+                    type="button"
+                    onClick={handleAddSkill}
+                    className="px-4 py-2 rounded-lg bg-slate-900 text-white text-sm font-semibold disabled:opacity-50"
+                    disabled={!skillInput.trim()}
+                  >
+                    Add
+                  </button>
+                </div>
+                {skillError && <p className="text-xs text-red-500 mt-1">{skillError}</p>}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {form.skillTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs inline-flex items-center gap-2"
+                    >
+                      {tag}
+                      <button
+                        type="button"
+                        className="text-blue-500 hover:text-blue-700"
+                        onClick={() => handleRemoveSkill(tag)}
+                        aria-label={`Remove ${tag}`}
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {saveError && <p className="text-sm text-red-500">{saveError}</p>}
+            {saveSuccess && <p className="text-sm text-green-600">{saveSuccess}</p>}
+
+            <div className="flex justify-end gap-3">
+              <button
+                type="submit"
+                className="px-5 py-2 rounded-lg bg-blue-600 text-white text-sm font-semibold disabled:opacity-50"
+                disabled={isSaveDisabled}
+              >
+                {saving ? "Saving..." : "Save changes"}
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {isTradesperson && tradespersonReviews.length > 0 && (
+          <div className="border-t border-slate-100 pt-4">
             <p className="text-xs uppercase text-slate-500">Recent Feedback</p>
             <div className="mt-3 space-y-3">
               {tradespersonReviews.slice(0, 3).map((review) => (

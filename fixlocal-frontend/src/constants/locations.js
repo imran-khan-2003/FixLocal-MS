@@ -1,0 +1,28 @@
+export const popularIndianCities = [
+  "Bengaluru",
+  "Mumbai",
+  "Delhi",
+  "Hyderabad",
+  "Chennai",
+  "Kolkata",
+  "Pune",
+  "Ahmedabad",
+  "Jaipur",
+  "Lucknow",
+  "Surat",
+  "Indore",
+  "Chandigarh",
+  "Coimbatore",
+  "Thiruvananthapuram",
+  "Kochi",
+  "Bhopal",
+  "Nagpur",
+  "Visakhapatnam",
+  "Vadodara",
+  "Noida",
+  "Gurugram",
+  "Mysuru",
+  "Patna",
+];
+
+export default popularIndianCities;

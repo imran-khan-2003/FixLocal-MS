@@ -13,11 +13,11 @@ export const adminService = {
     axios.get(
       `/admin/trades?page=${page}&size=${PAGE_SIZE}${search ? `&search=${encodeURIComponent(search)}` : ""}`
     ),
-  blockUser: (userId) => axios.patch(`/admin/users/${userId}/block`),
-  unblockUser: (userId) => axios.patch(`/admin/users/${userId}/unblock`),
   getDisputes: () => axios.get("/disputes"),
   getDisputeById: (id) => axios.get(`/disputes/${id}`),
   updateDispute: (id, data) => axios.put(`/disputes/${id}`, data),
+  blockUser: (userId) => axios.patch(`/admin/users/${userId}/block`),
+  unblockUser: (userId) => axios.patch(`/admin/users/${userId}/unblock`),
   addDisputeNote: (id, payload) => axios.post(`/disputes/${id}/messages`, payload),
 };
 

@@ -20,7 +20,15 @@ function StatusBadge({ value }) {
   );
 }
 
-function DisputeDetailDrawer({ dispute, onClose, onStatusChange, onAddNote, saving }) {
+function DisputeDetailDrawer({
+  dispute,
+  onClose,
+  onStatusChange,
+  onAddNote,
+  onBlockRespondent,
+  blocking,
+  saving,
+}) {
   const [note, setNote] = useState("");
   useEffect(() => {
     setNote("");
@@ -101,6 +109,25 @@ function DisputeDetailDrawer({ dispute, onClose, onStatusChange, onAddNote, savi
               <span className="inline-flex mt-3 px-2 py-1 text-xs rounded-full bg-slate-100 text-slate-700">
                 {dispute.respondent?.role}
               </span>
+              {!!dispute.respondent?.id && (
+                <button
+                  type="button"
+                  className="mt-4 text-sm font-semibold text-red-600 disabled:opacity-50"
+                  onClick={() =>
+                    onBlockRespondent({
+                      userId: dispute.respondent?.id,
+                      userName: dispute.respondent?.name,
+                    })
+                  }
+                  disabled={blocking || dispute.respondent?.blocked}
+                >
+                  {dispute.respondent?.blocked
+                    ? "Respondent blocked"
+                    : blocking
+                    ? "Blocking..."
+                    : "Block respondent"}
+                </button>
+              )}
             </div>
           </section>
 
@@ -178,6 +205,7 @@ function Disputes() {
   const [disputes, setDisputes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [blocking, setBlocking] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
   const selectedDispute = useMemo(() => disputes.find((d) => d.id === selectedId) || null, [disputes, selectedId]);
@@ -225,6 +253,27 @@ function Disputes() {
       })
       .catch(() => setError("Failed to add note"))
       .finally(() => setSaving(false));
+  };
+
+  const handleBlockRespondent = ({ userId, userName }) => {
+    if (!userId) return;
+    if (
+      !window.confirm(
+        `Block ${userName || "this user"}? They will be prevented from logging in until manually unblocked.`
+      )
+    ) {
+      return;
+    }
+    setBlocking(true);
+    adminService
+      .blockUser(userId)
+      .then(() => {
+        if (selectedId) {
+          refreshDispute(selectedId);
+        }
+      })
+      .catch(() => setError("Failed to block respondent"))
+      .finally(() => setBlocking(false));
   };
 
   return (
@@ -296,9 +345,11 @@ function Disputes() {
       <DisputeDetailDrawer
         dispute={selectedDispute}
         saving={saving}
+        blocking={blocking}
         onClose={() => setSelectedId(null)}
         onStatusChange={(status) => selectedDispute && handleUpdateStatus(selectedDispute.id, status)}
         onAddNote={(message) => selectedDispute && handleAddNote(selectedDispute.id, message)}
+        onBlockRespondent={(payload) => handleBlockRespondent(payload)}
       />
     </DashboardLayout>
   );

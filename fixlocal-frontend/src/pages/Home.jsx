@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import testimonialApi from "../api/testimonialService";
 
-const services = [
+export const services = [
   { value: "electrician", label: "Electrician" },
   { value: "plumber", label: "Plumber" },
   { value: "carpenter", label: "Carpenter" },

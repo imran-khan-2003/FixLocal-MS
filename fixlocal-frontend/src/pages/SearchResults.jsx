@@ -29,11 +29,21 @@ function SearchResults() {
       setLoading(true);
       setError("");
       try {
-        const url = service
-          ? `/tradespersons/search?city=${encodeURIComponent(city)}&occupation=${encodeURIComponent(
-              service
-            )}`
-          : `/tradespersons/search?city=${encodeURIComponent(city)}`;
+        const query = new URLSearchParams({ city });
+        if (service) {
+          query.append("occupation", service);
+        }
+        if (priceCap) {
+          query.append("maxPrice", priceCap);
+        }
+        if (minRating) {
+          query.append("minRating", String(minRating));
+        }
+        if (sortBy && sortBy !== "relevance") {
+          query.append("sort", sortBy);
+        }
+
+        const url = `/tradespersons/search?${query.toString()}`;
         const { data } = await api.get(url);
         const results = data.content || data || [];
         setWorkers(results);
@@ -44,12 +54,13 @@ function SearchResults() {
       }
     }
     fetchWorkers();
-  }, [city, service]);
+  }, [city, service, priceCap, minRating, sortBy]);
 
   useEffect(() => {
     const filtered = workers
       .filter((worker) => {
-        if (priceCap && worker.price && worker.price > Number(priceCap)) {
+        const basePrice = worker.basePrice ?? worker.price;
+        if (priceCap && basePrice && Number(basePrice) > Number(priceCap)) {
           return false;
         }
         if (minRating && worker.averageRating && worker.averageRating < minRating) {
@@ -58,11 +69,15 @@ function SearchResults() {
         return true;
       })
       .sort((a, b) => {
-        if (sortBy === "price" && a.price && b.price) {
-          return a.price - b.price;
+        const priceA = a.basePrice ?? a.price;
+        const priceB = b.basePrice ?? b.price;
+        if (sortBy === "price" && priceA != null && priceB != null) {
+          return priceA - priceB;
         }
-        if (sortBy === "rating" && a.averageRating && b.averageRating) {
-          return b.averageRating - a.averageRating;
+        if (sortBy === "rating") {
+          const ratingA = a.averageRating ?? 0;
+          const ratingB = b.averageRating ?? 0;
+          return ratingB - ratingA;
         }
         return 0;
       });
