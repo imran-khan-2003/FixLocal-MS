@@ -1,5 +1,6 @@
 package com.fixlocal.service;
 
+import com.fixlocal.model.ChatMessage;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -53,4 +55,38 @@ public class AttachmentStorageService {
             String mimeType,
             long sizeBytes
     ) {}
+
+    public Path resolvePath(ChatMessage.AttachmentMetadata attachment) {
+        if (attachment == null) {
+            return null;
+        }
+
+        if (attachment.getStoragePath() != null && !attachment.getStoragePath().isBlank()) {
+            String storagePath = attachment.getStoragePath().trim();
+            try {
+                if (storagePath.startsWith("file:")) {
+                    return Path.of(URI.create(storagePath)).toAbsolutePath().normalize();
+                }
+                return Paths.get(storagePath).toAbsolutePath().normalize();
+            } catch (Exception ignored) {
+                // Fall back to fileId-based resolution for legacy/invalid path formats.
+            }
+        }
+
+        if (attachment.getFileId() == null || attachment.getFileId().isBlank()) {
+            return null;
+        }
+
+        String extension = "";
+        String fileName = attachment.getFileName();
+        if (fileName != null) {
+            int dotIndex = fileName.lastIndexOf('.');
+            if (dotIndex != -1) {
+                extension = fileName.substring(dotIndex);
+            }
+        }
+
+        Path directory = Paths.get(baseDirectory).toAbsolutePath().normalize();
+        return directory.resolve(attachment.getFileId() + extension).normalize();
+    }
 }

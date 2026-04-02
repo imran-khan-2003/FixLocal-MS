@@ -1,3 +1,6 @@
+import { useState } from "react";
+import api from "../api/axios";
+
 function formatDateLabel(date) {
   const now = new Date();
   const target = new Date(date);
@@ -43,6 +46,8 @@ function groupMessagesByDate(messages) {
 function ChatThread({ conversation, messages = [], onSend, loading, error }) {
   const disabled = !conversation || loading;
   const groupedMessages = groupMessagesByDate(messages);
+  const [downloadingAttachmentId, setDownloadingAttachmentId] = useState("");
+  const [downloadError, setDownloadError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -55,6 +60,37 @@ function ChatThread({ conversation, messages = [], onSend, loading, error }) {
     }
     onSend?.(content || "", attachment && attachment.size ? attachment : undefined);
     event.currentTarget.reset();
+  };
+
+  const handleDownloadAttachment = async (message) => {
+    if (!message?.id) return;
+    setDownloadError("");
+    setDownloadingAttachmentId(message.id);
+    try {
+      const response = await api.get(`/chat/messages/${message.id}/attachment`, {
+        responseType: "blob",
+      });
+
+      const blob = new Blob([response.data], {
+        type:
+          response.headers?.["content-type"] ||
+          message?.attachment?.mimeType ||
+          "application/octet-stream",
+      });
+
+      const blobUrl = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = message?.attachment?.fileName || "attachment";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      setDownloadError(err?.response?.data?.message || "Unable to download attachment");
+    } finally {
+      setDownloadingAttachmentId("");
+    }
   };
 
   return (
@@ -74,6 +110,7 @@ function ChatThread({ conversation, messages = [], onSend, loading, error }) {
       </div>
       <div className="flex-1 overflow-y-auto space-y-2">
         {error && <p className="text-sm text-red-500">{error}</p>}
+        {downloadError && <p className="text-sm text-red-500">{downloadError}</p>}
         {!error && messages.length === 0 && !loading && (
           <p className="text-slate-500 text-sm">No messages yet.</p>
         )}
@@ -91,14 +128,14 @@ function ChatThread({ conversation, messages = [], onSend, loading, error }) {
                 >
                   <p className="whitespace-pre-wrap break-words">{msg.content}</p>
                   {msg.attachment && (
-                    <a
-                      href={msg.attachment?.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-xs text-blue-600 block mt-1"
+                    <button
+                      type="button"
+                      className="text-xs text-blue-600 block mt-1 disabled:opacity-60"
+                      onClick={() => handleDownloadAttachment(msg)}
+                      disabled={downloadingAttachmentId === msg.id}
                     >
-                      View attachment
-                    </a>
+                      {downloadingAttachmentId === msg.id ? "Downloading..." : "Download attachment"}
+                    </button>
                   )}
                   <p
                     className={`mt-1 text-[11px] text-slate-500 ${

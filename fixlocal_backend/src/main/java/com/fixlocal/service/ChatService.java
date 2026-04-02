@@ -24,7 +24,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -147,5 +150,60 @@ public class ChatService {
         } catch (IOException e) {
             throw new BadRequestException("Unable to store attachment");
         }
+    }
+
+    public AttachmentFile getAttachment(String messageId, String requesterEmail) {
+        var requester = userRepository.findByEmail(requesterEmail)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        ChatMessage message = chatMessageRepository.findById(messageId)
+                .orElseThrow(() -> new ResourceNotFoundException("Message not found"));
+
+        if (message.getAttachment() == null) {
+            throw new ResourceNotFoundException("Attachment not found");
+        }
+
+        ChatMessage.AttachmentMetadata attachment = message.getAttachment();
+
+        if (message.getConversationId() == null || message.getConversationId().isBlank()) {
+            throw new ResourceNotFoundException("Conversation not found");
+        }
+
+        Conversation conversation = conversationRepository.findById(message.getConversationId())
+                .orElseThrow(() -> new ResourceNotFoundException("Conversation not found"));
+
+        if (!Objects.equals(requester.getId(), conversation.getUserId())
+                && !Objects.equals(requester.getId(), conversation.getTradespersonId())) {
+            throw new UnauthorizedException("Not authorized to download this attachment");
+        }
+
+        Path filePath = attachmentStorageService.resolvePath(attachment);
+        if (filePath == null) {
+            throw new ResourceNotFoundException("Attachment metadata missing");
+        }
+        if (!Files.exists(filePath) || !Files.isReadable(filePath)) {
+            throw new ResourceNotFoundException("Attachment file missing");
+        }
+
+        String fileName = attachment.getFileName();
+        if (fileName == null || fileName.isBlank()) {
+            String suffix = attachment.getFileId() != null && !attachment.getFileId().isBlank()
+                    ? "-" + attachment.getFileId()
+                    : "";
+            fileName = "attachment" + suffix;
+        }
+
+        return new AttachmentFile(
+                filePath,
+                fileName,
+                attachment.getMimeType()
+        );
+    }
+
+    public record AttachmentFile(
+            Path filePath,
+            String fileName,
+            String mimeType
+    ) {
     }
 }

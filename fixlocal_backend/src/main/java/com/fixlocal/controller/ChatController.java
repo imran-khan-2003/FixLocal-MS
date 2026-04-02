@@ -1,15 +1,26 @@
 package com.fixlocal.controller;
 
 import com.fixlocal.dto.ChatMessageRequest;
+import com.fixlocal.exception.ResourceNotFoundException;
+import com.fixlocal.exception.UnauthorizedException;
 import com.fixlocal.model.ChatMessage;
 import com.fixlocal.model.Conversation;
 import com.fixlocal.service.ChatService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 
 @RestController
 @RequestMapping("/api/v1/chat")
@@ -40,5 +51,49 @@ public class ChatController {
 
         return ResponseEntity.ok(
                 chatService.sendMessage(bookingId, authentication.getName(), request));
+    }
+
+    @GetMapping("/messages/{messageId}/attachment")
+    public ResponseEntity<Resource> downloadAttachment(
+            @PathVariable String messageId,
+            Authentication authentication) {
+
+        if (authentication == null
+                || authentication.getName() == null
+                || authentication.getName().isBlank()
+                || "anonymousUser".equalsIgnoreCase(authentication.getName())) {
+            throw new UnauthorizedException("Authentication required");
+        }
+
+        ChatService.AttachmentFile attachmentFile = chatService.getAttachment(messageId, authentication.getName());
+        byte[] bytes;
+        try {
+            bytes = Files.readAllBytes(attachmentFile.filePath());
+        } catch (IOException ex) {
+            throw new ResourceNotFoundException("Attachment file missing");
+        }
+        Resource resource = new ByteArrayResource(bytes);
+
+        MediaType mediaType = MediaType.APPLICATION_OCTET_STREAM;
+        if (attachmentFile.mimeType() != null && !attachmentFile.mimeType().isBlank()) {
+            try {
+                mediaType = MediaType.parseMediaType(attachmentFile.mimeType());
+            } catch (Exception ignored) {
+                mediaType = MediaType.APPLICATION_OCTET_STREAM;
+            }
+        }
+
+        String safeFileName = attachmentFile.fileName() == null || attachmentFile.fileName().isBlank()
+                ? "attachment"
+                : attachmentFile.fileName();
+
+        String encodedFileName = URLEncoder.encode(safeFileName, StandardCharsets.UTF_8)
+                .replace("+", "%20");
+
+        return ResponseEntity.ok()
+                .contentType(mediaType)
+                .contentLength(bytes.length)
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename*=UTF-8''" + encodedFileName)
+                .body(resource);
     }
 }
