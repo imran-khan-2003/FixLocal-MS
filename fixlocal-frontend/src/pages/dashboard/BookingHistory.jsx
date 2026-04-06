@@ -4,6 +4,7 @@ import BookingCard from "../../components/BookingCard";
 import { useBookingsData } from "../../hooks/useBookingsData";
 import { downloadBookingReceipt } from "../../utils/bookingReceipt";
 import reviewService from "../../api/reviewService";
+import disputeService from "../../api/disputeService";
 
 function BookingHistory() {
   const { bookings, loading, refresh } = useBookingsData();
@@ -16,6 +17,15 @@ function BookingHistory() {
   const [inlineRatingComments, setInlineRatingComments] = useState({});
   const [inlineRatingErrors, setInlineRatingErrors] = useState({});
   const [inlineRatingSubmitting, setInlineRatingSubmitting] = useState(false);
+
+  const handleDisputeCreate = async (payload) => {
+    await disputeService.create({
+      bookingId: payload.bookingId,
+      reason: payload.reason,
+      desiredOutcome: payload.desiredOutcome,
+    });
+    setActionNotice("Dispute submitted successfully.");
+  };
 
   const handleDownloadReceipt = async (booking) => {
     if (!booking?.id) return;
@@ -124,6 +134,7 @@ function BookingHistory() {
               showCustomerDetails
               onDownloadReceipt={handleDownloadReceipt}
               receiptDownloading={downloadingReceiptId === booking.id}
+              onDispute={handleDisputeCreate}
               onRateStart={canRateBooking(booking) ? openInlineRating : undefined}
               canRate={canRateBooking(booking)}
               isRating={inlineRatingBookingId === booking.id}

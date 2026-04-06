@@ -1,0 +1,793 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-04T16:50:46.362+05:30  INFO 23456 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 23456 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-04T16:50:46.367+05:30  INFO 23456 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-04T16:50:48.097+05:30  INFO 23456 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-04T16:50:48.186+05:30  INFO 23456 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 80 ms. Found 1 MongoDB repository interface.
+2026-04-04T16:50:49.248+05:30  INFO 23456 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-04T16:50:49.269+05:30  INFO 23456 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-04T16:50:49.270+05:30  INFO 23456 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-04T16:50:49.366+05:30  INFO 23456 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-04T16:50:49.368+05:30  INFO 23456 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2926 ms
+2026-04-04T16:50:49.863+05:30  INFO 23456 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@5d7f8467], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@29bd85db, com.mongodb.Jep395RecordCodecProvider@7caf1e5, com.mongodb.KotlinCodecProvider@5c234920]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@7ddeb27f], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-04T16:50:49.896+05:30  INFO 23456 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=27167500, minRoundTripTimeNanos=0}
+2026-04-04T16:50:50.733+05:30  INFO 23456 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-04T16:50:51.147+05:30  INFO 23456 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-04T16:50:51.166+05:30  INFO 23456 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 6.005 seconds (process running for 7.028)
+2026-04-04T16:53:41.541+05:30  INFO 23456 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-04T16:53:41.542+05:30  INFO 23456 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-04T16:53:41.543+05:30  INFO 23456 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  08:09 h
+[INFO] Finished at: 2026-04-05T01:00:21+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project testimonial-service: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T18:40:47.269+05:30  INFO 44120 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 44120 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T18:40:47.271+05:30  INFO 44120 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T18:40:48.110+05:30  INFO 44120 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T18:40:48.165+05:30  INFO 44120 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 MongoDB repository interface.
+2026-04-05T18:40:48.729+05:30  INFO 44120 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T18:40:48.742+05:30  INFO 44120 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T18:40:48.742+05:30  INFO 44120 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T18:40:48.802+05:30  INFO 44120 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T18:40:48.804+05:30  INFO 44120 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1493 ms
+2026-04-05T18:40:49.203+05:30  INFO 44120 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@5d9d2119], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@5a4464c5, com.mongodb.Jep395RecordCodecProvider@7ae590f6, com.mongodb.KotlinCodecProvider@7ab63838]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@4e974b9e], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T18:40:49.233+05:30  INFO 44120 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=23710000, minRoundTripTimeNanos=0}
+2026-04-05T18:40:50.010+05:30  INFO 44120 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T18:40:50.392+05:30  INFO 44120 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T18:40:50.407+05:30  INFO 44120 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.605 seconds (process running for 3.981)
+2026-04-05T18:41:01.004+05:30  INFO 44120 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T18:41:01.004+05:30  INFO 44120 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T18:41:01.005+05:30  INFO 44120 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+^C[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T19:59:33.145+05:30  INFO 38608 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 38608 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T19:59:33.149+05:30  INFO 38608 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T19:59:33.961+05:30  INFO 38608 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T19:59:34.010+05:30  INFO 38608 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 MongoDB repository interface.
+2026-04-05T19:59:34.601+05:30  INFO 38608 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T19:59:34.614+05:30  INFO 38608 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T19:59:34.614+05:30  INFO 38608 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T19:59:34.668+05:30  INFO 38608 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T19:59:34.670+05:30  INFO 38608 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1479 ms
+2026-04-05T19:59:35.028+05:30  INFO 38608 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@5d9d2119], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@5a4464c5, com.mongodb.Jep395RecordCodecProvider@7ae590f6, com.mongodb.KotlinCodecProvider@7ab63838]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@4e974b9e], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T19:59:35.049+05:30  INFO 38608 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16237800, minRoundTripTimeNanos=0}
+2026-04-05T19:59:35.915+05:30  INFO 38608 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T19:59:36.466+05:30  INFO 38608 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T19:59:36.489+05:30  INFO 38608 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.78 seconds (process running for 4.118)
+2026-04-05T20:00:00.808+05:30  INFO 38608 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T20:00:00.809+05:30  INFO 38608 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T20:00:00.811+05:30  INFO 38608 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  34:33 min
+[INFO] Finished at: 2026-04-05T20:34:02+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project testimonial-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T20:34:44.883+05:30  INFO 33492 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 33492 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T20:34:44.886+05:30  INFO 33492 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T20:34:45.773+05:30  INFO 33492 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T20:34:45.829+05:30  INFO 33492 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 1 MongoDB repository interface.
+2026-04-05T20:34:46.389+05:30  INFO 33492 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T20:34:46.399+05:30  INFO 33492 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T20:34:46.400+05:30  INFO 33492 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T20:34:46.450+05:30  INFO 33492 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T20:34:46.451+05:30  INFO 33492 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1527 ms
+2026-04-05T20:34:46.797+05:30  INFO 33492 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@681de87f], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@2eb1c615, com.mongodb.Jep395RecordCodecProvider@2674d4f6, com.mongodb.KotlinCodecProvider@5d9d2119]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@5a4464c5], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T20:34:46.820+05:30  INFO 33492 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17541700, minRoundTripTimeNanos=0}
+2026-04-05T20:34:47.666+05:30  INFO 33492 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T20:34:48.219+05:30  INFO 33492 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T20:34:48.240+05:30  INFO 33492 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.837 seconds (process running for 4.207)
+2026-04-05T20:34:48.430+05:30  INFO 33492 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T20:34:48.430+05:30  INFO 33492 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T20:34:48.433+05:30  INFO 33492 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[93.942s][warning][os,thread] Failed to start thread "Unknown thread" - _beginthreadex failed (EACCES) for attributes: stacksize: default, flags: CREATE_SUSPENDED STACK_SIZE_PARAM_IS.
+^C[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T20:37:38.039+05:30  INFO 37364 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 37364 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T20:37:38.042+05:30  INFO 37364 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T20:37:38.908+05:30  INFO 37364 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T20:37:38.960+05:30  INFO 37364 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 MongoDB repository interface.
+2026-04-05T20:37:39.515+05:30  INFO 37364 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T20:37:39.528+05:30  INFO 37364 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T20:37:39.528+05:30  INFO 37364 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T20:37:39.583+05:30  INFO 37364 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T20:37:39.586+05:30  INFO 37364 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1502 ms
+2026-04-05T20:37:39.927+05:30  INFO 37364 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@7ac48f05], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@7af1d072, com.mongodb.Jep395RecordCodecProvider@27ffd9f8, com.mongodb.KotlinCodecProvider@642c6461]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@3ace6346], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T20:37:39.952+05:30  INFO 37364 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=19972000, minRoundTripTimeNanos=0}
+2026-04-05T20:37:40.842+05:30  INFO 37364 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T20:37:41.379+05:30  INFO 37364 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T20:37:41.399+05:30  INFO 37364 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.799 seconds (process running for 4.131)
+2026-04-05T20:38:35.564+05:30  INFO 37364 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T20:38:35.564+05:30  INFO 37364 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T20:38:35.566+05:30  INFO 37364 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:00 h
+[INFO] Finished at: 2026-04-05T22:38:15+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project testimonial-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T22:39:01.817+05:30  INFO 33716 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 33716 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T22:39:01.822+05:30  INFO 33716 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T22:39:03.075+05:30  INFO 33716 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T22:39:03.164+05:30  INFO 33716 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 1 MongoDB repository interface.
+2026-04-05T22:39:04.373+05:30  INFO 33716 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T22:39:04.399+05:30  INFO 33716 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T22:39:04.400+05:30  INFO 33716 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T22:39:04.524+05:30  INFO 33716 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T22:39:04.526+05:30  INFO 33716 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2639 ms
+2026-04-05T22:39:05.319+05:30  INFO 33716 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@61b838f2], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@2a04ab05, com.mongodb.Jep395RecordCodecProvider@5ebbde60, com.mongodb.KotlinCodecProvider@a056b26]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@2a5abd3c], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T22:39:05.378+05:30  INFO 33716 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=47164500, minRoundTripTimeNanos=0}
+2026-04-05T22:39:07.373+05:30  INFO 33716 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T22:39:08.261+05:30  INFO 33716 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T22:39:08.304+05:30  INFO 33716 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 7.181 seconds (process running for 7.744)
+2026-04-05T22:39:56.688+05:30  INFO 33716 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T22:39:56.689+05:30  INFO 33716 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T22:39:56.691+05:30  INFO 33716 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+^C[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T23:00:54.307+05:30  INFO 13488 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 13488 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T23:00:54.310+05:30  INFO 13488 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T23:00:55.428+05:30  INFO 13488 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T23:00:55.499+05:30  INFO 13488 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 1 MongoDB repository interface.
+2026-04-05T23:00:56.252+05:30  INFO 13488 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T23:00:56.266+05:30  INFO 13488 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T23:00:56.267+05:30  INFO 13488 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T23:00:56.339+05:30  INFO 13488 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T23:00:56.341+05:30  INFO 13488 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1985 ms
+2026-04-05T23:00:57.097+05:30  INFO 13488 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@4bce62b], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@7bf018dd, com.mongodb.Jep395RecordCodecProvider@15a8cebd, com.mongodb.KotlinCodecProvider@3f6c2763]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@5c82031b], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T23:00:57.149+05:30  INFO 13488 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40820900, minRoundTripTimeNanos=0}
+2026-04-05T23:00:58.522+05:30  INFO 13488 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T23:00:59.249+05:30  INFO 13488 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T23:00:59.296+05:30  INFO 13488 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.484 seconds (process running for 5.913)
+2026-04-05T23:01:27.354+05:30  INFO 13488 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T23:01:27.355+05:30  INFO 13488 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T23:01:27.359+05:30  INFO 13488 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  06:03 min
+[INFO] Finished at: 2026-04-05T23:06:53+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project testimonial-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 3 . 2 8 9 0 0 7 9 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ [ I N F O ]   S c a n n i n g   f o r   p r o j e c t s . . .  
+ [ I N F O ]    
+ [ I N F O ]   - - - - - - - - - - - <   c o m . f i x l o c a l . m i c r o s e r v i c e s : t e s t i m o n i a l - s e r v i c e   > - - - - - - - - - - -  
+ [ I N F O ]   B u i l d i n g   f i x l o c a l - t e s t i m o n i a l - s e r v i c e   0 . 0 . 1 - S N A P S H O T  
+ [ I N F O ]       f r o m   p o m . x m l  
+ [ I N F O ]   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [   j a r   ] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+ [ I N F O ]    
+ [ I N F O ]   > > >   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   >   t e s t - c o m p i l e   @   t e s t i m o n i a l - s e r v i c e   > > >  
+ [ I N F O ]    
+ [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : r e s o u r c e s   ( d e f a u l t - r e s o u r c e s )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   C o p y i n g   1   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
+ [ I N F O ]   C o p y i n g   0   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
+ [ I N F O ]    
+ [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : c o m p i l e   ( d e f a u l t - c o m p i l e )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   N o t h i n g   t o   c o m p i l e   -   a l l   c l a s s e s   a r e   u p   t o   d a t e .  
+ [ I N F O ]    
+ [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : t e s t R e s o u r c e s   ( d e f a u l t - t e s t R e s o u r c e s )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   N o t   c o p y i n g   t e s t   r e s o u r c e s  
+ [ I N F O ]    
+ [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : t e s t C o m p i l e   ( d e f a u l t - t e s t C o m p i l e )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   N o t   c o m p i l i n g   t e s t   s o u r c e s  
+ [ I N F O ]    
+ [ I N F O ]   < < <   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   <   t e s t - c o m p i l e   @   t e s t i m o n i a l - s e r v i c e   < < <  
+ [ I N F O ]    
+ [ I N F O ]    
+ [ I N F O ]   - - -   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   A t t a c h i n g   a g e n t s :   [ ]  
+  
+     .       _ _ _ _                     _                         _ _   _   _  
+   / \ \   /   _ _ _ ' _   _ _   _   _ ( _ ) _   _ _     _ _   _   \   \   \   \  
+ (   (   ) \ _ _ _   |   ' _   |   ' _ |   |   ' _   \ /   _ `   |   \   \   \   \  
+   \ \ /     _ _ _ ) |   | _ ) |   |   |   |   |   | |   ( _ |   |     )   )   )   )  
+     '     | _ _ _ _ |   . _ _ | _ |   | _ | _ |   | _ \ _ _ ,   |   /   /   /   /  
+   = = = = = = = = = | _ | = = = = = = = = = = = = = = | _ _ _ / = / _ / _ / _ /  
+  
+   : :   S p r i n g   B o o t   : :                               ( v 3 . 5 . 1 0 )  
+  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 9 . 8 9 3 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t i n g   F i x L o c a l A p p l i c a t i o n   u s i n g   J a v a   1 7 . 0 . 1 2   w i t h   P I D   4 2 6 8 4   ( C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ t e s t i m o n i a l - s e r v i c e \ t a r g e t \ c l a s s e s   s t a r t e d   b y   i l k h a n   i n   C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ t e s t i m o n i a l - s e r v i c e )  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 9 . 8 9 7 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   N o   a c t i v e   p r o f i l e   s e t ,   f a l l i n g   b a c k   t o   1   d e f a u l t   p r o f i l e :   " d e f a u l t "  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 0 . 9 3 0 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   B o o t s t r a p p i n g   S p r i n g   D a t a   M o n g o D B   r e p o s i t o r i e s   i n   D E F A U L T   m o d e .  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 0 . 9 9 1 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   F i n i s h e d   S p r i n g   D a t a   r e p o s i t o r y   s c a n n i n g   i n   5 4   m s .   F o u n d   1   M o n g o D B   r e p o s i t o r y   i n t e r f a c e .  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 1 . 7 7 1 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   i n i t i a l i z e d   w i t h   p o r t   8 0 9 0   ( h t t p )  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 1 . 7 8 6 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d S e r v i c e       :   S t a r t i n g   s e r v i c e   [ T o m c a t ]  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 1 . 7 8 7 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d E n g i n e         :   S t a r t i n g   S e r v l e t   e n g i n e :   [ A p a c h e   T o m c a t / 1 0 . 1 . 5 0 ]  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 1 . 8 6 2 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   e m b e d d e d   W e b A p p l i c a t i o n C o n t e x t  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 1 . 8 6 4 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   w . s . c . S e r v l e t W e b S e r v e r A p p l i c a t i o n C o n t e x t   :   R o o t   W e b A p p l i c a t i o n C o n t e x t :   i n i t i a l i z a t i o n   c o m p l e t e d   i n   1 9 1 0   m s  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 2 . 3 2 4 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o r g . m o n g o d b . d r i v e r . c l i e n t                                 :   M o n g o C l i e n t   w i t h   m e t a d a t a   { " d r i v e r " :   { " n a m e " :   " m o n g o - j a v a - d r i v e r | s y n c | s p r i n g - b o o t " ,   " v e r s i o n " :   " 5 . 5 . 2 " } ,   " o s " :   { " t y p e " :   " W i n d o w s " ,   " n a m e " :   " W i n d o w s   1 1 " ,   " a r c h i t e c t u r e " :   " a m d 6 4 " ,   " v e r s i o n " :   " 1 0 . 0 " } ,   " p l a t f o r m " :   " J a v a / O r a c l e   C o r p o r a t i o n / 1 7 . 0 . 1 2 + 8 - L T S - 2 8 6 " }   c r e a t e d   w i t h   s e t t i n g s   M o n g o C l i e n t S e t t i n g s { r e a d P r e f e r e n c e = p r i m a r y ,   w r i t e C o n c e r n = W r i t e C o n c e r n { w = n u l l ,   w T i m e o u t = n u l l   m s ,   j o u r n a l = n u l l } ,   r e t r y W r i t e s = t r u e ,   r e t r y R e a d s = t r u e ,   r e a d C o n c e r n = R e a d C o n c e r n { l e v e l = n u l l } ,   c r e d e n t i a l = n u l l ,   t r a n s p o r t S e t t i n g s = n u l l ,   c o m m a n d L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o m m a n d L i s t e n e r @ 1 5 9 a c 1 5 f ] ,   c o d e c R e g i s t r y = P r o v i d e r s C o d e c R e g i s t r y { c o d e c P r o v i d e r s = [ V a l u e C o d e c P r o v i d e r { } ,   B s o n V a l u e C o d e c P r o v i d e r { } ,   D B R e f C o d e c P r o v i d e r { } ,   D B O b j e c t C o d e c P r o v i d e r { } ,   D o c u m e n t C o d e c P r o v i d e r { } ,   C o l l e c t i o n C o d e c P r o v i d e r { } ,   I t e r a b l e C o d e c P r o v i d e r { } ,   M a p C o d e c P r o v i d e r { } ,   G e o J s o n C o d e c P r o v i d e r { } ,   G r i d F S F i l e C o d e c P r o v i d e r { } ,   J s r 3 1 0 C o d e c P r o v i d e r { } ,   J s o n O b j e c t C o d e c P r o v i d e r { } ,   B s o n C o d e c P r o v i d e r { } ,   E n u m C o d e c P r o v i d e r { } ,   c o m . m o n g o d b . c l i e n t . m o d e l . m q l . E x p r e s s i o n C o d e c P r o v i d e r @ 7 a c 4 8 f 0 5 ,   c o m . m o n g o d b . J e p 3 9 5 R e c o r d C o d e c P r o v i d e r @ 7 a f 1 d 0 7 2 ,   c o m . m o n g o d b . K o t l i n C o d e c P r o v i d e r @ 2 7 f f d 9 f 8 ] } ,   l o g g e r S e t t i n g s = L o g g e r S e t t i n g s { m a x D o c u m e n t L e n g t h = 1 0 0 0 } ,   c l u s t e r S e t t i n g s = { h o s t s = [ l o c a l h o s t : 2 7 0 1 7 ] ,   s r v S e r v i c e N a m e = m o n g o d b ,   m o d e = S I N G L E ,   r e q u i r e d C l u s t e r T y p e = U N K N O W N ,   r e q u i r e d R e p l i c a S e t N a m e = ' n u l l ' ,   s e r v e r S e l e c t o r = ' n u l l ' ,   c l u s t e r L i s t e n e r s = ' [ ] ' ,   s e r v e r S e l e c t i o n T i m e o u t = ' 3 0 0 0 0   m s ' ,   l o c a l T h r e s h o l d = ' 1 5   m s ' } ,   s o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   h e a r t b e a t S o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 1 0 0 0 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   c o n n e c t i o n P o o l S e t t i n g s = C o n n e c t i o n P o o l S e t t i n g s { m a x S i z e = 1 0 0 ,   m i n S i z e = 0 ,   m a x W a i t T i m e M S = 1 2 0 0 0 0 ,   m a x C o n n e c t i o n L i f e T i m e M S = 0 ,   m a x C o n n e c t i o n I d l e T i m e M S = 0 ,   m a i n t e n a n c e I n i t i a l D e l a y M S = 0 ,   m a i n t e n a n c e F r e q u e n c y M S = 6 0 0 0 0 ,   c o n n e c t i o n P o o l L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o n n e c t i o n P o o l L i s t e n e r @ 6 4 2 c 6 4 6 1 ] ,   m a x C o n n e c t i n g = 2 } ,   s e r v e r S e t t i n g s = S e r v e r S e t t i n g s { h e a r t b e a t F r e q u e n c y M S = 1 0 0 0 0 ,   m i n H e a r t b e a t F r e q u e n c y M S = 5 0 0 ,   s e r v e r M o n i t o r i n g M o d e = A U T O ,   s e r v e r L i s t e n e r s = ' [ ] ' ,   s e r v e r M o n i t o r L i s t e n e r s = ' [ ] ' } ,   s s l S e t t i n g s = S s l S e t t i n g s { e n a b l e d = f a l s e ,   i n v a l i d H o s t N a m e A l l o w e d = f a l s e ,   c o n t e x t = n u l l } ,   a p p l i c a t i o n N a m e = ' n u l l ' ,   c o m p r e s s o r L i s t = [ ] ,   u u i d R e p r e s e n t a t i o n = J A V A _ L E G A C Y ,   s e r v e r A p i = n u l l ,   a u t o E n c r y p t i o n S e t t i n g s = n u l l ,   d n s C l i e n t = n u l l ,   i n e t A d d r e s s R e s o l v e r = n u l l ,   c o n t e x t P r o v i d e r = n u l l ,   t i m e o u t M S = n u l l }  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 2 . 3 6 0 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ l o c a l h o s t : 2 7 0 1 7 ]   o r g . m o n g o d b . d r i v e r . c l u s t e r                               :   M o n i t o r   t h r e a d   s u c c e s s f u l l y   c o n n e c t e d   t o   s e r v e r   w i t h   d e s c r i p t i o n   S e r v e r D e s c r i p t i o n { a d d r e s s = l o c a l h o s t : 2 7 0 1 7 ,   t y p e = S T A N D A L O N E ,   c r y p t d = f a l s e ,   s t a t e = C O N N E C T E D ,   o k = t r u e ,   m i n W i r e V e r s i o n = 0 ,   m a x W i r e V e r s i o n = 2 7 ,   m a x D o c u m e n t S i z e = 1 6 7 7 7 2 1 6 ,   l o g i c a l S e s s i o n T i m e o u t M i n u t e s = 3 0 ,   r o u n d T r i p T i m e N a n o s = 3 0 7 6 6 7 0 0 ,   m i n R o u n d T r i p T i m e N a n o s = 0 }  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 3 . 2 0 4 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . s . b . a . e . w e b . E n d p o i n t L i n k s R e s o l v e r             :   E x p o s i n g   2   e n d p o i n t s   b e n e a t h   b a s e   p a t h   ' / a c t u a t o r '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 3 . 6 3 6 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   s t a r t e d   o n   p o r t   8 0 9 0   ( h t t p )   w i t h   c o n t e x t   p a t h   ' / '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 3 . 6 5 7 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t e d   F i x L o c a l A p p l i c a t i o n   i n   4 . 3 4 9   s e c o n d s   ( p r o c e s s   r u n n i n g   f o r   4 . 7 9 )  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 9 . 2 2 3 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ n i o - 8 0 9 0 - e x e c - 1 ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   D i s p a t c h e r S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 9 . 2 2 3 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ n i o - 8 0 9 0 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   I n i t i a l i z i n g   S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 9 . 2 2 4 + 0 5 : 3 0     I N F O   4 2 6 8 4   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ n i o - 8 0 9 0 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   C o m p l e t e d   i n i t i a l i z a t i o n   i n   1   m s  
+ [ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 9 . 3 8 0 0 8 0 9 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ [ I N F O ]   S c a n n i n g   f o r   p r o j e c t s . . .  
+ [ I N F O ]    
+ [ I N F O ]   - - - - - - - - - - - <   c o m . f i x l o c a l . m i c r o s e r v i c e s : t e s t i m o n i a l - s e r v i c e   > - - - - - - - - - - -  
+ [ I N F O ]   B u i l d i n g   f i x l o c a l - t e s t i m o n i a l - s e r v i c e   0 . 0 . 1 - S N A P S H O T  
+ [ I N F O ]       f r o m   p o m . x m l  
+ [ I N F O ]   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [   j a r   ] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
+ [ I N F O ]    
+ [ I N F O ]   > > >   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   >   t e s t - c o m p i l e   @   t e s t i m o n i a l - s e r v i c e   > > >  
+ [ I N F O ]    
+ [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : r e s o u r c e s   ( d e f a u l t - r e s o u r c e s )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   C o p y i n g   1   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
+ [ I N F O ]   C o p y i n g   0   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
+ [ I N F O ]    
+ [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : c o m p i l e   ( d e f a u l t - c o m p i l e )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   N o t h i n g   t o   c o m p i l e   -   a l l   c l a s s e s   a r e   u p   t o   d a t e .  
+ [ I N F O ]    
+ [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : t e s t R e s o u r c e s   ( d e f a u l t - t e s t R e s o u r c e s )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   N o t   c o p y i n g   t e s t   r e s o u r c e s  
+ [ I N F O ]    
+ [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : t e s t C o m p i l e   ( d e f a u l t - t e s t C o m p i l e )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   N o t   c o m p i l i n g   t e s t   s o u r c e s  
+ [ I N F O ]    
+ [ I N F O ]   < < <   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   <   t e s t - c o m p i l e   @   t e s t i m o n i a l - s e r v i c e   < < <  
+ [ I N F O ]    
+ [ I N F O ]    
+ [ I N F O ]   - - -   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   @   t e s t i m o n i a l - s e r v i c e   - - -  
+ [ I N F O ]   A t t a c h i n g   a g e n t s :   [ ]  
+  
+     .       _ _ _ _                     _                         _ _   _   _  
+   / \ \   /   _ _ _ ' _   _ _   _   _ ( _ ) _   _ _     _ _   _   \   \   \   \  
+ (   (   ) \ _ _ _   |   ' _   |   ' _ |   |   ' _   \ /   _ `   |   \   \   \   \  
+   \ \ /     _ _ _ ) |   | _ ) |   |   |   |   |   | |   ( _ |   |     )   )   )   )  
+     '     | _ _ _ _ |   . _ _ | _ |   | _ | _ |   | _ \ _ _ ,   |   /   /   /   /  
+   = = = = = = = = = | _ | = = = = = = = = = = = = = = | _ _ _ / = / _ / _ / _ /  
+  
+   : :   S p r i n g   B o o t   : :                               ( v 3 . 5 . 1 0 )  
+  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 5 . 6 8 9 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t i n g   F i x L o c a l A p p l i c a t i o n   u s i n g   J a v a   1 7 . 0 . 1 2   w i t h   P I D   3 6 3 9 6   ( C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ t e s t i m o n i a l - s e r v i c e \ t a r g e t \ c l a s s e s   s t a r t e d   b y   i l k h a n   i n   C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ t e s t i m o n i a l - s e r v i c e )  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 5 . 6 9 4 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   N o   a c t i v e   p r o f i l e   s e t ,   f a l l i n g   b a c k   t o   1   d e f a u l t   p r o f i l e :   " d e f a u l t "  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 6 . 9 0 8 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   B o o t s t r a p p i n g   S p r i n g   D a t a   M o n g o D B   r e p o s i t o r i e s   i n   D E F A U L T   m o d e .  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 6 . 9 6 0 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   F i n i s h e d   S p r i n g   D a t a   r e p o s i t o r y   s c a n n i n g   i n   4 7   m s .   F o u n d   1   M o n g o D B   r e p o s i t o r y   i n t e r f a c e .  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 7 . 6 7 1 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   i n i t i a l i z e d   w i t h   p o r t   8 0 9 0   ( h t t p )  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 7 . 6 8 8 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d S e r v i c e       :   S t a r t i n g   s e r v i c e   [ T o m c a t ]  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 7 . 6 8 8 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d E n g i n e         :   S t a r t i n g   S e r v l e t   e n g i n e :   [ A p a c h e   T o m c a t / 1 0 . 1 . 5 0 ]  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 7 . 7 6 9 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   e m b e d d e d   W e b A p p l i c a t i o n C o n t e x t  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 7 . 7 7 1 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   w . s . c . S e r v l e t W e b S e r v e r A p p l i c a t i o n C o n t e x t   :   R o o t   W e b A p p l i c a t i o n C o n t e x t :   i n i t i a l i z a t i o n   c o m p l e t e d   i n   2 0 1 1   m s  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 8 . 2 1 3 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o r g . m o n g o d b . d r i v e r . c l i e n t                                 :   M o n g o C l i e n t   w i t h   m e t a d a t a   { " d r i v e r " :   { " n a m e " :   " m o n g o - j a v a - d r i v e r | s y n c | s p r i n g - b o o t " ,   " v e r s i o n " :   " 5 . 5 . 2 " } ,   " o s " :   { " t y p e " :   " W i n d o w s " ,   " n a m e " :   " W i n d o w s   1 1 " ,   " a r c h i t e c t u r e " :   " a m d 6 4 " ,   " v e r s i o n " :   " 1 0 . 0 " } ,   " p l a t f o r m " :   " J a v a / O r a c l e   C o r p o r a t i o n / 1 7 . 0 . 1 2 + 8 - L T S - 2 8 6 " }   c r e a t e d   w i t h   s e t t i n g s   M o n g o C l i e n t S e t t i n g s { r e a d P r e f e r e n c e = p r i m a r y ,   w r i t e C o n c e r n = W r i t e C o n c e r n { w = n u l l ,   w T i m e o u t = n u l l   m s ,   j o u r n a l = n u l l } ,   r e t r y W r i t e s = t r u e ,   r e t r y R e a d s = t r u e ,   r e a d C o n c e r n = R e a d C o n c e r n { l e v e l = n u l l } ,   c r e d e n t i a l = n u l l ,   t r a n s p o r t S e t t i n g s = n u l l ,   c o m m a n d L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o m m a n d L i s t e n e r @ 6 2 e 7 3 a b 6 ] ,   c o d e c R e g i s t r y = P r o v i d e r s C o d e c R e g i s t r y { c o d e c P r o v i d e r s = [ V a l u e C o d e c P r o v i d e r { } ,   B s o n V a l u e C o d e c P r o v i d e r { } ,   D B R e f C o d e c P r o v i d e r { } ,   D B O b j e c t C o d e c P r o v i d e r { } ,   D o c u m e n t C o d e c P r o v i d e r { } ,   C o l l e c t i o n C o d e c P r o v i d e r { } ,   I t e r a b l e C o d e c P r o v i d e r { } ,   M a p C o d e c P r o v i d e r { } ,   G e o J s o n C o d e c P r o v i d e r { } ,   G r i d F S F i l e C o d e c P r o v i d e r { } ,   J s r 3 1 0 C o d e c P r o v i d e r { } ,   J s o n O b j e c t C o d e c P r o v i d e r { } ,   B s o n C o d e c P r o v i d e r { } ,   E n u m C o d e c P r o v i d e r { } ,   c o m . m o n g o d b . c l i e n t . m o d e l . m q l . E x p r e s s i o n C o d e c P r o v i d e r @ 5 d 7 f 8 4 6 7 ,   c o m . m o n g o d b . J e p 3 9 5 R e c o r d C o d e c P r o v i d e r @ 2 9 b d 8 5 d b ,   c o m . m o n g o d b . K o t l i n C o d e c P r o v i d e r @ 7 c a f 1 e 5 ] } ,   l o g g e r S e t t i n g s = L o g g e r S e t t i n g s { m a x D o c u m e n t L e n g t h = 1 0 0 0 } ,   c l u s t e r S e t t i n g s = { h o s t s = [ l o c a l h o s t : 2 7 0 1 7 ] ,   s r v S e r v i c e N a m e = m o n g o d b ,   m o d e = S I N G L E ,   r e q u i r e d C l u s t e r T y p e = U N K N O W N ,   r e q u i r e d R e p l i c a S e t N a m e = ' n u l l ' ,   s e r v e r S e l e c t o r = ' n u l l ' ,   c l u s t e r L i s t e n e r s = ' [ ] ' ,   s e r v e r S e l e c t i o n T i m e o u t = ' 3 0 0 0 0   m s ' ,   l o c a l T h r e s h o l d = ' 1 5   m s ' } ,   s o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   h e a r t b e a t S o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 1 0 0 0 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   c o n n e c t i o n P o o l S e t t i n g s = C o n n e c t i o n P o o l S e t t i n g s { m a x S i z e = 1 0 0 ,   m i n S i z e = 0 ,   m a x W a i t T i m e M S = 1 2 0 0 0 0 ,   m a x C o n n e c t i o n L i f e T i m e M S = 0 ,   m a x C o n n e c t i o n I d l e T i m e M S = 0 ,   m a i n t e n a n c e I n i t i a l D e l a y M S = 0 ,   m a i n t e n a n c e F r e q u e n c y M S = 6 0 0 0 0 ,   c o n n e c t i o n P o o l L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o n n e c t i o n P o o l L i s t e n e r @ 5 c 2 3 4 9 2 0 ] ,   m a x C o n n e c t i n g = 2 } ,   s e r v e r S e t t i n g s = S e r v e r S e t t i n g s { h e a r t b e a t F r e q u e n c y M S = 1 0 0 0 0 ,   m i n H e a r t b e a t F r e q u e n c y M S = 5 0 0 ,   s e r v e r M o n i t o r i n g M o d e = A U T O ,   s e r v e r L i s t e n e r s = ' [ ] ' ,   s e r v e r M o n i t o r L i s t e n e r s = ' [ ] ' } ,   s s l S e t t i n g s = S s l S e t t i n g s { e n a b l e d = f a l s e ,   i n v a l i d H o s t N a m e A l l o w e d = f a l s e ,   c o n t e x t = n u l l } ,   a p p l i c a t i o n N a m e = ' n u l l ' ,   c o m p r e s s o r L i s t = [ ] ,   u u i d R e p r e s e n t a t i o n = J A V A _ L E G A C Y ,   s e r v e r A p i = n u l l ,   a u t o E n c r y p t i o n S e t t i n g s = n u l l ,   d n s C l i e n t = n u l l ,   i n e t A d d r e s s R e s o l v e r = n u l l ,   c o n t e x t P r o v i d e r = n u l l ,   t i m e o u t M S = n u l l }  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 8 . 2 3 8 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ l o c a l h o s t : 2 7 0 1 7 ]   o r g . m o n g o d b . d r i v e r . c l u s t e r                               :   M o n i t o r   t h r e a d   s u c c e s s f u l l y   c o n n e c t e d   t o   s e r v e r   w i t h   d e s c r i p t i o n   S e r v e r D e s c r i p t i o n { a d d r e s s = l o c a l h o s t : 2 7 0 1 7 ,   t y p e = S T A N D A L O N E ,   c r y p t d = f a l s e ,   s t a t e = C O N N E C T E D ,   o k = t r u e ,   m i n W i r e V e r s i o n = 0 ,   m a x W i r e V e r s i o n = 2 7 ,   m a x D o c u m e n t S i z e = 1 6 7 7 7 2 1 6 ,   l o g i c a l S e s s i o n T i m e o u t M i n u t e s = 3 0 ,   r o u n d T r i p T i m e N a n o s = 2 0 2 1 1 1 0 0 ,   m i n R o u n d T r i p T i m e N a n o s = 0 }  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 9 . 1 5 5 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . s . b . a . e . w e b . E n d p o i n t L i n k s R e s o l v e r             :   E x p o s i n g   2   e n d p o i n t s   b e n e a t h   b a s e   p a t h   ' / a c t u a t o r '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 9 . 6 9 2 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   s t a r t e d   o n   p o r t   8 0 9 0   ( h t t p )   w i t h   c o n t e x t   p a t h   ' / '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 9 . 7 1 7 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t e d   F i x L o c a l A p p l i c a t i o n   i n   4 . 6 6 1   s e c o n d s   ( p r o c e s s   r u n n i n g   f o r   5 . 0 4 9 )  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 2 . 1 2 7 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ n i o - 8 0 9 0 - e x e c - 1 ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   D i s p a t c h e r S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 2 . 1 2 7 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ n i o - 8 0 9 0 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   I n i t i a l i z i n g   S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
+ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 2 . 1 2 9 + 0 5 : 3 0     I N F O   3 6 3 9 6   - - -   [ t e s t i m o n i a l - s e r v i c e ]   [ n i o - 8 0 9 0 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   C o m p l e t e d   i n i t i a l i z a t i o n   i n   2   m s  
+ [ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 9 : 4 7 . 0 6 2 5 4 3 4 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ [INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T23:19:53.312+05:30  INFO 26492 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 26492 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T23:19:53.316+05:30  INFO 26492 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T23:19:54.654+05:30  INFO 26492 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T23:19:54.728+05:30  INFO 26492 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 1 MongoDB repository interface.
+2026-04-05T23:19:55.481+05:30  INFO 26492 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T23:19:55.493+05:30  INFO 26492 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T23:19:55.493+05:30  INFO 26492 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T23:19:55.573+05:30  INFO 26492 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T23:19:55.575+05:30  INFO 26492 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2199 ms
+2026-04-05T23:19:56.058+05:30  INFO 26492 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@10a907ec], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@59b492ec, com.mongodb.Jep395RecordCodecProvider@55c1ced9, com.mongodb.KotlinCodecProvider@49cc9b2a]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@11826398], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T23:19:56.095+05:30  INFO 26492 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=29845000, minRoundTripTimeNanos=0}
+2026-04-05T23:19:57.024+05:30  INFO 26492 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T23:19:57.438+05:30  INFO 26492 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T23:19:57.454+05:30  INFO 26492 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 4.719 seconds (process running for 5.137)
+2026-04-05T23:20:49.118+05:30  INFO 26492 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T23:20:49.119+05:30  INFO 26492 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T23:20:49.121+05:30  INFO 26492 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  02:02 min
+[INFO] Finished at: 2026-04-05T23:21:51+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project testimonial-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 2 2 : 2 7 . 6 2 2 0 1 1 5 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ [INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-05T23:22:34.189+05:30  INFO 46484 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 46484 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-05T23:22:34.195+05:30  INFO 46484 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-05T23:22:35.508+05:30  INFO 46484 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-05T23:22:35.575+05:30  INFO 46484 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57 ms. Found 1 MongoDB repository interface.
+2026-04-05T23:22:36.302+05:30  INFO 46484 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-05T23:22:36.315+05:30  INFO 46484 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-05T23:22:36.315+05:30  INFO 46484 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-05T23:22:36.377+05:30  INFO 46484 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-05T23:22:36.379+05:30  INFO 46484 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2120 ms
+2026-04-05T23:22:36.820+05:30  INFO 46484 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@424f02b8], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@2ad7bd26, com.mongodb.Jep395RecordCodecProvider@3cc3f13e, com.mongodb.KotlinCodecProvider@69b3886f]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@53d30d23], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-05T23:22:36.854+05:30  INFO 46484 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=23751100, minRoundTripTimeNanos=0}
+2026-04-05T23:22:37.752+05:30  INFO 46484 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-05T23:22:38.165+05:30  INFO 46484 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-05T23:22:38.184+05:30  INFO 46484 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 4.587 seconds (process running for 5.012)
+2026-04-05T23:23:29.359+05:30  INFO 46484 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-05T23:23:29.359+05:30  INFO 46484 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-05T23:23:29.360+05:30  INFO 46484 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ 2 0 2 6 - 0 4 - 0 6 T 2 3 : 0 8 : 0 0 . 1 4 9 2 4 6 5 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ [INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-06T23:08:07.129+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 37652 (C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\testimonial-service)
+2026-04-06T23:08:07.133+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-06T23:08:08.301+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-06T23:08:08.383+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 74 ms. Found 1 MongoDB repository interface.
+2026-04-06T23:08:09.186+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-06T23:08:09.202+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-06T23:08:09.202+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-06T23:08:09.280+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-06T23:08:09.282+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2088 ms
+2026-04-06T23:08:09.744+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@13e00016], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@7b3cbe6e, com.mongodb.Jep395RecordCodecProvider@177ede17, com.mongodb.KotlinCodecProvider@17176b18]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@4e4395c], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-06T23:08:09.775+05:30  INFO [corr:na] 37652 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=24932400, minRoundTripTimeNanos=0}
+2026-04-06T23:08:10.667+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-06T23:08:11.193+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-06T23:08:11.209+05:30  INFO [corr:na] 37652 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 4.744 seconds (process running for 5.2)
+2026-04-06T23:08:22.919+05:30  INFO [corr:na] 37652 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-06T23:08:22.919+05:30  INFO [corr:na] 37652 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-06T23:08:22.921+05:30  INFO [corr:na] 37652 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[ 2 0 2 6 - 0 4 - 0 7 T 0 0 : 0 4 : 0 3 . 8 5 2 8 6 5 9 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ [INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------< com.fixlocal.microservices:testimonial-service >-----------
+[INFO] Building fixlocal-testimonial-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ testimonial-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ testimonial-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ testimonial-service ---
+[INFO] Recompiling the module because of added or removed source files.
+[INFO] Compiling 10 source files with javac [debug parameters release 17] to target\classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ testimonial-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ testimonial-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ testimonial-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ testimonial-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-07T00:04:22.632+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 1784 (C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\testimonial-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\testimonial-service)
+2026-04-07T00:04:22.639+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-07T00:04:24.239+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-07T00:04:24.337+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 MongoDB repository interface.
+2026-04-07T00:04:25.250+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8090 (http)
+2026-04-07T00:04:25.266+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-07T00:04:25.266+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-07T00:04:25.334+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-07T00:04:25.335+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2598 ms
+2026-04-07T00:04:25.775+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@4607d78b], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@3b28b7b0, com.mongodb.Jep395RecordCodecProvider@22048bd6, com.mongodb.KotlinCodecProvider@566c1e71]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@2e2f20b8], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-07T00:04:25.814+05:30  INFO [corr:na] 1784 --- [testimonial-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=28195000, minRoundTripTimeNanos=0}
+2026-04-07T00:04:26.690+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-07T00:04:27.200+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8090 (http) with context path '/'
+2026-04-07T00:04:27.217+05:30  INFO [corr:na] 1784 --- [testimonial-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.545 seconds (process running for 6.38)
+2026-04-07T00:04:44.481+05:30  INFO [corr:na] 1784 --- [testimonial-service] [nio-8090-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-07T00:04:44.481+05:30  INFO [corr:na] 1784 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-07T00:04:44.484+05:30  INFO [corr:na] 1784 --- [testimonial-service] [nio-8090-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  09:57 min
+[INFO] Finished at: 2026-04-07T00:14:06+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project testimonial-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+[ 2 0 2 6 - 0 4 - 0 7 T 0 0 : 1 4 : 4 4 . 6 3 8 5 8 2 2 + 0 5 : 3 0 ]   S t a r t i n g   t e s t i m o n i a l - s e r v i c e  
+ 

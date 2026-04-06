@@ -241,12 +241,14 @@ function BookingCard({
             Chat
           </button>
         )}
-        <button
-          onClick={() => setShowDisputeForm(true)}
-          className="text-red-600 text-sm"
-        >
-          Report an Issue
-        </button>
+        {onDispute && (
+          <button
+            onClick={() => setShowDisputeForm(true)}
+            className="text-red-600 text-sm"
+          >
+            Report an Issue
+          </button>
+        )}
         {onSecondaryAction && secondaryLabel && (
           <button
             className="border border-slate-200 text-sm px-3 py-1 rounded"
@@ -291,7 +293,7 @@ function BookingCard({
           </button>
         )}
       </div>
-      {showDisputeForm && (
+      {onDispute && showDisputeForm && (
         <DisputeForm
           bookingId={booking.id}
           submitting={disputeLoading}

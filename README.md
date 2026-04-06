@@ -104,9 +104,8 @@ Notable frontend modules:
 ## Local Development
 
 ```bash
-# Backend
-cd fixlocal_backend
-./mvnw spring-boot:run   # requires JDK 17+
+# Backend (microservices)
+powershell -ExecutionPolicy Bypass -File microservices/restart-all.ps1
 
 # Frontend
 cd fixlocal-frontend

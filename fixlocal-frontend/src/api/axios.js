@@ -1,9 +1,24 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+const RAW_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
+const NORMALIZED_BASE_URL = RAW_BASE_URL.replace(/\/+$/, "");
+const MONOLITH_BASE_URL = "http://localhost:8079";
+
+if (
+  NORMALIZED_BASE_URL === MONOLITH_BASE_URL ||
+  NORMALIZED_BASE_URL.startsWith(`${MONOLITH_BASE_URL}/`)
+) {
+  throw new Error(
+    "VITE_API_BASE_URL is pointing to the monolith backend (port 8079). Set it to the microservices API gateway (for example http://localhost:8080)."
+  );
+}
+
+const BASE_URL = NORMALIZED_BASE_URL.endsWith("/api/v1")
+  ? NORMALIZED_BASE_URL
+  : `${NORMALIZED_BASE_URL}/api/v1`;
 
 const api = axios.create({
-  baseURL: `${BASE_URL}/api/v1`,
+  baseURL: BASE_URL,
 });
 
 api.interceptors.request.use((config) => {

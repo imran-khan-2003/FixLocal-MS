@@ -1,0 +1,11 @@
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\config\HttpClientConfig.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\BadRequestException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\BaseException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\ConflictException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\ErrorResponse.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\GlobalExceptionHandler.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\ResourceNotFoundException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\UnauthorizedAccessException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\exception\UnauthorizedException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\observability\CorrelationIdFilter.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\common-lib\src\main\java\com\fixlocal\security\JwtService.java

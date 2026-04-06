@@ -1,0 +1,12 @@
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\JwtAuthenticationFilter.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\SecurityConfig.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\WebConfig.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\controller\DisputeController.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\dto\DisputeDetailsDTO.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\dto\DisputeMessageRequest.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\dto\DisputeRequest.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\FixLocalApplication.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\model\Dispute.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\model\DisputeStatus.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\repository\DisputeRepository.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\service\DisputeService.java

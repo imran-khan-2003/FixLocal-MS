@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import DashboardLayout from "../../components/DashboardLayout";
 import BookingCard from "../../components/BookingCard";
 import { useTradespersonBookings } from "../../hooks/useTradespersonBookings";
+import disputeService from "../../api/disputeService";
 
 const HISTORY_FILTERS = [
   { value: "ALL", label: "All" },
@@ -13,6 +14,16 @@ const HISTORY_FILTERS = [
 function TradespersonHistory() {
   const { historyBookings, loading, error } = useTradespersonBookings();
   const [filter, setFilter] = useState("ALL");
+  const [actionNotice, setActionNotice] = useState("");
+
+  const handleDisputeCreate = async (payload) => {
+    await disputeService.create({
+      bookingId: payload.bookingId,
+      reason: payload.reason,
+      desiredOutcome: payload.desiredOutcome,
+    });
+    setActionNotice("Dispute submitted successfully.");
+  };
 
   const filtered = useMemo(() => {
     if (filter === "ALL") return historyBookings;
@@ -25,6 +36,7 @@ function TradespersonHistory() {
       subtitle="Review completed, cancelled or rejected jobs"
     >
       {error && <p className="text-red-500 mb-4">{error}</p>}
+      {actionNotice && <p className="text-sm text-blue-600 mb-4">{actionNotice}</p>}
       <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         <p className="text-sm text-slate-500">
           Showing {filtered.length} of {historyBookings.length} past bookings
@@ -48,7 +60,12 @@ function TradespersonHistory() {
       ) : (
         <div className="grid gap-4">
           {filtered.map((booking) => (
-            <BookingCard key={booking.id} booking={booking} showCustomerDetails />
+            <BookingCard
+              key={booking.id}
+              booking={booking}
+              showCustomerDetails
+              onDispute={handleDisputeCreate}
+            />
           ))}
         </div>
       )}
