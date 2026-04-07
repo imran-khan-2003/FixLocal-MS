@@ -3,7 +3,7 @@ package com.fixlocal.dto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.fixlocal.model.DisputeStatus;
+import com.fixlocal.enums.DisputeStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

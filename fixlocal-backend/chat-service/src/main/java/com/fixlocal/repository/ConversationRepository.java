@@ -1,6 +1,6 @@
 package com.fixlocal.repository;
 
-import com.fixlocal.model.Conversation;
+import com.fixlocal.entity.Conversation;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

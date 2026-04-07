@@ -1,0 +1,6 @@
+com\fixlocal\entity\Dispute$DisputeBuilder.class
+com\fixlocal\entity\Dispute.class
+com\fixlocal\service\impl\DisputeServiceImpl.class
+com\fixlocal\entity\Dispute$DisputeMessage.class
+com\fixlocal\enums\DisputeStatus.class
+com\fixlocal\entity\Dispute$DisputeMessage$DisputeMessageBuilder.class

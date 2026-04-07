@@ -1,5 +1,6 @@
 package com.fixlocal.security;
 
+import com.fixlocal.exception.UnauthorizedException;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -50,7 +51,7 @@ public class JwtService {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (JwtException | IllegalArgumentException e) {
-            throw new RuntimeException("Invalid or expired JWT token");
+            throw new UnauthorizedException("Invalid or expired JWT token");
         }
     }
 

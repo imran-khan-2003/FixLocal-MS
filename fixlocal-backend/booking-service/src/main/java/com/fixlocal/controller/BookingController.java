@@ -1,9 +1,9 @@
 package com.fixlocal.controller;
 
 import com.fixlocal.dto.*;
-import com.fixlocal.model.Booking;
-import com.fixlocal.model.BookingStatus;
-import com.fixlocal.model.PriceOffer;
+import com.fixlocal.entity.Booking;
+import com.fixlocal.enums.BookingStatus;
+import com.fixlocal.entity.PriceOffer;
 import com.fixlocal.service.BookingService;
 
 import lombok.RequiredArgsConstructor;

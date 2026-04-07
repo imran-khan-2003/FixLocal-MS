@@ -1,6 +1,6 @@
 package com.fixlocal.controller;
 
-import com.fixlocal.model.Booking;
+import com.fixlocal.entity.Booking;
 import com.fixlocal.service.EscrowService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

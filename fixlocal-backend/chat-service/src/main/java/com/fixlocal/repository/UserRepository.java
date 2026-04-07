@@ -1,8 +1,8 @@
 package com.fixlocal.repository;
 
-import com.fixlocal.model.Role;
-import com.fixlocal.model.Status;
-import com.fixlocal.model.User;
+import com.fixlocal.enums.Role;
+import com.fixlocal.enums.Status;
+import com.fixlocal.entity.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

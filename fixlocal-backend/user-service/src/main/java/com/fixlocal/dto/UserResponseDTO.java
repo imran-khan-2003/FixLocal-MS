@@ -1,7 +1,7 @@
 package com.fixlocal.dto;
 
-import com.fixlocal.model.Role;
-import com.fixlocal.model.Status;
+import com.fixlocal.enums.Role;
+import com.fixlocal.enums.Status;
 import java.util.List;
 import lombok.Data;
 

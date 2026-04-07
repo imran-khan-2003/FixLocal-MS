@@ -1,6 +1,6 @@
 package com.fixlocal.repository;
 
-import com.fixlocal.model.Review;
+import com.fixlocal.entity.Review;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.Optional;

@@ -1,3 +1,5 @@
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\AuthServiceApplication.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\config\SecurityConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\controller\AuthController.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\dto\AuthResponse.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\dto\ForgotPasswordRequest.java
@@ -8,12 +10,12 @@ C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\dto\SkillTagsUpdateRequest.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\dto\UpdateUserRequest.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\dto\UserResponseDTO.java
-C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\microservices\auth\AuthServiceApplication.java
-C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\microservices\auth\config\SecurityConfig.java
-C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\model\Role.java
-C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\model\ServiceOffering.java
-C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\model\Status.java
-C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\model\User.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\entity\ServiceOffering.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\entity\User.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\enums\Role.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\enums\Status.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\repository\UserRepository.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\service\AuthService.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\service\impl\AuthServiceImpl.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\service\impl\UserServiceImpl.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\service\UserService.java

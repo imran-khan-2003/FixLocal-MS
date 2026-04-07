@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fixlocal.dto.DisputeDetailsDTO;
 import com.fixlocal.dto.DisputeMessageRequest;
 import com.fixlocal.dto.DisputeRequest;
-import com.fixlocal.model.Dispute;
+import com.fixlocal.entity.Dispute;
 import com.fixlocal.service.DisputeService;
 
 import lombok.RequiredArgsConstructor;

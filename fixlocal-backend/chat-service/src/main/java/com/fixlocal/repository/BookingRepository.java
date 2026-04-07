@@ -1,7 +1,7 @@
 package com.fixlocal.repository;
 
-import com.fixlocal.model.Booking;
-import com.fixlocal.model.BookingStatus;
+import com.fixlocal.entity.Booking;
+import com.fixlocal.enums.BookingStatus;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

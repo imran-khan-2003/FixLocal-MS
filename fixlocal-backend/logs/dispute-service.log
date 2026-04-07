@@ -1,812 +1,0 @@
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-04T16:50:45.831+05:30  INFO 9224 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 9224 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-04T16:50:45.836+05:30  INFO 9224 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-04T16:50:47.599+05:30  INFO 9224 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-04T16:50:47.729+05:30  INFO 9224 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 1 MongoDB repository interface.
-2026-04-04T16:50:48.845+05:30  INFO 9224 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-04T16:50:48.864+05:30  INFO 9224 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-04T16:50:48.864+05:30  INFO 9224 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-04T16:50:48.952+05:30  INFO 9224 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-04T16:50:48.954+05:30  INFO 9224 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3052 ms
-2026-04-04T16:50:49.554+05:30  INFO 9224 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@55421b8d], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@24a04257, com.mongodb.Jep395RecordCodecProvider@6615237, com.mongodb.KotlinCodecProvider@eaf8427]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@4bf4680c], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-04T16:50:49.583+05:30  INFO 9224 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=23592200, minRoundTripTimeNanos=0}
-2026-04-04T16:50:50.510+05:30  INFO 9224 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-04T16:50:50.927+05:30  INFO 9224 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-04T16:50:50.945+05:30  INFO 9224 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 6.361 seconds (process running for 7.271)
-2026-04-04T17:08:37.652+05:30  INFO 9224 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-04T17:08:37.652+05:30  INFO 9224 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-04T17:08:37.653+05:30  INFO 9224 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-04-04T23:42:31.390+05:30  INFO 9224 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
-
-com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
-	at com.mongodb.internal.connection.InternalStreamConnection.createReadTimeoutException(InternalStreamConnection.java:819) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:807) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:857) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:517) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:469) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:249) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:176) ~[mongodb-driver-core-5.5.2.jar:na]
-Caused by: java.net.SocketTimeoutException: Read timed out
-	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:288) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808) ~[na:na]
-	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966) ~[na:na]
-	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:182) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:824) ~[mongodb-driver-core-5.5.2.jar:na]
-	... 4 common frames omitted
-
-2026-04-04T23:42:31.562+05:30  INFO 9224 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=146449601, minRoundTripTimeNanos=0}
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  08:09 h
-[INFO] Finished at: 2026-04-05T01:00:32+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project dispute-service: Process terminated with exit code: 1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T18:40:44.302+05:30  INFO 32276 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 32276 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T18:40:44.307+05:30  INFO 32276 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T18:40:45.149+05:30  INFO 32276 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T18:40:45.202+05:30  INFO 32276 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 47 ms. Found 1 MongoDB repository interface.
-2026-04-05T18:40:45.783+05:30  INFO 32276 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T18:40:45.797+05:30  INFO 32276 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T18:40:45.797+05:30  INFO 32276 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T18:40:45.861+05:30  INFO 32276 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T18:40:45.862+05:30  INFO 32276 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1514 ms
-2026-04-05T18:40:46.280+05:30  INFO 32276 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@72b2c5ed], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@41f785e3, com.mongodb.Jep395RecordCodecProvider@6c9a3661, com.mongodb.KotlinCodecProvider@727986ad]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@1600a8a2], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T18:40:46.300+05:30  INFO 32276 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=16867400, minRoundTripTimeNanos=0}
-2026-04-05T18:40:47.041+05:30  INFO 32276 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T18:40:47.384+05:30  INFO 32276 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T18:40:47.400+05:30  INFO 32276 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.542 seconds (process running for 3.89)
-2026-04-05T18:41:00.782+05:30  INFO 32276 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T18:41:00.782+05:30  INFO 32276 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T18:41:00.783+05:30  INFO 32276 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-^C[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T19:59:29.438+05:30  INFO 24780 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 24780 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T19:59:29.441+05:30  INFO 24780 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T19:59:30.433+05:30  INFO 24780 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T19:59:30.493+05:30  INFO 24780 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 1 MongoDB repository interface.
-2026-04-05T19:59:31.054+05:30  INFO 24780 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T19:59:31.067+05:30  INFO 24780 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T19:59:31.067+05:30  INFO 24780 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T19:59:31.131+05:30  INFO 24780 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T19:59:31.133+05:30  INFO 24780 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1643 ms
-2026-04-05T19:59:31.485+05:30  INFO 24780 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@66020d69], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@3751acd7, com.mongodb.Jep395RecordCodecProvider@6b832551, com.mongodb.KotlinCodecProvider@150d6eaf]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@63124022], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T19:59:31.508+05:30  INFO 24780 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18957800, minRoundTripTimeNanos=0}
-2026-04-05T19:59:32.654+05:30  INFO 24780 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T19:59:33.146+05:30  INFO 24780 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T19:59:33.168+05:30  INFO 24780 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 4.169 seconds (process running for 4.501)
-2026-04-05T20:00:00.457+05:30  INFO 24780 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T20:00:00.457+05:30  INFO 24780 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T20:00:00.459+05:30  INFO 24780 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  34:34 min
-[INFO] Finished at: 2026-04-05T20:34:01+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project dispute-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T20:34:41.850+05:30  INFO 20832 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 20832 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T20:34:41.854+05:30  INFO 20832 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T20:34:42.766+05:30  INFO 20832 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T20:34:42.817+05:30  INFO 20832 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 MongoDB repository interface.
-2026-04-05T20:34:43.378+05:30  INFO 20832 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T20:34:43.390+05:30  INFO 20832 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T20:34:43.390+05:30  INFO 20832 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T20:34:43.446+05:30  INFO 20832 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T20:34:43.447+05:30  INFO 20832 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1552 ms
-2026-04-05T20:34:43.838+05:30  INFO 20832 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@554566a8], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@66020d69, com.mongodb.Jep395RecordCodecProvider@3751acd7, com.mongodb.KotlinCodecProvider@6b832551]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@150d6eaf], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T20:34:43.862+05:30  INFO 20832 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18081600, minRoundTripTimeNanos=0}
-2026-04-05T20:34:44.886+05:30  INFO 20832 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T20:34:45.427+05:30  INFO 20832 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T20:34:45.447+05:30  INFO 20832 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 4.032 seconds (process running for 4.363)
-2026-04-05T20:34:45.504+05:30  INFO 20832 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T20:34:45.505+05:30  INFO 20832 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T20:34:45.506+05:30  INFO 20832 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-^C[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T20:37:34.975+05:30  INFO 560 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 560 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T20:37:34.978+05:30  INFO 560 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T20:37:35.839+05:30  INFO 560 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T20:37:35.889+05:30  INFO 560 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 1 MongoDB repository interface.
-2026-04-05T20:37:36.469+05:30  INFO 560 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T20:37:36.479+05:30  INFO 560 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T20:37:36.480+05:30  INFO 560 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T20:37:36.539+05:30  INFO 560 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T20:37:36.540+05:30  INFO 560 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1524 ms
-2026-04-05T20:37:36.887+05:30  INFO 560 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@4af7dd6a], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@4607d78b, com.mongodb.Jep395RecordCodecProvider@3b28b7b0, com.mongodb.KotlinCodecProvider@22048bd6]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@566c1e71], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T20:37:36.910+05:30  INFO 560 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=18745900, minRoundTripTimeNanos=0}
-2026-04-05T20:37:37.846+05:30  INFO 560 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T20:37:38.399+05:30  INFO 560 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T20:37:38.423+05:30  INFO 560 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.888 seconds (process running for 4.224)
-2026-04-05T20:38:35.213+05:30  INFO 560 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T20:38:35.214+05:30  INFO 560 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T20:38:35.217+05:30  INFO 560 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:00 h
-[INFO] Finished at: 2026-04-05T22:38:14+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project dispute-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T22:38:57.599+05:30  INFO 31944 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 31944 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T22:38:57.603+05:30  INFO 31944 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T22:38:58.775+05:30  INFO 31944 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T22:38:58.876+05:30  INFO 31944 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 1 MongoDB repository interface.
-2026-04-05T22:38:59.910+05:30  INFO 31944 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T22:38:59.940+05:30  INFO 31944 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T22:38:59.941+05:30  INFO 31944 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T22:39:00.115+05:30  INFO 31944 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T22:39:00.124+05:30  INFO 31944 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2474 ms
-2026-04-05T22:39:01.267+05:30  INFO 31944 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@7345f97d], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@554566a8, com.mongodb.Jep395RecordCodecProvider@66020d69, com.mongodb.KotlinCodecProvider@3751acd7]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@6b832551], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T22:39:01.344+05:30  INFO 31944 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=46978600, minRoundTripTimeNanos=0}
-2026-04-05T22:39:02.928+05:30  INFO 31944 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T22:39:03.673+05:30  INFO 31944 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T22:39:03.706+05:30  INFO 31944 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 6.636 seconds (process running for 7.094)
-2026-04-05T22:39:56.115+05:30  INFO 31944 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T22:39:56.116+05:30  INFO 31944 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T22:39:56.121+05:30  INFO 31944 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-^C[INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T23:00:51.731+05:30  INFO 17128 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 17128 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T23:00:51.734+05:30  INFO 17128 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T23:00:52.816+05:30  INFO 17128 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T23:00:52.876+05:30  INFO 17128 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 1 MongoDB repository interface.
-2026-04-05T23:00:53.576+05:30  INFO 17128 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T23:00:53.594+05:30  INFO 17128 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T23:00:53.594+05:30  INFO 17128 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T23:00:53.664+05:30  INFO 17128 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T23:00:53.666+05:30  INFO 17128 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1883 ms
-2026-04-05T23:00:54.312+05:30  INFO 17128 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@eaf8427], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@4bf4680c, com.mongodb.Jep395RecordCodecProvider@6d6039df, com.mongodb.KotlinCodecProvider@611c3eae]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@13e00016], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T23:00:54.356+05:30  INFO 17128 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=33083100, minRoundTripTimeNanos=0}
-2026-04-05T23:00:56.036+05:30  INFO 17128 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T23:00:56.765+05:30  INFO 17128 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T23:00:56.795+05:30  INFO 17128 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.576 seconds (process running for 5.967)
-2026-04-05T23:01:26.737+05:30  INFO 17128 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T23:01:26.738+05:30  INFO 17128 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T23:01:26.741+05:30  INFO 17128 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  06:05 min
-[INFO] Finished at: 2026-04-05T23:06:52+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project dispute-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 9 . 9 6 0 9 3 2 7 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- [ I N F O ]   S c a n n i n g   f o r   p r o j e c t s . . .  
- [ I N F O ]    
- [ I N F O ]   - - - - - - - - - - - - - <   c o m . f i x l o c a l . m i c r o s e r v i c e s : d i s p u t e - s e r v i c e   > - - - - - - - - - - - - -  
- [ I N F O ]   B u i l d i n g   f i x l o c a l - d i s p u t e - s e r v i c e   0 . 0 . 1 - S N A P S H O T  
- [ I N F O ]       f r o m   p o m . x m l  
- [ I N F O ]   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [   j a r   ] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
- [ I N F O ]    
- [ I N F O ]   > > >   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   >   t e s t - c o m p i l e   @   d i s p u t e - s e r v i c e   > > >  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : r e s o u r c e s   ( d e f a u l t - r e s o u r c e s )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   C o p y i n g   1   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]   C o p y i n g   0   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : c o m p i l e   ( d e f a u l t - c o m p i l e )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   N o t h i n g   t o   c o m p i l e   -   a l l   c l a s s e s   a r e   u p   t o   d a t e .  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : t e s t R e s o u r c e s   ( d e f a u l t - t e s t R e s o u r c e s )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o p y i n g   t e s t   r e s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : t e s t C o m p i l e   ( d e f a u l t - t e s t C o m p i l e )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o m p i l i n g   t e s t   s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   < < <   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   <   t e s t - c o m p i l e   @   d i s p u t e - s e r v i c e   < < <  
- [ I N F O ]    
- [ I N F O ]    
- [ I N F O ]   - - -   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   A t t a c h i n g   a g e n t s :   [ ]  
-  
-     .       _ _ _ _                     _                         _ _   _   _  
-   / \ \   /   _ _ _ ' _   _ _   _   _ ( _ ) _   _ _     _ _   _   \   \   \   \  
- (   (   ) \ _ _ _   |   ' _   |   ' _ |   |   ' _   \ /   _ `   |   \   \   \   \  
-   \ \ /     _ _ _ ) |   | _ ) |   |   |   |   |   | |   ( _ |   |     )   )   )   )  
-     '     | _ _ _ _ |   . _ _ | _ |   | _ | _ |   | _ \ _ _ ,   |   /   /   /   /  
-   = = = = = = = = = | _ | = = = = = = = = = = = = = = | _ _ _ / = / _ / _ / _ /  
-  
-   : :   S p r i n g   B o o t   : :                               ( v 3 . 5 . 1 0 )  
-  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 6 . 3 8 9 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t i n g   F i x L o c a l A p p l i c a t i o n   u s i n g   J a v a   1 7 . 0 . 1 2   w i t h   P I D   3 0 5 1 6   ( C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ d i s p u t e - s e r v i c e \ t a r g e t \ c l a s s e s   s t a r t e d   b y   i l k h a n   i n   C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ d i s p u t e - s e r v i c e )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 6 . 3 9 2 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   N o   a c t i v e   p r o f i l e   s e t ,   f a l l i n g   b a c k   t o   1   d e f a u l t   p r o f i l e :   " d e f a u l t "  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 7 . 5 8 7 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   B o o t s t r a p p i n g   S p r i n g   D a t a   M o n g o D B   r e p o s i t o r i e s   i n   D E F A U L T   m o d e .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 7 . 6 5 4 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   F i n i s h e d   S p r i n g   D a t a   r e p o s i t o r y   s c a n n i n g   i n   5 7   m s .   F o u n d   1   M o n g o D B   r e p o s i t o r y   i n t e r f a c e .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 8 . 4 2 3 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   i n i t i a l i z e d   w i t h   p o r t   8 0 8 9   ( h t t p )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 8 . 4 3 9 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d S e r v i c e       :   S t a r t i n g   s e r v i c e   [ T o m c a t ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 8 . 4 3 9 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d E n g i n e         :   S t a r t i n g   S e r v l e t   e n g i n e :   [ A p a c h e   T o m c a t / 1 0 . 1 . 5 0 ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 8 . 5 1 6 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   e m b e d d e d   W e b A p p l i c a t i o n C o n t e x t  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 8 . 5 1 7 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   w . s . c . S e r v l e t W e b S e r v e r A p p l i c a t i o n C o n t e x t   :   R o o t   W e b A p p l i c a t i o n C o n t e x t :   i n i t i a l i z a t i o n   c o m p l e t e d   i n   2 0 7 5   m s  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 9 . 0 2 3 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o r g . m o n g o d b . d r i v e r . c l i e n t                                 :   M o n g o C l i e n t   w i t h   m e t a d a t a   { " d r i v e r " :   { " n a m e " :   " m o n g o - j a v a - d r i v e r | s y n c | s p r i n g - b o o t " ,   " v e r s i o n " :   " 5 . 5 . 2 " } ,   " o s " :   { " t y p e " :   " W i n d o w s " ,   " n a m e " :   " W i n d o w s   1 1 " ,   " a r c h i t e c t u r e " :   " a m d 6 4 " ,   " v e r s i o n " :   " 1 0 . 0 " } ,   " p l a t f o r m " :   " J a v a / O r a c l e   C o r p o r a t i o n / 1 7 . 0 . 1 2 + 8 - L T S - 2 8 6 " }   c r e a t e d   w i t h   s e t t i n g s   M o n g o C l i e n t S e t t i n g s { r e a d P r e f e r e n c e = p r i m a r y ,   w r i t e C o n c e r n = W r i t e C o n c e r n { w = n u l l ,   w T i m e o u t = n u l l   m s ,   j o u r n a l = n u l l } ,   r e t r y W r i t e s = t r u e ,   r e t r y R e a d s = t r u e ,   r e a d C o n c e r n = R e a d C o n c e r n { l e v e l = n u l l } ,   c r e d e n t i a l = n u l l ,   t r a n s p o r t S e t t i n g s = n u l l ,   c o m m a n d L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o m m a n d L i s t e n e r @ 1 5 0 d 6 e a f ] ,   c o d e c R e g i s t r y = P r o v i d e r s C o d e c R e g i s t r y { c o d e c P r o v i d e r s = [ V a l u e C o d e c P r o v i d e r { } ,   B s o n V a l u e C o d e c P r o v i d e r { } ,   D B R e f C o d e c P r o v i d e r { } ,   D B O b j e c t C o d e c P r o v i d e r { } ,   D o c u m e n t C o d e c P r o v i d e r { } ,   C o l l e c t i o n C o d e c P r o v i d e r { } ,   I t e r a b l e C o d e c P r o v i d e r { } ,   M a p C o d e c P r o v i d e r { } ,   G e o J s o n C o d e c P r o v i d e r { } ,   G r i d F S F i l e C o d e c P r o v i d e r { } ,   J s r 3 1 0 C o d e c P r o v i d e r { } ,   J s o n O b j e c t C o d e c P r o v i d e r { } ,   B s o n C o d e c P r o v i d e r { } ,   E n u m C o d e c P r o v i d e r { } ,   c o m . m o n g o d b . c l i e n t . m o d e l . m q l . E x p r e s s i o n C o d e c P r o v i d e r @ 6 3 1 2 4 0 2 2 ,   c o m . m o n g o d b . J e p 3 9 5 R e c o r d C o d e c P r o v i d e r @ 5 9 1 f 6 f 8 3 ,   c o m . m o n g o d b . K o t l i n C o d e c P r o v i d e r @ 2 b 4 4 6 0 5 c ] } ,   l o g g e r S e t t i n g s = L o g g e r S e t t i n g s { m a x D o c u m e n t L e n g t h = 1 0 0 0 } ,   c l u s t e r S e t t i n g s = { h o s t s = [ l o c a l h o s t : 2 7 0 1 7 ] ,   s r v S e r v i c e N a m e = m o n g o d b ,   m o d e = S I N G L E ,   r e q u i r e d C l u s t e r T y p e = U N K N O W N ,   r e q u i r e d R e p l i c a S e t N a m e = ' n u l l ' ,   s e r v e r S e l e c t o r = ' n u l l ' ,   c l u s t e r L i s t e n e r s = ' [ ] ' ,   s e r v e r S e l e c t i o n T i m e o u t = ' 3 0 0 0 0   m s ' ,   l o c a l T h r e s h o l d = ' 1 5   m s ' } ,   s o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   h e a r t b e a t S o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 1 0 0 0 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   c o n n e c t i o n P o o l S e t t i n g s = C o n n e c t i o n P o o l S e t t i n g s { m a x S i z e = 1 0 0 ,   m i n S i z e = 0 ,   m a x W a i t T i m e M S = 1 2 0 0 0 0 ,   m a x C o n n e c t i o n L i f e T i m e M S = 0 ,   m a x C o n n e c t i o n I d l e T i m e M S = 0 ,   m a i n t e n a n c e I n i t i a l D e l a y M S = 0 ,   m a i n t e n a n c e F r e q u e n c y M S = 6 0 0 0 0 ,   c o n n e c t i o n P o o l L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o n n e c t i o n P o o l L i s t e n e r @ 5 5 4 2 1 b 8 d ] ,   m a x C o n n e c t i n g = 2 } ,   s e r v e r S e t t i n g s = S e r v e r S e t t i n g s { h e a r t b e a t F r e q u e n c y M S = 1 0 0 0 0 ,   m i n H e a r t b e a t F r e q u e n c y M S = 5 0 0 ,   s e r v e r M o n i t o r i n g M o d e = A U T O ,   s e r v e r L i s t e n e r s = ' [ ] ' ,   s e r v e r M o n i t o r L i s t e n e r s = ' [ ] ' } ,   s s l S e t t i n g s = S s l S e t t i n g s { e n a b l e d = f a l s e ,   i n v a l i d H o s t N a m e A l l o w e d = f a l s e ,   c o n t e x t = n u l l } ,   a p p l i c a t i o n N a m e = ' n u l l ' ,   c o m p r e s s o r L i s t = [ ] ,   u u i d R e p r e s e n t a t i o n = J A V A _ L E G A C Y ,   s e r v e r A p i = n u l l ,   a u t o E n c r y p t i o n S e t t i n g s = n u l l ,   d n s C l i e n t = n u l l ,   i n e t A d d r e s s R e s o l v e r = n u l l ,   c o n t e x t P r o v i d e r = n u l l ,   t i m e o u t M S = n u l l }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 3 9 . 0 5 6 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [ l o c a l h o s t : 2 7 0 1 7 ]   o r g . m o n g o d b . d r i v e r . c l u s t e r                               :   M o n i t o r   t h r e a d   s u c c e s s f u l l y   c o n n e c t e d   t o   s e r v e r   w i t h   d e s c r i p t i o n   S e r v e r D e s c r i p t i o n { a d d r e s s = l o c a l h o s t : 2 7 0 1 7 ,   t y p e = S T A N D A L O N E ,   c r y p t d = f a l s e ,   s t a t e = C O N N E C T E D ,   o k = t r u e ,   m i n W i r e V e r s i o n = 0 ,   m a x W i r e V e r s i o n = 2 7 ,   m a x D o c u m e n t S i z e = 1 6 7 7 7 2 1 6 ,   l o g i c a l S e s s i o n T i m e o u t M i n u t e s = 3 0 ,   r o u n d T r i p T i m e N a n o s = 2 2 9 4 1 4 0 0 ,   m i n R o u n d T r i p T i m e N a n o s = 0 }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 0 . 0 2 1 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . s . b . a . e . w e b . E n d p o i n t L i n k s R e s o l v e r             :   E x p o s i n g   2   e n d p o i n t s   b e n e a t h   b a s e   p a t h   ' / a c t u a t o r '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 0 . 4 4 5 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   s t a r t e d   o n   p o r t   8 0 8 9   ( h t t p )   w i t h   c o n t e x t   p a t h   ' / '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 4 0 . 4 6 4 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t e d   F i x L o c a l A p p l i c a t i o n   i n   4 . 6 3 5   s e c o n d s   ( p r o c e s s   r u n n i n g   f o r   5 . 0 7 7 )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 8 . 9 6 3 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [ n i o - 8 0 8 9 - e x e c - 1 ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   D i s p a t c h e r S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 8 . 9 6 4 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [ n i o - 8 0 8 9 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   I n i t i a l i z i n g   S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 8 . 9 6 5 + 0 5 : 3 0     I N F O   3 0 5 1 6   - - -   [ d i s p u t e - s e r v i c e ]   [ n i o - 8 0 8 9 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   C o m p l e t e d   i n i t i a l i z a t i o n   i n   1   m s  
- [ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 6 . 0 1 3 6 2 6 7 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- [ I N F O ]   S c a n n i n g   f o r   p r o j e c t s . . .  
- [ I N F O ]    
- [ I N F O ]   - - - - - - - - - - - - - <   c o m . f i x l o c a l . m i c r o s e r v i c e s : d i s p u t e - s e r v i c e   > - - - - - - - - - - - - -  
- [ I N F O ]   B u i l d i n g   f i x l o c a l - d i s p u t e - s e r v i c e   0 . 0 . 1 - S N A P S H O T  
- [ I N F O ]       f r o m   p o m . x m l  
- [ I N F O ]   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [   j a r   ] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
- [ I N F O ]    
- [ I N F O ]   > > >   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   >   t e s t - c o m p i l e   @   d i s p u t e - s e r v i c e   > > >  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : r e s o u r c e s   ( d e f a u l t - r e s o u r c e s )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   C o p y i n g   1   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]   C o p y i n g   0   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : c o m p i l e   ( d e f a u l t - c o m p i l e )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   N o t h i n g   t o   c o m p i l e   -   a l l   c l a s s e s   a r e   u p   t o   d a t e .  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : t e s t R e s o u r c e s   ( d e f a u l t - t e s t R e s o u r c e s )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o p y i n g   t e s t   r e s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : t e s t C o m p i l e   ( d e f a u l t - t e s t C o m p i l e )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o m p i l i n g   t e s t   s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   < < <   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   <   t e s t - c o m p i l e   @   d i s p u t e - s e r v i c e   < < <  
- [ I N F O ]    
- [ I N F O ]    
- [ I N F O ]   - - -   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   @   d i s p u t e - s e r v i c e   - - -  
- [ I N F O ]   A t t a c h i n g   a g e n t s :   [ ]  
-  
-     .       _ _ _ _                     _                         _ _   _   _  
-   / \ \   /   _ _ _ ' _   _ _   _   _ ( _ ) _   _ _     _ _   _   \   \   \   \  
- (   (   ) \ _ _ _   |   ' _   |   ' _ |   |   ' _   \ /   _ `   |   \   \   \   \  
-   \ \ /     _ _ _ ) |   | _ ) |   |   |   |   |   | |   ( _ |   |     )   )   )   )  
-     '     | _ _ _ _ |   . _ _ | _ |   | _ | _ |   | _ \ _ _ ,   |   /   /   /   /  
-   = = = = = = = = = | _ | = = = = = = = = = = = = = = | _ _ _ / = / _ / _ / _ /  
-  
-   : :   S p r i n g   B o o t   : :                               ( v 3 . 5 . 1 0 )  
-  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 2 . 3 5 0 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t i n g   F i x L o c a l A p p l i c a t i o n   u s i n g   J a v a   1 7 . 0 . 1 2   w i t h   P I D   3 7 5 6 0   ( C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ d i s p u t e - s e r v i c e \ t a r g e t \ c l a s s e s   s t a r t e d   b y   i l k h a n   i n   C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ d i s p u t e - s e r v i c e )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 2 . 3 5 5 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   N o   a c t i v e   p r o f i l e   s e t ,   f a l l i n g   b a c k   t o   1   d e f a u l t   p r o f i l e :   " d e f a u l t "  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 3 . 4 2 5 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   B o o t s t r a p p i n g   S p r i n g   D a t a   M o n g o D B   r e p o s i t o r i e s   i n   D E F A U L T   m o d e .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 3 . 4 8 8 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   F i n i s h e d   S p r i n g   D a t a   r e p o s i t o r y   s c a n n i n g   i n   5 5   m s .   F o u n d   1   M o n g o D B   r e p o s i t o r y   i n t e r f a c e .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 2 8 4 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   i n i t i a l i z e d   w i t h   p o r t   8 0 8 9   ( h t t p )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 3 0 0 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d S e r v i c e       :   S t a r t i n g   s e r v i c e   [ T o m c a t ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 3 0 0 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d E n g i n e         :   S t a r t i n g   S e r v l e t   e n g i n e :   [ A p a c h e   T o m c a t / 1 0 . 1 . 5 0 ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 3 7 0 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   e m b e d d e d   W e b A p p l i c a t i o n C o n t e x t  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 3 7 1 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   w . s . c . S e r v l e t W e b S e r v e r A p p l i c a t i o n C o n t e x t   :   R o o t   W e b A p p l i c a t i o n C o n t e x t :   i n i t i a l i z a t i o n   c o m p l e t e d   i n   1 9 6 3   m s  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 8 0 5 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o r g . m o n g o d b . d r i v e r . c l i e n t                                 :   M o n g o C l i e n t   w i t h   m e t a d a t a   { " d r i v e r " :   { " n a m e " :   " m o n g o - j a v a - d r i v e r | s y n c | s p r i n g - b o o t " ,   " v e r s i o n " :   " 5 . 5 . 2 " } ,   " o s " :   { " t y p e " :   " W i n d o w s " ,   " n a m e " :   " W i n d o w s   1 1 " ,   " a r c h i t e c t u r e " :   " a m d 6 4 " ,   " v e r s i o n " :   " 1 0 . 0 " } ,   " p l a t f o r m " :   " J a v a / O r a c l e   C o r p o r a t i o n / 1 7 . 0 . 1 2 + 8 - L T S - 2 8 6 " }   c r e a t e d   w i t h   s e t t i n g s   M o n g o C l i e n t S e t t i n g s { r e a d P r e f e r e n c e = p r i m a r y ,   w r i t e C o n c e r n = W r i t e C o n c e r n { w = n u l l ,   w T i m e o u t = n u l l   m s ,   j o u r n a l = n u l l } ,   r e t r y W r i t e s = t r u e ,   r e t r y R e a d s = t r u e ,   r e a d C o n c e r n = R e a d C o n c e r n { l e v e l = n u l l } ,   c r e d e n t i a l = n u l l ,   t r a n s p o r t S e t t i n g s = n u l l ,   c o m m a n d L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o m m a n d L i s t e n e r @ 2 4 a 0 4 2 5 7 ] ,   c o d e c R e g i s t r y = P r o v i d e r s C o d e c R e g i s t r y { c o d e c P r o v i d e r s = [ V a l u e C o d e c P r o v i d e r { } ,   B s o n V a l u e C o d e c P r o v i d e r { } ,   D B R e f C o d e c P r o v i d e r { } ,   D B O b j e c t C o d e c P r o v i d e r { } ,   D o c u m e n t C o d e c P r o v i d e r { } ,   C o l l e c t i o n C o d e c P r o v i d e r { } ,   I t e r a b l e C o d e c P r o v i d e r { } ,   M a p C o d e c P r o v i d e r { } ,   G e o J s o n C o d e c P r o v i d e r { } ,   G r i d F S F i l e C o d e c P r o v i d e r { } ,   J s r 3 1 0 C o d e c P r o v i d e r { } ,   J s o n O b j e c t C o d e c P r o v i d e r { } ,   B s o n C o d e c P r o v i d e r { } ,   E n u m C o d e c P r o v i d e r { } ,   c o m . m o n g o d b . c l i e n t . m o d e l . m q l . E x p r e s s i o n C o d e c P r o v i d e r @ 6 6 1 5 2 3 7 ,   c o m . m o n g o d b . J e p 3 9 5 R e c o r d C o d e c P r o v i d e r @ e a f 8 4 2 7 ,   c o m . m o n g o d b . K o t l i n C o d e c P r o v i d e r @ 4 b f 4 6 8 0 c ] } ,   l o g g e r S e t t i n g s = L o g g e r S e t t i n g s { m a x D o c u m e n t L e n g t h = 1 0 0 0 } ,   c l u s t e r S e t t i n g s = { h o s t s = [ l o c a l h o s t : 2 7 0 1 7 ] ,   s r v S e r v i c e N a m e = m o n g o d b ,   m o d e = S I N G L E ,   r e q u i r e d C l u s t e r T y p e = U N K N O W N ,   r e q u i r e d R e p l i c a S e t N a m e = ' n u l l ' ,   s e r v e r S e l e c t o r = ' n u l l ' ,   c l u s t e r L i s t e n e r s = ' [ ] ' ,   s e r v e r S e l e c t i o n T i m e o u t = ' 3 0 0 0 0   m s ' ,   l o c a l T h r e s h o l d = ' 1 5   m s ' } ,   s o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   h e a r t b e a t S o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 1 0 0 0 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   c o n n e c t i o n P o o l S e t t i n g s = C o n n e c t i o n P o o l S e t t i n g s { m a x S i z e = 1 0 0 ,   m i n S i z e = 0 ,   m a x W a i t T i m e M S = 1 2 0 0 0 0 ,   m a x C o n n e c t i o n L i f e T i m e M S = 0 ,   m a x C o n n e c t i o n I d l e T i m e M S = 0 ,   m a i n t e n a n c e I n i t i a l D e l a y M S = 0 ,   m a i n t e n a n c e F r e q u e n c y M S = 6 0 0 0 0 ,   c o n n e c t i o n P o o l L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o n n e c t i o n P o o l L i s t e n e r @ 6 d 6 0 3 9 d f ] ,   m a x C o n n e c t i n g = 2 } ,   s e r v e r S e t t i n g s = S e r v e r S e t t i n g s { h e a r t b e a t F r e q u e n c y M S = 1 0 0 0 0 ,   m i n H e a r t b e a t F r e q u e n c y M S = 5 0 0 ,   s e r v e r M o n i t o r i n g M o d e = A U T O ,   s e r v e r L i s t e n e r s = ' [ ] ' ,   s e r v e r M o n i t o r L i s t e n e r s = ' [ ] ' } ,   s s l S e t t i n g s = S s l S e t t i n g s { e n a b l e d = f a l s e ,   i n v a l i d H o s t N a m e A l l o w e d = f a l s e ,   c o n t e x t = n u l l } ,   a p p l i c a t i o n N a m e = ' n u l l ' ,   c o m p r e s s o r L i s t = [ ] ,   u u i d R e p r e s e n t a t i o n = J A V A _ L E G A C Y ,   s e r v e r A p i = n u l l ,   a u t o E n c r y p t i o n S e t t i n g s = n u l l ,   d n s C l i e n t = n u l l ,   i n e t A d d r e s s R e s o l v e r = n u l l ,   c o n t e x t P r o v i d e r = n u l l ,   t i m e o u t M S = n u l l }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 4 . 8 3 7 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [ l o c a l h o s t : 2 7 0 1 7 ]   o r g . m o n g o d b . d r i v e r . c l u s t e r                               :   M o n i t o r   t h r e a d   s u c c e s s f u l l y   c o n n e c t e d   t o   s e r v e r   w i t h   d e s c r i p t i o n   S e r v e r D e s c r i p t i o n { a d d r e s s = l o c a l h o s t : 2 7 0 1 7 ,   t y p e = S T A N D A L O N E ,   c r y p t d = f a l s e ,   s t a t e = C O N N E C T E D ,   o k = t r u e ,   m i n W i r e V e r s i o n = 0 ,   m a x W i r e V e r s i o n = 2 7 ,   m a x D o c u m e n t S i z e = 1 6 7 7 7 2 1 6 ,   l o g i c a l S e s s i o n T i m e o u t M i n u t e s = 3 0 ,   r o u n d T r i p T i m e N a n o s = 2 6 1 6 8 3 0 0 ,   m i n R o u n d T r i p T i m e N a n o s = 0 }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 5 . 8 0 9 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . s . b . a . e . w e b . E n d p o i n t L i n k s R e s o l v e r             :   E x p o s i n g   2   e n d p o i n t s   b e n e a t h   b a s e   p a t h   ' / a c t u a t o r '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 6 . 4 1 6 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   s t a r t e d   o n   p o r t   8 0 8 9   ( h t t p )   w i t h   c o n t e x t   p a t h   ' / '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 1 6 . 4 3 7 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t e d   F i x L o c a l A p p l i c a t i o n   i n   4 . 6 7 8   s e c o n d s   ( p r o c e s s   r u n n i n g   f o r   5 . 0 5 2 )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 1 . 8 6 1 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [ n i o - 8 0 8 9 - e x e c - 1 ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   D i s p a t c h e r S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 1 . 8 6 1 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [ n i o - 8 0 8 9 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   I n i t i a l i z i n g   S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 1 . 8 6 2 + 0 5 : 3 0     I N F O   3 7 5 6 0   - - -   [ d i s p u t e - s e r v i c e ]   [ n i o - 8 0 8 9 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   C o m p l e t e d   i n i t i a l i z a t i o n   i n   1   m s  
- [ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 9 : 4 4 . 0 2 0 5 4 3 9 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T23:19:50.329+05:30  INFO 39488 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 39488 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T23:19:50.332+05:30  INFO 39488 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T23:19:51.450+05:30  INFO 39488 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T23:19:51.530+05:30  INFO 39488 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 1 MongoDB repository interface.
-2026-04-05T23:19:52.304+05:30  INFO 39488 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T23:19:52.321+05:30  INFO 39488 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T23:19:52.321+05:30  INFO 39488 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T23:19:52.392+05:30  INFO 39488 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T23:19:52.394+05:30  INFO 39488 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2004 ms
-2026-04-05T23:19:52.852+05:30  INFO 39488 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@57e03347], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@2edb2f8b, com.mongodb.Jep395RecordCodecProvider@733f1395, com.mongodb.KotlinCodecProvider@21dea711]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@7772d266], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T23:19:52.880+05:30  INFO 39488 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20766700, minRoundTripTimeNanos=0}
-2026-04-05T23:19:54.057+05:30  INFO 39488 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T23:19:54.538+05:30  INFO 39488 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T23:19:54.557+05:30  INFO 39488 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 4.759 seconds (process running for 5.138)
-2026-04-05T23:20:48.836+05:30  INFO 39488 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T23:20:48.836+05:30  INFO 39488 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T23:20:48.837+05:30  INFO 39488 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:04 min
-[INFO] Finished at: 2026-04-05T23:21:51+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project dispute-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 2 2 : 2 4 . 5 5 0 5 2 1 9 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T23:22:31.424+05:30  INFO 34484 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 34484 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-05T23:22:31.428+05:30  INFO 34484 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T23:22:32.688+05:30  INFO 34484 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T23:22:32.757+05:30  INFO 34484 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 1 MongoDB repository interface.
-2026-04-05T23:22:33.550+05:30  INFO 34484 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-05T23:22:33.566+05:30  INFO 34484 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T23:22:33.567+05:30  INFO 34484 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T23:22:33.633+05:30  INFO 34484 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T23:22:33.635+05:30  INFO 34484 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2160 ms
-2026-04-05T23:22:34.153+05:30  INFO 34484 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@72b2c5ed], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@41f785e3, com.mongodb.Jep395RecordCodecProvider@6c9a3661, com.mongodb.KotlinCodecProvider@727986ad]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@1600a8a2], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T23:22:34.184+05:30  INFO 34484 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=24602300, minRoundTripTimeNanos=0}
-2026-04-05T23:22:35.296+05:30  INFO 34484 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T23:22:35.776+05:30  INFO 34484 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-05T23:22:35.793+05:30  INFO 34484 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.049 seconds (process running for 5.523)
-2026-04-05T23:23:29.084+05:30  INFO 34484 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T23:23:29.084+05:30  INFO 34484 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T23:23:29.086+05:30  INFO 34484 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[ 2 0 2 6 - 0 4 - 0 6 T 2 3 : 0 7 : 5 7 . 0 9 0 6 6 8 6 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-06T23:08:03.363+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 42332 (C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\dispute-service)
-2026-04-06T23:08:03.368+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-06T23:08:04.789+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-06T23:08:04.874+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 1 MongoDB repository interface.
-2026-04-06T23:08:05.680+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-06T23:08:05.693+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-06T23:08:05.693+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-06T23:08:05.786+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-06T23:08:05.787+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2354 ms
-2026-04-06T23:08:06.538+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@14be750c], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@58882a93, com.mongodb.Jep395RecordCodecProvider@15e08615, com.mongodb.KotlinCodecProvider@19dac2d6]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@7e2bc2f4], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-06T23:08:06.565+05:30  INFO [corr:na] 42332 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=27897700, minRoundTripTimeNanos=0}
-2026-04-06T23:08:07.499+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-06T23:08:07.974+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-06T23:08:07.993+05:30  INFO [corr:na] 42332 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.197 seconds (process running for 5.629)
-2026-04-06T23:08:22.609+05:30  INFO [corr:na] 42332 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-06T23:08:22.610+05:30  INFO [corr:na] 42332 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-06T23:08:22.611+05:30  INFO [corr:na] 42332 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-[ 2 0 2 6 - 0 4 - 0 7 T 0 0 : 0 4 : 0 0 . 7 8 3 0 4 8 3 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] -------------< com.fixlocal.microservices:dispute-service >-------------
-[INFO] Building fixlocal-dispute-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ dispute-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ dispute-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ dispute-service ---
-[INFO] Recompiling the module because of added or removed source files.
-[INFO] Compiling 12 source files with javac [debug parameters release 17] to target\classes
-[INFO] /C:/Users/ilkhan/Desktop/FixLocal/fixlocal-backend/dispute-service/src/main/java/com/fixlocal/config/JwtAuthenticationFilter.java: Some input files use unchecked or unsafe operations.
-[INFO] /C:/Users/ilkhan/Desktop/FixLocal/fixlocal-backend/dispute-service/src/main/java/com/fixlocal/config/JwtAuthenticationFilter.java: Recompile with -Xlint:unchecked for details.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ dispute-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ dispute-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ dispute-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ dispute-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-07T00:04:20.511+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 39076 (C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service)
-2026-04-07T00:04:20.517+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-07T00:04:22.741+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-07T00:04:22.892+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 137 ms. Found 1 MongoDB repository interface.
-2026-04-07T00:04:23.999+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8089 (http)
-2026-04-07T00:04:24.018+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-07T00:04:24.018+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-07T00:04:24.132+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-07T00:04:24.134+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3556 ms
-2026-04-07T00:04:25.090+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@456aa471], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@69e2fe3b, com.mongodb.Jep395RecordCodecProvider@27afbf14, com.mongodb.KotlinCodecProvider@4cfcac13]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@5c25d0d1], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-07T00:04:25.111+05:30  INFO [corr:na] 39076 --- [dispute-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=24414200, minRoundTripTimeNanos=0}
-2026-04-07T00:04:25.998+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-07T00:04:26.418+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8089 (http) with context path '/'
-2026-04-07T00:04:26.434+05:30  INFO [corr:na] 39076 --- [dispute-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 7.028 seconds (process running for 7.847)
-2026-04-07T00:04:44.110+05:30  INFO [corr:na] 39076 --- [dispute-service] [nio-8089-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-07T00:04:44.111+05:30  INFO [corr:na] 39076 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-07T00:04:44.114+05:30  INFO [corr:na] 39076 --- [dispute-service] [nio-8089-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10:00 min
-[INFO] Finished at: 2026-04-07T00:14:05+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project dispute-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[ 2 0 2 6 - 0 4 - 0 7 T 0 0 : 1 4 : 4 1 . 5 9 1 4 7 8 6 + 0 5 : 3 0 ]   S t a r t i n g   d i s p u t e - s e r v i c e  
- 

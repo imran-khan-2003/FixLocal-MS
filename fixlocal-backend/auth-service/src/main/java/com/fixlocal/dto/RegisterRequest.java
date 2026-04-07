@@ -1,6 +1,6 @@
 package com.fixlocal.dto;
 
-import com.fixlocal.model.Role;
+import com.fixlocal.enums.Role;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 

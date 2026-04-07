@@ -1,0 +1,10 @@
+com\fixlocal\entity\ServiceOffering$ServiceOfferingBuilder.class
+com\fixlocal\service\impl\UserServiceImpl.class
+com\fixlocal\config\SecurityConfig.class
+com\fixlocal\AuthServiceApplication.class
+com\fixlocal\enums\Role.class
+com\fixlocal\enums\Status.class
+com\fixlocal\service\impl\AuthServiceImpl.class
+com\fixlocal\entity\ServiceOffering.class
+com\fixlocal\entity\User$UserBuilder.class
+com\fixlocal\entity\User.class

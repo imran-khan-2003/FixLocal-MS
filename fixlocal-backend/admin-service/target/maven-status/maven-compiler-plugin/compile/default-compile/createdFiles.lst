@@ -1,10 +1,11 @@
 com\fixlocal\dto\AdminStatsDTO.class
 com\fixlocal\FixLocalApplication.class
 com\fixlocal\config\SecurityConfig.class
-com\fixlocal\service\AdminService$2.class
+com\fixlocal\service\impl\AdminServiceImpl.class
 com\fixlocal\config\JwtAuthenticationFilter.class
 com\fixlocal\service\AdminService.class
+com\fixlocal\service\impl\AdminServiceImpl$2.class
 com\fixlocal\controller\AdminController.class
 com\fixlocal\config\WebConfig$1.class
+com\fixlocal\service\impl\AdminServiceImpl$1.class
 com\fixlocal\config\WebConfig.class
-com\fixlocal\service\AdminService$1.class

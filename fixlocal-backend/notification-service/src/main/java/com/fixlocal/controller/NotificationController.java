@@ -1,6 +1,6 @@
 package com.fixlocal.controller;
 
-import com.fixlocal.model.Notification;
+import com.fixlocal.entity.Notification;
 import com.fixlocal.service.NotificationService;
 
 import lombok.RequiredArgsConstructor;

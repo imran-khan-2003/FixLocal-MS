@@ -1,12 +1,13 @@
 com\fixlocal\FixLocalApplication.class
 com\fixlocal\config\SecurityConfig.class
-com\fixlocal\model\Review$ReviewBuilder.class
+com\fixlocal\entity\Review$ReviewBuilder.class
 com\fixlocal\dto\ReviewSummaryDTO.class
 com\fixlocal\config\WebConfig$1.class
+com\fixlocal\service\impl\ReviewServiceImpl.class
 com\fixlocal\config\WebConfig.class
 com\fixlocal\dto\ReviewRequest.class
-com\fixlocal\model\Review.class
 com\fixlocal\config\JwtAuthenticationFilter.class
 com\fixlocal\dto\ReviewSummaryDTO$ReviewSummaryDTOBuilder.class
+com\fixlocal\entity\Review.class
 com\fixlocal\controller\ReviewController.class
 com\fixlocal\repository\ReviewRepository.class

@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.fixlocal.model.Dispute;
+import com.fixlocal.entity.Dispute;
 
 public interface DisputeRepository extends MongoRepository<Dispute, String> {
     List<Dispute> findByBookingId(String bookingId);

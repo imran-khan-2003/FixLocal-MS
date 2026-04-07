@@ -2,7 +2,7 @@ package com.fixlocal.controller;
 
 import com.fixlocal.dto.ReviewRequest;
 import com.fixlocal.dto.ReviewSummaryDTO;
-import com.fixlocal.model.Review;
+import com.fixlocal.entity.Review;
 import com.fixlocal.service.ReviewService;
 
 import lombok.RequiredArgsConstructor;

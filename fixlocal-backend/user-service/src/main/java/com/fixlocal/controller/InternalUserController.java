@@ -3,7 +3,7 @@ package com.fixlocal.controller;
 import com.fixlocal.dto.InternalAdminUserStatsDTO;
 import com.fixlocal.dto.InternalUserDTO;
 import com.fixlocal.dto.UserResponseDTO;
-import com.fixlocal.model.Role;
+import com.fixlocal.enums.Role;
 import com.fixlocal.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

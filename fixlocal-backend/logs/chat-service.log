@@ -1,819 +1,0 @@
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-04T16:50:41.877+05:30  INFO 36352 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 36352 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-04T16:50:41.881+05:30  INFO 36352 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-04T16:50:44.234+05:30  INFO 36352 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-04T16:50:44.448+05:30  INFO 36352 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 202 ms. Found 4 MongoDB repository interfaces.
-2026-04-04T16:50:46.468+05:30  INFO 36352 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-04T16:50:46.499+05:30  INFO 36352 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-04T16:50:46.500+05:30  INFO 36352 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-04T16:50:46.692+05:30  INFO 36352 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-04T16:50:46.694+05:30  INFO 36352 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4740 ms
-2026-04-04T16:50:47.307+05:30  INFO 36352 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@7db5b890], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@407b8435, com.mongodb.Jep395RecordCodecProvider@1282e98, com.mongodb.KotlinCodecProvider@4db0ba1c]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@1d91fa02], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-04T16:50:47.340+05:30  INFO 36352 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=28940400, minRoundTripTimeNanos=0}
-2026-04-04T16:50:48.927+05:30  INFO 36352 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-04T16:50:49.509+05:30  INFO 36352 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-04T16:50:49.530+05:30  INFO 36352 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 8.805 seconds (process running for 10.063)
-2026-04-04T17:08:37.564+05:30  INFO 36352 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-04T17:08:37.564+05:30  INFO 36352 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-04T17:08:37.566+05:30  INFO 36352 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-04-04T23:42:31.391+05:30  INFO 36352 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Exception in monitor thread while connecting to server localhost:27017
-
-com.mongodb.MongoSocketReadTimeoutException: Timeout while receiving message
-	at com.mongodb.internal.connection.InternalStreamConnection.createReadTimeoutException(InternalStreamConnection.java:819) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.translateReadException(InternalStreamConnection.java:807) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:857) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:517) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receive(InternalStreamConnection.java:469) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.lookupServerDescription(DefaultServerMonitor.java:249) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.DefaultServerMonitor$ServerMonitor.run(DefaultServerMonitor.java:176) ~[mongodb-driver-core-5.5.2.jar:na]
-Caused by: java.net.SocketTimeoutException: Read timed out
-	at java.base/sun.nio.ch.NioSocketImpl.timedRead(NioSocketImpl.java:288) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.implRead(NioSocketImpl.java:314) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.read(NioSocketImpl.java:355) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl$1.read(NioSocketImpl.java:808) ~[na:na]
-	at java.base/java.net.Socket$SocketInputStream.read(Socket.java:966) ~[na:na]
-	at com.mongodb.internal.connection.SocketStream.read(SocketStream.java:182) ~[mongodb-driver-core-5.5.2.jar:na]
-	at com.mongodb.internal.connection.InternalStreamConnection.receiveResponseBuffers(InternalStreamConnection.java:824) ~[mongodb-driver-core-5.5.2.jar:na]
-	... 4 common frames omitted
-
-2026-04-04T23:42:31.555+05:30  INFO 36352 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=112409000, minRoundTripTimeNanos=0}
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  08:09 h
-[INFO] Finished at: 2026-04-05T01:00:30+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project chat-service: Process terminated with exit code: 1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T18:40:31.531+05:30  INFO 26996 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 26996 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T18:40:31.533+05:30  INFO 26996 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T18:40:32.302+05:30  INFO 26996 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T18:40:32.367+05:30  INFO 26996 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T18:40:32.897+05:30  INFO 26996 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T18:40:32.912+05:30  INFO 26996 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T18:40:32.912+05:30  INFO 26996 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T18:40:32.972+05:30  INFO 26996 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T18:40:32.973+05:30  INFO 26996 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1404 ms
-2026-04-05T18:40:33.220+05:30  INFO 26996 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@4db0ba1c], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@1d91fa02, com.mongodb.Jep395RecordCodecProvider@1578fa9, com.mongodb.KotlinCodecProvider@414b2df5]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@9e30f9a], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T18:40:33.240+05:30  INFO 26996 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17100200, minRoundTripTimeNanos=0}
-2026-04-05T18:40:34.123+05:30  INFO 26996 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T18:40:34.456+05:30  INFO 26996 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T18:40:34.472+05:30  INFO 26996 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.357 seconds (process running for 3.659)
-2026-04-05T18:40:59.824+05:30  INFO 26996 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T18:40:59.824+05:30  INFO 26996 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T18:40:59.825+05:30  INFO 26996 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-^C[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T19:59:16.884+05:30  INFO 44624 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 44624 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T19:59:16.887+05:30  INFO 44624 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T19:59:17.677+05:30  INFO 44624 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T19:59:17.733+05:30  INFO 44624 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T19:59:18.250+05:30  INFO 44624 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T19:59:18.259+05:30  INFO 44624 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T19:59:18.260+05:30  INFO 44624 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T19:59:18.310+05:30  INFO 44624 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T19:59:18.311+05:30  INFO 44624 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1394 ms
-2026-04-05T19:59:18.555+05:30  INFO 44624 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@7cfb8e98], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@5f193335, com.mongodb.Jep395RecordCodecProvider@19002b34, com.mongodb.KotlinCodecProvider@1ec88aa1]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@3e6748ae], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T19:59:18.572+05:30  INFO 44624 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=14753300, minRoundTripTimeNanos=0}
-2026-04-05T19:59:19.556+05:30  INFO 44624 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T19:59:20.040+05:30  INFO 44624 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T19:59:20.062+05:30  INFO 44624 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.565 seconds (process running for 3.893)
-2026-04-05T19:59:59.039+05:30  INFO 44624 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T19:59:59.040+05:30  INFO 44624 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T19:59:59.042+05:30  INFO 44624 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  34:41 min
-[INFO] Finished at: 2026-04-05T20:33:55+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project chat-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] skip non existing resourceDirectory C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\src\test\resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] No sources to compile
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T20:34:28.994+05:30  INFO 39228 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 39228 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T20:34:28.997+05:30  INFO 39228 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T20:34:29.921+05:30  INFO 39228 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T20:34:29.984+05:30  INFO 39228 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 55 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T20:34:30.617+05:30  INFO 39228 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T20:34:30.630+05:30  INFO 39228 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T20:34:30.630+05:30  INFO 39228 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T20:34:30.687+05:30  INFO 39228 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T20:34:30.688+05:30  INFO 39228 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1649 ms
-2026-04-05T20:34:30.981+05:30  INFO 39228 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@7c9beb51], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@133aacbe, com.mongodb.Jep395RecordCodecProvider@2aa5bd48, com.mongodb.KotlinCodecProvider@7cfb8e98]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@5f193335], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T20:34:31.000+05:30  INFO 39228 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17501000, minRoundTripTimeNanos=0}
-2026-04-05T20:34:31.865+05:30  INFO 39228 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T20:34:32.220+05:30  INFO 39228 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T20:34:32.235+05:30  INFO 39228 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.72 seconds (process running for 4.085)
-2026-04-05T20:34:36.308+05:30  INFO 39228 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T20:34:36.308+05:30  INFO 39228 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T20:34:36.311+05:30  INFO 39228 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
-^C[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T20:37:22.214+05:30  INFO 24912 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 24912 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T20:37:22.217+05:30  INFO 24912 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T20:37:22.959+05:30  INFO 24912 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T20:37:23.028+05:30  INFO 24912 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 61 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T20:37:23.549+05:30  INFO 24912 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T20:37:23.560+05:30  INFO 24912 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T20:37:23.560+05:30  INFO 24912 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T20:37:23.610+05:30  INFO 24912 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T20:37:23.610+05:30  INFO 24912 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1360 ms
-2026-04-05T20:37:23.856+05:30  INFO 24912 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@3e9beef2], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@2f15a964, com.mongodb.Jep395RecordCodecProvider@3111631d, com.mongodb.KotlinCodecProvider@2d70f312]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@4c7d7430], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T20:37:23.879+05:30  INFO 24912 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=20472700, minRoundTripTimeNanos=0}
-2026-04-05T20:37:24.813+05:30  INFO 24912 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T20:37:25.323+05:30  INFO 24912 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T20:37:25.347+05:30  INFO 24912 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 3.527 seconds (process running for 3.846)
-2026-04-05T20:38:33.826+05:30  INFO 24912 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T20:38:33.826+05:30  INFO 24912 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T20:38:33.828+05:30  INFO 24912 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:00 h
-[INFO] Finished at: 2026-04-05T22:38:09+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project chat-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T22:38:46.876+05:30  INFO 32884 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 32884 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T22:38:46.879+05:30  INFO 32884 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T22:38:48.232+05:30  INFO 32884 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T22:38:48.330+05:30  INFO 32884 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 88 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T22:38:49.825+05:30  INFO 32884 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T22:38:49.868+05:30  INFO 32884 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T22:38:49.871+05:30  INFO 32884 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T22:38:50.105+05:30  INFO 32884 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T22:38:50.108+05:30  INFO 32884 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3170 ms
-2026-04-05T22:38:50.901+05:30  INFO 32884 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@4c24f3a2], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@783b3aa0, com.mongodb.Jep395RecordCodecProvider@2ec85a25, com.mongodb.KotlinCodecProvider@4c176ff1]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@27c53c32], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T22:38:50.954+05:30  INFO 32884 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=37604900, minRoundTripTimeNanos=0}
-2026-04-05T22:38:53.365+05:30  INFO 32884 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T22:38:54.607+05:30  INFO 32884 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T22:38:54.643+05:30  INFO 32884 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 8.481 seconds (process running for 9.005)
-2026-04-05T22:39:53.837+05:30  INFO 32884 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T22:39:53.837+05:30  INFO 32884 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T22:39:53.841+05:30  INFO 32884 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-^C[INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T23:00:39.097+05:30  INFO 25596 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 25596 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T23:00:39.100+05:30  INFO 25596 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T23:00:40.175+05:30  INFO 25596 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T23:00:40.259+05:30  INFO 25596 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T23:00:41.011+05:30  INFO 25596 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T23:00:41.024+05:30  INFO 25596 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T23:00:41.026+05:30  INFO 25596 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T23:00:41.121+05:30  INFO 25596 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T23:00:41.124+05:30  INFO 25596 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1977 ms
-2026-04-05T23:00:41.709+05:30  INFO 25596 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@3e6748ae], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@28f154cc, com.mongodb.Jep395RecordCodecProvider@3030836d, com.mongodb.KotlinCodecProvider@6af78a48]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@6ed18d80], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T23:00:41.748+05:30  INFO 25596 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=30365300, minRoundTripTimeNanos=0}
-2026-04-05T23:00:43.741+05:30  INFO 25596 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T23:00:44.457+05:30  INFO 25596 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T23:00:44.484+05:30  INFO 25596 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.881 seconds (process running for 6.343)
-2026-04-05T23:01:24.154+05:30  INFO 25596 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T23:01:24.155+05:30  INFO 25596 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T23:01:24.160+05:30  INFO 25596 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  06:12 min
-[INFO] Finished at: 2026-04-05T23:06:46+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project chat-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 1 6 . 7 0 6 3 0 9 0 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- [ I N F O ]   S c a n n i n g   f o r   p r o j e c t s . . .  
- [ I N F O ]    
- [ I N F O ]   - - - - - - - - - - - - - - <   c o m . f i x l o c a l . m i c r o s e r v i c e s : c h a t - s e r v i c e   > - - - - - - - - - - - - - - -  
- [ I N F O ]   B u i l d i n g   f i x l o c a l - c h a t - s e r v i c e   0 . 0 . 1 - S N A P S H O T  
- [ I N F O ]       f r o m   p o m . x m l  
- [ I N F O ]   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [   j a r   ] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
- [ I N F O ]    
- [ I N F O ]   > > >   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   >   t e s t - c o m p i l e   @   c h a t - s e r v i c e   > > >  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : r e s o u r c e s   ( d e f a u l t - r e s o u r c e s )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   C o p y i n g   1   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]   C o p y i n g   0   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : c o m p i l e   ( d e f a u l t - c o m p i l e )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   N o t h i n g   t o   c o m p i l e   -   a l l   c l a s s e s   a r e   u p   t o   d a t e .  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : t e s t R e s o u r c e s   ( d e f a u l t - t e s t R e s o u r c e s )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o p y i n g   t e s t   r e s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : t e s t C o m p i l e   ( d e f a u l t - t e s t C o m p i l e )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o m p i l i n g   t e s t   s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   < < <   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   <   t e s t - c o m p i l e   @   c h a t - s e r v i c e   < < <  
- [ I N F O ]    
- [ I N F O ]    
- [ I N F O ]   - - -   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   A t t a c h i n g   a g e n t s :   [ ]  
-  
-     .       _ _ _ _                     _                         _ _   _   _  
-   / \ \   /   _ _ _ ' _   _ _   _   _ ( _ ) _   _ _     _ _   _   \   \   \   \  
- (   (   ) \ _ _ _   |   ' _   |   ' _ |   |   ' _   \ /   _ `   |   \   \   \   \  
-   \ \ /     _ _ _ ) |   | _ ) |   |   |   |   |   | |   ( _ |   |     )   )   )   )  
-     '     | _ _ _ _ |   . _ _ | _ |   | _ | _ |   | _ \ _ _ ,   |   /   /   /   /  
-   = = = = = = = = = | _ | = = = = = = = = = = = = = = | _ _ _ / = / _ / _ / _ /  
-  
-   : :   S p r i n g   B o o t   : :                               ( v 3 . 5 . 1 0 )  
-  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 2 . 8 4 8 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t i n g   F i x L o c a l A p p l i c a t i o n   u s i n g   J a v a   1 7 . 0 . 1 2   w i t h   P I D   2 8 9 8 0   ( C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ c h a t - s e r v i c e \ t a r g e t \ c l a s s e s   s t a r t e d   b y   i l k h a n   i n   C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ c h a t - s e r v i c e )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 2 . 8 5 1 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   N o   a c t i v e   p r o f i l e   s e t ,   f a l l i n g   b a c k   t o   1   d e f a u l t   p r o f i l e :   " d e f a u l t "  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 3 . 9 7 3 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   B o o t s t r a p p i n g   S p r i n g   D a t a   M o n g o D B   r e p o s i t o r i e s   i n   D E F A U L T   m o d e .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 4 . 0 6 4 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   F i n i s h e d   S p r i n g   D a t a   r e p o s i t o r y   s c a n n i n g   i n   8 3   m s .   F o u n d   4   M o n g o D B   r e p o s i t o r y   i n t e r f a c e s .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 4 . 8 5 4 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   i n i t i a l i z e d   w i t h   p o r t   8 0 8 5   ( h t t p )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 4 . 8 6 7 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d S e r v i c e       :   S t a r t i n g   s e r v i c e   [ T o m c a t ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 4 . 8 6 8 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d E n g i n e         :   S t a r t i n g   S e r v l e t   e n g i n e :   [ A p a c h e   T o m c a t / 1 0 . 1 . 5 0 ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 4 . 9 4 4 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   e m b e d d e d   W e b A p p l i c a t i o n C o n t e x t  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 4 . 9 4 5 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   w . s . c . S e r v l e t W e b S e r v e r A p p l i c a t i o n C o n t e x t   :   R o o t   W e b A p p l i c a t i o n C o n t e x t :   i n i t i a l i z a t i o n   c o m p l e t e d   i n   2 0 4 5   m s  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 5 . 3 2 3 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o r g . m o n g o d b . d r i v e r . c l i e n t                                 :   M o n g o C l i e n t   w i t h   m e t a d a t a   { " d r i v e r " :   { " n a m e " :   " m o n g o - j a v a - d r i v e r | s y n c | s p r i n g - b o o t " ,   " v e r s i o n " :   " 5 . 5 . 2 " } ,   " o s " :   { " t y p e " :   " W i n d o w s " ,   " n a m e " :   " W i n d o w s   1 1 " ,   " a r c h i t e c t u r e " :   " a m d 6 4 " ,   " v e r s i o n " :   " 1 0 . 0 " } ,   " p l a t f o r m " :   " J a v a / O r a c l e   C o r p o r a t i o n / 1 7 . 0 . 1 2 + 8 - L T S - 2 8 6 " }   c r e a t e d   w i t h   s e t t i n g s   M o n g o C l i e n t S e t t i n g s { r e a d P r e f e r e n c e = p r i m a r y ,   w r i t e C o n c e r n = W r i t e C o n c e r n { w = n u l l ,   w T i m e o u t = n u l l   m s ,   j o u r n a l = n u l l } ,   r e t r y W r i t e s = t r u e ,   r e t r y R e a d s = t r u e ,   r e a d C o n c e r n = R e a d C o n c e r n { l e v e l = n u l l } ,   c r e d e n t i a l = n u l l ,   t r a n s p o r t S e t t i n g s = n u l l ,   c o m m a n d L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o m m a n d L i s t e n e r @ 2 8 f 1 5 4 c c ] ,   c o d e c R e g i s t r y = P r o v i d e r s C o d e c R e g i s t r y { c o d e c P r o v i d e r s = [ V a l u e C o d e c P r o v i d e r { } ,   B s o n V a l u e C o d e c P r o v i d e r { } ,   D B R e f C o d e c P r o v i d e r { } ,   D B O b j e c t C o d e c P r o v i d e r { } ,   D o c u m e n t C o d e c P r o v i d e r { } ,   C o l l e c t i o n C o d e c P r o v i d e r { } ,   I t e r a b l e C o d e c P r o v i d e r { } ,   M a p C o d e c P r o v i d e r { } ,   G e o J s o n C o d e c P r o v i d e r { } ,   G r i d F S F i l e C o d e c P r o v i d e r { } ,   J s r 3 1 0 C o d e c P r o v i d e r { } ,   J s o n O b j e c t C o d e c P r o v i d e r { } ,   B s o n C o d e c P r o v i d e r { } ,   E n u m C o d e c P r o v i d e r { } ,   c o m . m o n g o d b . c l i e n t . m o d e l . m q l . E x p r e s s i o n C o d e c P r o v i d e r @ 3 0 3 0 8 3 6 d ,   c o m . m o n g o d b . J e p 3 9 5 R e c o r d C o d e c P r o v i d e r @ 6 a f 7 8 a 4 8 ,   c o m . m o n g o d b . K o t l i n C o d e c P r o v i d e r @ 6 e d 1 8 d 8 0 ] } ,   l o g g e r S e t t i n g s = L o g g e r S e t t i n g s { m a x D o c u m e n t L e n g t h = 1 0 0 0 } ,   c l u s t e r S e t t i n g s = { h o s t s = [ l o c a l h o s t : 2 7 0 1 7 ] ,   s r v S e r v i c e N a m e = m o n g o d b ,   m o d e = S I N G L E ,   r e q u i r e d C l u s t e r T y p e = U N K N O W N ,   r e q u i r e d R e p l i c a S e t N a m e = ' n u l l ' ,   s e r v e r S e l e c t o r = ' n u l l ' ,   c l u s t e r L i s t e n e r s = ' [ ] ' ,   s e r v e r S e l e c t i o n T i m e o u t = ' 3 0 0 0 0   m s ' ,   l o c a l T h r e s h o l d = ' 1 5   m s ' } ,   s o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   h e a r t b e a t S o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 1 0 0 0 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   c o n n e c t i o n P o o l S e t t i n g s = C o n n e c t i o n P o o l S e t t i n g s { m a x S i z e = 1 0 0 ,   m i n S i z e = 0 ,   m a x W a i t T i m e M S = 1 2 0 0 0 0 ,   m a x C o n n e c t i o n L i f e T i m e M S = 0 ,   m a x C o n n e c t i o n I d l e T i m e M S = 0 ,   m a i n t e n a n c e I n i t i a l D e l a y M S = 0 ,   m a i n t e n a n c e F r e q u e n c y M S = 6 0 0 0 0 ,   c o n n e c t i o n P o o l L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o n n e c t i o n P o o l L i s t e n e r @ 4 c 2 4 f 3 a 2 ] ,   m a x C o n n e c t i n g = 2 } ,   s e r v e r S e t t i n g s = S e r v e r S e t t i n g s { h e a r t b e a t F r e q u e n c y M S = 1 0 0 0 0 ,   m i n H e a r t b e a t F r e q u e n c y M S = 5 0 0 ,   s e r v e r M o n i t o r i n g M o d e = A U T O ,   s e r v e r L i s t e n e r s = ' [ ] ' ,   s e r v e r M o n i t o r L i s t e n e r s = ' [ ] ' } ,   s s l S e t t i n g s = S s l S e t t i n g s { e n a b l e d = f a l s e ,   i n v a l i d H o s t N a m e A l l o w e d = f a l s e ,   c o n t e x t = n u l l } ,   a p p l i c a t i o n N a m e = ' n u l l ' ,   c o m p r e s s o r L i s t = [ ] ,   u u i d R e p r e s e n t a t i o n = J A V A _ L E G A C Y ,   s e r v e r A p i = n u l l ,   a u t o E n c r y p t i o n S e t t i n g s = n u l l ,   d n s C l i e n t = n u l l ,   i n e t A d d r e s s R e s o l v e r = n u l l ,   c o n t e x t P r o v i d e r = n u l l ,   t i m e o u t M S = n u l l }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 5 . 3 4 7 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [ l o c a l h o s t : 2 7 0 1 7 ]   o r g . m o n g o d b . d r i v e r . c l u s t e r                               :   M o n i t o r   t h r e a d   s u c c e s s f u l l y   c o n n e c t e d   t o   s e r v e r   w i t h   d e s c r i p t i o n   S e r v e r D e s c r i p t i o n { a d d r e s s = l o c a l h o s t : 2 7 0 1 7 ,   t y p e = S T A N D A L O N E ,   c r y p t d = f a l s e ,   s t a t e = C O N N E C T E D ,   o k = t r u e ,   m i n W i r e V e r s i o n = 0 ,   m a x W i r e V e r s i o n = 2 7 ,   m a x D o c u m e n t S i z e = 1 6 7 7 7 2 1 6 ,   l o g i c a l S e s s i o n T i m e o u t M i n u t e s = 3 0 ,   r o u n d T r i p T i m e N a n o s = 2 0 0 0 3 9 0 0 ,   m i n R o u n d T r i p T i m e N a n o s = 0 }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 6 . 5 1 5 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . s . b . a . e . w e b . E n d p o i n t L i n k s R e s o l v e r             :   E x p o s i n g   2   e n d p o i n t s   b e n e a t h   b a s e   p a t h   ' / a c t u a t o r '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 6 . 9 9 0 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   s t a r t e d   o n   p o r t   8 0 8 5   ( h t t p )   w i t h   c o n t e x t   p a t h   ' / '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 2 7 . 0 1 3 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t e d   F i x L o c a l A p p l i c a t i o n   i n   4 . 7 1 9   s e c o n d s   ( p r o c e s s   r u n n i n g   f o r   5 . 1 6 3 )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 7 . 8 4 4 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [ n i o - 8 0 8 5 - e x e c - 1 ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   D i s p a t c h e r S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 7 . 8 4 4 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [ n i o - 8 0 8 5 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   I n i t i a l i z i n g   S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 7 : 5 7 . 8 4 5 + 0 5 : 3 0     I N F O   2 8 9 8 0   - - -   [ c h a t - s e r v i c e ]   [ n i o - 8 0 8 5 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   C o m p l e t e d   i n i t i a l i z a t i o n   i n   1   m s  
- [ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 9 : 5 2 . 8 5 4 1 2 3 8 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- [ I N F O ]   S c a n n i n g   f o r   p r o j e c t s . . .  
- [ I N F O ]    
- [ I N F O ]   - - - - - - - - - - - - - - <   c o m . f i x l o c a l . m i c r o s e r v i c e s : c h a t - s e r v i c e   > - - - - - - - - - - - - - - -  
- [ I N F O ]   B u i l d i n g   f i x l o c a l - c h a t - s e r v i c e   0 . 0 . 1 - S N A P S H O T  
- [ I N F O ]       f r o m   p o m . x m l  
- [ I N F O ]   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - [   j a r   ] - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  
- [ I N F O ]    
- [ I N F O ]   > > >   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   >   t e s t - c o m p i l e   @   c h a t - s e r v i c e   > > >  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : r e s o u r c e s   ( d e f a u l t - r e s o u r c e s )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   C o p y i n g   1   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]   C o p y i n g   0   r e s o u r c e   f r o m   s r c \ m a i n \ r e s o u r c e s   t o   t a r g e t \ c l a s s e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : c o m p i l e   ( d e f a u l t - c o m p i l e )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   N o t h i n g   t o   c o m p i l e   -   a l l   c l a s s e s   a r e   u p   t o   d a t e .  
- [ I N F O ]    
- [ I N F O ]   - - -   r e s o u r c e s : 3 . 3 . 1 : t e s t R e s o u r c e s   ( d e f a u l t - t e s t R e s o u r c e s )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o p y i n g   t e s t   r e s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   - - -   c o m p i l e r : 3 . 1 4 . 1 : t e s t C o m p i l e   ( d e f a u l t - t e s t C o m p i l e )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   N o t   c o m p i l i n g   t e s t   s o u r c e s  
- [ I N F O ]    
- [ I N F O ]   < < <   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   <   t e s t - c o m p i l e   @   c h a t - s e r v i c e   < < <  
- [ I N F O ]    
- [ I N F O ]    
- [ I N F O ]   - - -   s p r i n g - b o o t : 3 . 5 . 1 0 : r u n   ( d e f a u l t - c l i )   @   c h a t - s e r v i c e   - - -  
- [ I N F O ]   A t t a c h i n g   a g e n t s :   [ ]  
-  
-     .       _ _ _ _                     _                         _ _   _   _  
-   / \ \   /   _ _ _ ' _   _ _   _   _ ( _ ) _   _ _     _ _   _   \   \   \   \  
- (   (   ) \ _ _ _   |   ' _   |   ' _ |   |   ' _   \ /   _ `   |   \   \   \   \  
-   \ \ /     _ _ _ ) |   | _ ) |   |   |   |   |   | |   ( _ |   |     )   )   )   )  
-     '     | _ _ _ _ |   . _ _ | _ |   | _ | _ |   | _ \ _ _ ,   |   /   /   /   /  
-   = = = = = = = = = | _ | = = = = = = = = = = = = = = | _ _ _ / = / _ / _ / _ /  
-  
-   : :   S p r i n g   B o o t   : :                               ( v 3 . 5 . 1 0 )  
-  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 9 : 5 9 . 2 6 7 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t i n g   F i x L o c a l A p p l i c a t i o n   u s i n g   J a v a   1 7 . 0 . 1 2   w i t h   P I D   3 3 2 2 0   ( C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ c h a t - s e r v i c e \ t a r g e t \ c l a s s e s   s t a r t e d   b y   i l k h a n   i n   C : \ U s e r s \ i l k h a n \ D e s k t o p \ F i x L o c a l \ m i c r o s e r v i c e s \ c h a t - s e r v i c e )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 0 9 : 5 9 . 2 7 1 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   N o   a c t i v e   p r o f i l e   s e t ,   f a l l i n g   b a c k   t o   1   d e f a u l t   p r o f i l e :   " d e f a u l t "  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 0 . 5 9 1 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   B o o t s t r a p p i n g   S p r i n g   D a t a   M o n g o D B   r e p o s i t o r i e s   i n   D E F A U L T   m o d e .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 0 . 6 7 5 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   . s . d . r . c . R e p o s i t o r y C o n f i g u r a t i o n D e l e g a t e   :   F i n i s h e d   S p r i n g   D a t a   r e p o s i t o r y   s c a n n i n g   i n   7 5   m s .   F o u n d   4   M o n g o D B   r e p o s i t o r y   i n t e r f a c e s .  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 1 . 4 5 3 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   i n i t i a l i z e d   w i t h   p o r t   8 0 8 5   ( h t t p )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 1 . 4 7 1 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d S e r v i c e       :   S t a r t i n g   s e r v i c e   [ T o m c a t ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 1 . 4 7 2 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . a p a c h e . c a t a l i n a . c o r e . S t a n d a r d E n g i n e         :   S t a r t i n g   S e r v l e t   e n g i n e :   [ A p a c h e   T o m c a t / 1 0 . 1 . 5 0 ]  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 1 . 5 7 6 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   e m b e d d e d   W e b A p p l i c a t i o n C o n t e x t  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 1 . 5 7 8 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   w . s . c . S e r v l e t W e b S e r v e r A p p l i c a t i o n C o n t e x t   :   R o o t   W e b A p p l i c a t i o n C o n t e x t :   i n i t i a l i z a t i o n   c o m p l e t e d   i n   2 2 4 7   m s  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 2 . 0 6 0 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o r g . m o n g o d b . d r i v e r . c l i e n t                                 :   M o n g o C l i e n t   w i t h   m e t a d a t a   { " d r i v e r " :   { " n a m e " :   " m o n g o - j a v a - d r i v e r | s y n c | s p r i n g - b o o t " ,   " v e r s i o n " :   " 5 . 5 . 2 " } ,   " o s " :   { " t y p e " :   " W i n d o w s " ,   " n a m e " :   " W i n d o w s   1 1 " ,   " a r c h i t e c t u r e " :   " a m d 6 4 " ,   " v e r s i o n " :   " 1 0 . 0 " } ,   " p l a t f o r m " :   " J a v a / O r a c l e   C o r p o r a t i o n / 1 7 . 0 . 1 2 + 8 - L T S - 2 8 6 " }   c r e a t e d   w i t h   s e t t i n g s   M o n g o C l i e n t S e t t i n g s { r e a d P r e f e r e n c e = p r i m a r y ,   w r i t e C o n c e r n = W r i t e C o n c e r n { w = n u l l ,   w T i m e o u t = n u l l   m s ,   j o u r n a l = n u l l } ,   r e t r y W r i t e s = t r u e ,   r e t r y R e a d s = t r u e ,   r e a d C o n c e r n = R e a d C o n c e r n { l e v e l = n u l l } ,   c r e d e n t i a l = n u l l ,   t r a n s p o r t S e t t i n g s = n u l l ,   c o m m a n d L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o m m a n d L i s t e n e r @ 3 0 3 0 8 3 6 d ] ,   c o d e c R e g i s t r y = P r o v i d e r s C o d e c R e g i s t r y { c o d e c P r o v i d e r s = [ V a l u e C o d e c P r o v i d e r { } ,   B s o n V a l u e C o d e c P r o v i d e r { } ,   D B R e f C o d e c P r o v i d e r { } ,   D B O b j e c t C o d e c P r o v i d e r { } ,   D o c u m e n t C o d e c P r o v i d e r { } ,   C o l l e c t i o n C o d e c P r o v i d e r { } ,   I t e r a b l e C o d e c P r o v i d e r { } ,   M a p C o d e c P r o v i d e r { } ,   G e o J s o n C o d e c P r o v i d e r { } ,   G r i d F S F i l e C o d e c P r o v i d e r { } ,   J s r 3 1 0 C o d e c P r o v i d e r { } ,   J s o n O b j e c t C o d e c P r o v i d e r { } ,   B s o n C o d e c P r o v i d e r { } ,   E n u m C o d e c P r o v i d e r { } ,   c o m . m o n g o d b . c l i e n t . m o d e l . m q l . E x p r e s s i o n C o d e c P r o v i d e r @ 6 a f 7 8 a 4 8 ,   c o m . m o n g o d b . J e p 3 9 5 R e c o r d C o d e c P r o v i d e r @ 6 e d 1 8 d 8 0 ,   c o m . m o n g o d b . K o t l i n C o d e c P r o v i d e r @ 4 c 2 4 f 3 a 2 ] } ,   l o g g e r S e t t i n g s = L o g g e r S e t t i n g s { m a x D o c u m e n t L e n g t h = 1 0 0 0 } ,   c l u s t e r S e t t i n g s = { h o s t s = [ l o c a l h o s t : 2 7 0 1 7 ] ,   s r v S e r v i c e N a m e = m o n g o d b ,   m o d e = S I N G L E ,   r e q u i r e d C l u s t e r T y p e = U N K N O W N ,   r e q u i r e d R e p l i c a S e t N a m e = ' n u l l ' ,   s e r v e r S e l e c t o r = ' n u l l ' ,   c l u s t e r L i s t e n e r s = ' [ ] ' ,   s e r v e r S e l e c t i o n T i m e o u t = ' 3 0 0 0 0   m s ' ,   l o c a l T h r e s h o l d = ' 1 5   m s ' } ,   s o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   h e a r t b e a t S o c k e t S e t t i n g s = S o c k e t S e t t i n g s { c o n n e c t T i m e o u t M S = 1 0 0 0 0 ,   r e a d T i m e o u t M S = 1 0 0 0 0 ,   r e c e i v e B u f f e r S i z e = 0 ,   p r o x y S e t t i n g s = P r o x y S e t t i n g s { h o s t = n u l l ,   p o r t = n u l l ,   u s e r n a m e = n u l l ,   p a s s w o r d = n u l l } } ,   c o n n e c t i o n P o o l S e t t i n g s = C o n n e c t i o n P o o l S e t t i n g s { m a x S i z e = 1 0 0 ,   m i n S i z e = 0 ,   m a x W a i t T i m e M S = 1 2 0 0 0 0 ,   m a x C o n n e c t i o n L i f e T i m e M S = 0 ,   m a x C o n n e c t i o n I d l e T i m e M S = 0 ,   m a i n t e n a n c e I n i t i a l D e l a y M S = 0 ,   m a i n t e n a n c e F r e q u e n c y M S = 6 0 0 0 0 ,   c o n n e c t i o n P o o l L i s t e n e r s = [ i o . m i c r o m e t e r . c o r e . i n s t r u m e n t . b i n d e r . m o n g o d b . M o n g o M e t r i c s C o n n e c t i o n P o o l L i s t e n e r @ 7 8 3 b 3 a a 0 ] ,   m a x C o n n e c t i n g = 2 } ,   s e r v e r S e t t i n g s = S e r v e r S e t t i n g s { h e a r t b e a t F r e q u e n c y M S = 1 0 0 0 0 ,   m i n H e a r t b e a t F r e q u e n c y M S = 5 0 0 ,   s e r v e r M o n i t o r i n g M o d e = A U T O ,   s e r v e r L i s t e n e r s = ' [ ] ' ,   s e r v e r M o n i t o r L i s t e n e r s = ' [ ] ' } ,   s s l S e t t i n g s = S s l S e t t i n g s { e n a b l e d = f a l s e ,   i n v a l i d H o s t N a m e A l l o w e d = f a l s e ,   c o n t e x t = n u l l } ,   a p p l i c a t i o n N a m e = ' n u l l ' ,   c o m p r e s s o r L i s t = [ ] ,   u u i d R e p r e s e n t a t i o n = J A V A _ L E G A C Y ,   s e r v e r A p i = n u l l ,   a u t o E n c r y p t i o n S e t t i n g s = n u l l ,   d n s C l i e n t = n u l l ,   i n e t A d d r e s s R e s o l v e r = n u l l ,   c o n t e x t P r o v i d e r = n u l l ,   t i m e o u t M S = n u l l }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 2 . 0 9 7 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [ l o c a l h o s t : 2 7 0 1 7 ]   o r g . m o n g o d b . d r i v e r . c l u s t e r                               :   M o n i t o r   t h r e a d   s u c c e s s f u l l y   c o n n e c t e d   t o   s e r v e r   w i t h   d e s c r i p t i o n   S e r v e r D e s c r i p t i o n { a d d r e s s = l o c a l h o s t : 2 7 0 1 7 ,   t y p e = S T A N D A L O N E ,   c r y p t d = f a l s e ,   s t a t e = C O N N E C T E D ,   o k = t r u e ,   m i n W i r e V e r s i o n = 0 ,   m a x W i r e V e r s i o n = 2 7 ,   m a x D o c u m e n t S i z e = 1 6 7 7 7 2 1 6 ,   l o g i c a l S e s s i o n T i m e o u t M i n u t e s = 3 0 ,   r o u n d T r i p T i m e N a n o s = 2 9 5 4 9 0 0 0 ,   m i n R o u n d T r i p T i m e N a n o s = 0 }  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 3 . 3 2 6 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . s . b . a . e . w e b . E n d p o i n t L i n k s R e s o l v e r             :   E x p o s i n g   2   e n d p o i n t s   b e n e a t h   b a s e   p a t h   ' / a c t u a t o r '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 3 . 7 8 2 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   o . s . b . w . e m b e d d e d . t o m c a t . T o m c a t W e b S e r v e r     :   T o m c a t   s t a r t e d   o n   p o r t   8 0 8 5   ( h t t p )   w i t h   c o n t e x t   p a t h   ' / '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 0 : 0 3 . 8 0 5 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [                       m a i n ]   c o m . f i x l o c a l . F i x L o c a l A p p l i c a t i o n                   :   S t a r t e d   F i x L o c a l A p p l i c a t i o n   i n   5 . 1 3 1   s e c o n d s   ( p r o c e s s   r u n n i n g   f o r   5 . 5 4 1 )  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 0 . 5 0 4 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [ n i o - 8 0 8 5 - e x e c - 1 ]   o . a . c . c . C . [ T o m c a t ] . [ l o c a l h o s t ] . [ / ]               :   I n i t i a l i z i n g   S p r i n g   D i s p a t c h e r S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 0 . 5 0 5 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [ n i o - 8 0 8 5 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   I n i t i a l i z i n g   S e r v l e t   ' d i s p a t c h e r S e r v l e t '  
- 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 1 : 1 0 . 5 0 7 + 0 5 : 3 0     I N F O   3 3 2 2 0   - - -   [ c h a t - s e r v i c e ]   [ n i o - 8 0 8 5 - e x e c - 1 ]   o . s . w e b . s e r v l e t . D i s p a t c h e r S e r v l e t                 :   C o m p l e t e d   i n i t i a l i z a t i o n   i n   2   m s  
- [ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 1 9 : 3 1 . 7 8 6 7 2 6 5 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T23:19:38.346+05:30  INFO 22048 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 22048 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T23:19:38.349+05:30  INFO 22048 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T23:19:39.543+05:30  INFO 22048 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T23:19:39.637+05:30  INFO 22048 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 83 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T23:19:40.462+05:30  INFO 22048 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T23:19:40.482+05:30  INFO 22048 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T23:19:40.483+05:30  INFO 22048 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T23:19:40.578+05:30  INFO 22048 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T23:19:40.580+05:30  INFO 22048 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2178 ms
-2026-04-05T23:19:41.030+05:30  INFO 22048 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@44fd7ba4], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@22f8adc2, com.mongodb.Jep395RecordCodecProvider@69d103f0, com.mongodb.KotlinCodecProvider@5b742bc8]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@74fb5b59], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T23:19:41.071+05:30  INFO 22048 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=33044400, minRoundTripTimeNanos=0}
-2026-04-05T23:19:42.551+05:30  INFO 22048 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T23:19:43.025+05:30  INFO 22048 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T23:19:43.042+05:30  INFO 22048 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.299 seconds (process running for 5.719)
-2026-04-05T23:20:47.691+05:30  INFO 22048 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T23:20:47.691+05:30  INFO 22048 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T23:20:47.693+05:30  INFO 22048 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  02:11 min
-[INFO] Finished at: 2026-04-05T23:21:45+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project chat-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[ 2 0 2 6 - 0 4 - 0 5 T 2 3 : 2 2 : 1 2 . 3 3 7 8 6 4 2 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-05T23:22:19.312+05:30  INFO 36000 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 36000 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-05T23:22:19.316+05:30  INFO 36000 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-05T23:22:20.494+05:30  INFO 36000 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-05T23:22:20.591+05:30  INFO 36000 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 4 MongoDB repository interfaces.
-2026-04-05T23:22:21.462+05:30  INFO 36000 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-05T23:22:21.482+05:30  INFO 36000 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-05T23:22:21.482+05:30  INFO 36000 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-05T23:22:21.591+05:30  INFO 36000 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-05T23:22:21.592+05:30  INFO 36000 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2216 ms
-2026-04-05T23:22:22.051+05:30  INFO 36000 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@3e6748ae], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@28f154cc, com.mongodb.Jep395RecordCodecProvider@3030836d, com.mongodb.KotlinCodecProvider@6af78a48]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@6ed18d80], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-05T23:22:22.093+05:30  INFO 36000 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=36647300, minRoundTripTimeNanos=0}
-2026-04-05T23:22:23.368+05:30  INFO 36000 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-05T23:22:23.962+05:30  INFO 36000 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-05T23:22:23.997+05:30  INFO 36000 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.53 seconds (process running for 6.039)
-2026-04-05T23:23:27.999+05:30  INFO 36000 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-05T23:23:28.000+05:30  INFO 36000 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-05T23:23:28.001+05:30  INFO 36000 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2026-04-05T23:27:07.267+05:30  WARN 36000 --- [chat-service] [nio-8085-exec-4] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
-	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
-	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
-
-[ 2 0 2 6 - 0 4 - 0 6 T 2 3 : 0 7 : 4 4 . 8 8 7 1 1 6 1 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Nothing to compile - all classes are up to date.
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-06T23:07:51.598+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 26672 (C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\microservices\chat-service)
-2026-04-06T23:07:51.602+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-06T23:07:52.845+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-06T23:07:52.936+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 4 MongoDB repository interfaces.
-2026-04-06T23:07:53.736+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-06T23:07:53.754+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-06T23:07:53.755+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-06T23:07:53.836+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-06T23:07:53.837+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2179 ms
-2026-04-06T23:07:54.206+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@6f315b08], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@6c8efde4, com.mongodb.Jep395RecordCodecProvider@24e5389c, com.mongodb.KotlinCodecProvider@3b170235]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@5e9bf744], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-06T23:07:54.236+05:30  INFO [corr:na] 26672 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=22259200, minRoundTripTimeNanos=0}
-2026-04-06T23:07:55.412+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-06T23:07:56.093+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-06T23:07:56.113+05:30  INFO [corr:na] 26672 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 5.101 seconds (process running for 5.475)
-2026-04-06T23:08:21.474+05:30  INFO [corr:na] 26672 --- [chat-service] [nio-8085-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-06T23:08:21.474+05:30  INFO [corr:na] 26672 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-06T23:08:21.476+05:30  INFO [corr:na] 26672 --- [chat-service] [nio-8085-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2026-04-06T23:13:48.603+05:30  WARN [corr:fee16aff-871c-415b-8410-c5f649121eb3] 26672 --- [chat-service] [io-8085-exec-10] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
-	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
-	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
-
-2026-04-06T23:15:20.476+05:30  WARN [corr:752f355d-20d1-4bcd-9d15-675d97b96653] 26672 --- [chat-service] [nio-8085-exec-8] c.f.exception.GlobalExceptionHandler     : Validation error: content: Message content cannot be empty
-[ 2 0 2 6 - 0 4 - 0 7 T 0 0 : 0 3 : 4 8 . 2 7 0 3 4 9 9 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- [INFO] Scanning for projects...
-[INFO] 
-[INFO] --------------< com.fixlocal.microservices:chat-service >---------------
-[INFO] Building fixlocal-chat-service 0.0.1-SNAPSHOT
-[INFO]   from pom.xml
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO] 
-[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ chat-service >>>
-[INFO] 
-[INFO] --- resources:3.3.1:resources (default-resources) @ chat-service ---
-[INFO] Copying 1 resource from src\main\resources to target\classes
-[INFO] Copying 0 resource from src\main\resources to target\classes
-[INFO] 
-[INFO] --- compiler:3.14.1:compile (default-compile) @ chat-service ---
-[INFO] Recompiling the module because of added or removed source files.
-[INFO] Compiling 26 source files with javac [debug parameters release 17] to target\classes
-[INFO] 
-[INFO] --- resources:3.3.1:testResources (default-testResources) @ chat-service ---
-[INFO] Not copying test resources
-[INFO] 
-[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ chat-service ---
-[INFO] Not compiling test sources
-[INFO] 
-[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ chat-service <<<
-[INFO] 
-[INFO] 
-[INFO] --- spring-boot:3.5.10:run (default-cli) @ chat-service ---
-[INFO] Attaching agents: []
-
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
-
- :: Spring Boot ::               (v3.5.10)
-
-2026-04-07T00:04:06.500+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Starting FixLocalApplication using Java 17.0.12 with PID 26928 (C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service)
-2026-04-07T00:04:06.505+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : No active profile set, falling back to 1 default profile: "default"
-2026-04-07T00:04:09.160+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2026-04-07T00:04:09.354+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 179 ms. Found 4 MongoDB repository interfaces.
-2026-04-07T00:04:11.595+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8085 (http)
-2026-04-07T00:04:11.635+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-04-07T00:04:11.635+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
-2026-04-07T00:04:11.787+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-04-07T00:04:11.789+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5204 ms
-2026-04-07T00:04:12.704+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@5a47730c], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@15369d73, com.mongodb.Jep395RecordCodecProvider@1cde374, com.mongodb.KotlinCodecProvider@6818fd48]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@9263c54], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
-2026-04-07T00:04:12.761+05:30  INFO [corr:na] 26928 --- [chat-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=40343700, minRoundTripTimeNanos=0}
-2026-04-07T00:04:15.596+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
-2026-04-07T00:04:17.056+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8085 (http) with context path '/'
-2026-04-07T00:04:17.101+05:30  INFO [corr:na] 26928 --- [chat-service] [           main] com.fixlocal.FixLocalApplication         : Started FixLocalApplication in 11.862 seconds (process running for 12.775)
-2026-04-07T00:04:42.828+05:30  INFO [corr:na] 26928 --- [chat-service] [nio-8085-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-04-07T00:04:42.828+05:30  INFO [corr:na] 26928 --- [chat-service] [nio-8085-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-04-07T00:04:42.831+05:30  INFO [corr:na] 26928 --- [chat-service] [nio-8085-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time:  10:07 min
-[INFO] Finished at: 2026-04-07T00:13:59+05:30
-[INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project chat-service: Process terminated with exit code: -1 -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-[ 2 0 2 6 - 0 4 - 0 7 T 0 0 : 1 4 : 2 9 . 3 8 4 3 6 4 9 + 0 5 : 3 0 ]   S t a r t i n g   c h a t - s e r v i c e  
- 

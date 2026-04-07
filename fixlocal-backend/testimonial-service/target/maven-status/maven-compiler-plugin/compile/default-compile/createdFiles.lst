@@ -1,0 +1,4 @@
+com\fixlocal\entity\Testimonial.class
+com\fixlocal\entity\Testimonial$TestimonialBuilder.class
+com\fixlocal\enums\Role.class
+com\fixlocal\service\impl\TestimonialServiceImpl.class

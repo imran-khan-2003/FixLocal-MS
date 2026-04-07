@@ -2,7 +2,7 @@ package com.fixlocal.config;
 
 import com.fixlocal.security.JwtService;
 import com.fixlocal.repository.UserRepository;
-import com.fixlocal.model.User;
+import com.fixlocal.entity.User;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

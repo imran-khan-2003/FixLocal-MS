@@ -1,0 +1,10 @@
+com\fixlocal\entity\ServiceOffering$ServiceOfferingBuilder.class
+com\fixlocal\entity\Notification.class
+com\fixlocal\enums\Role.class
+com\fixlocal\enums\NotificationType.class
+com\fixlocal\enums\Status.class
+com\fixlocal\entity\ServiceOffering.class
+com\fixlocal\entity\User$UserBuilder.class
+com\fixlocal\entity\Notification$NotificationBuilder.class
+com\fixlocal\entity\User.class
+com\fixlocal\service\impl\NotificationServiceImpl.class

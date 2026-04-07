@@ -1,6 +1,6 @@
 package com.fixlocal.repository;
 
-import com.fixlocal.model.ChatMessage;
+import com.fixlocal.entity.ChatMessage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.MongoRepository;
