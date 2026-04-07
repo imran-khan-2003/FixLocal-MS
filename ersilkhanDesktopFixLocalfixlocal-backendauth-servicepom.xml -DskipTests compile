@@ -1,6 +1,0 @@
-warning: in the working copy of 'fixlocal-backend/admin-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'fixlocal-backend/auth-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'fixlocal-backend/booking-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'fixlocal-backend/chat-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'fixlocal-backend/common-lib/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst', LF will be replaced by CRLF the next time Git touches it
-warning: in the working copy of 'fixlocal-backend/dispute-service/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst', LF will be replaced by CRLF the next time Git touches it
