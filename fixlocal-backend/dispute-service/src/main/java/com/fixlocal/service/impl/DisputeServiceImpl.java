@@ -5,6 +5,7 @@ import com.fixlocal.service.DisputeService;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -256,25 +257,77 @@ public class DisputeServiceImpl implements DisputeService {
             return null;
         }
 
+        String bookingUserId = getString(booking, "userId");
+        String bookingTradespersonId = getString(booking, "tradespersonId");
         String reporterId = dispute.getReporterId();
+
         if (reporter != null) {
-            if (Objects.equals(getString(reporter, "id"), getString(booking, "userId"))) {
-                return resolveUser(getString(booking, "tradespersonId"), cache);
+            String reporterUserId = getString(reporter, "id");
+            if (Objects.equals(reporterUserId, bookingUserId)) {
+                return resolveUser(bookingTradespersonId, cache);
             }
-            if (Objects.equals(getString(reporter, "id"), getString(booking, "tradespersonId"))) {
-                return resolveUser(getString(booking, "userId"), cache);
+            if (Objects.equals(reporterUserId, bookingTradespersonId)) {
+                return resolveUser(bookingUserId, cache);
             }
         }
 
-        if (reporterId != null && Objects.equals(reporterId, getString(booking, "userId"))) {
-            return resolveUser(getString(booking, "tradespersonId"), cache);
+        if (reporterId != null && Objects.equals(reporterId, bookingUserId)) {
+            return resolveUser(bookingTradespersonId, cache);
         }
 
-        if (reporterId != null && Objects.equals(reporterId, getString(booking, "tradespersonId"))) {
-            return resolveUser(getString(booking, "userId"), cache);
+        if (reporterId != null && Objects.equals(reporterId, bookingTradespersonId)) {
+            return resolveUser(bookingUserId, cache);
         }
 
-        return null;
+        Map<String, Object> bookingUser = resolveUser(bookingUserId, cache);
+        Map<String, Object> bookingTradesperson = resolveUser(bookingTradespersonId, cache);
+
+        String reporterEmail = normalize(getString(reporter, "email"));
+        String disputeReporterIdNormalized = normalize(reporterId);
+        String bookingUserEmail = normalize(getString(bookingUser, "email"));
+        String bookingTradespersonEmail = normalize(getString(bookingTradesperson, "email"));
+
+        if (reporterEmail != null) {
+            if (reporterEmail.equals(bookingUserEmail)) {
+                return bookingTradesperson;
+            }
+            if (reporterEmail.equals(bookingTradespersonEmail)) {
+                return bookingUser;
+            }
+        }
+
+        if (disputeReporterIdNormalized != null) {
+            if (disputeReporterIdNormalized.equals(bookingUserEmail)) {
+                return bookingTradesperson;
+            }
+            if (disputeReporterIdNormalized.equals(bookingTradespersonEmail)) {
+                return bookingUser;
+            }
+        }
+
+        String reporterRole = normalize(getString(reporter, "role"));
+        if ("user".equals(reporterRole) && bookingTradesperson != null) {
+            return bookingTradesperson;
+        }
+        if ("tradesperson".equals(reporterRole) && bookingUser != null) {
+            return bookingUser;
+        }
+
+        if (bookingTradesperson != null) {
+            return bookingTradesperson;
+        }
+        return bookingUser;
+    }
+
+    private String normalize(String value) {
+        if (value == null) {
+            return null;
+        }
+        String trimmed = value.trim();
+        if (trimmed.isEmpty()) {
+            return null;
+        }
+        return trimmed.toLowerCase(Locale.ROOT);
     }
 
     private DisputeDetailsDTO.UserSummary toUserSummary(Map<String, Object> user) {

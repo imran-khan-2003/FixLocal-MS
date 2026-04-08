@@ -102,7 +102,7 @@ public class AuthServiceImpl implements AuthService {
                 .orElseThrow(() -> new UnauthorizedException("Invalid credentials"));
 
         if (user.isBlocked()) {
-            throw new UnauthorizedException("Please contact admin for further details");
+            throw new UnauthorizedException("Your Account has been blocked. Please contact admin for further details");
         }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
