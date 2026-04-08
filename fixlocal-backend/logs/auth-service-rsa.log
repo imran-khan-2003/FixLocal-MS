@@ -1,0 +1,77 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] --------------< com.fixlocal.microservices:auth-service >---------------
+[INFO] Building fixlocal-auth-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.10:run (default-cli) > test-compile @ auth-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ auth-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ auth-service ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ auth-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ auth-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.5.10:run (default-cli) < test-compile @ auth-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.10:run (default-cli) @ auth-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.5.10)
+
+2026-04-08T22:09:53.597+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] com.fixlocal.AuthServiceApplication      : Starting AuthServiceApplication using Java 17.0.12 with PID 27280 (C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\target\classes started by ilkhan in C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service)
+2026-04-08T22:09:53.604+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] com.fixlocal.AuthServiceApplication      : No active profile set, falling back to 1 default profile: "default"
+2026-04-08T22:09:54.347+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-04-08T22:09:54.388+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 MongoDB repository interface.
+2026-04-08T22:09:55.417+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8081 (http)
+2026-04-08T22:09:55.428+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-08T22:09:55.429+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.50]
+2026-04-08T22:09:55.488+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-08T22:09:55.490+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1821 ms
+2026-04-08T22:09:56.014+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] org.mongodb.driver.client                : MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "5.5.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/17.0.12+8-LTS-286"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, commandListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsCommandListener@6b16de91], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@71bb8b34, com.mongodb.Jep395RecordCodecProvider@197ce367, com.mongodb.KotlinCodecProvider@383cdd4d]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[io.micrometer.core.instrument.binder.mongodb.MongoMetricsConnectionPoolListener@65036e8d], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverMonitoringMode=AUTO, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null, timeoutMS=null}
+2026-04-08T22:09:56.049+05:30  INFO [corr:na] 27280 --- [auth-service] [localhost:27017] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, cryptd=false, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=27, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=28643700, minRoundTripTimeNanos=0}
+2026-04-08T22:09:57.313+05:30  WARN [corr:na] 27280 --- [auth-service] [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 41d15cfc-0d11-4f82-9a4d-e8f0eddc9a50
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-04-08T22:09:57.321+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-04-08T22:09:57.762+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+2026-04-08T22:09:58.433+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8081 (http) with context path '/'
+2026-04-08T22:09:58.460+05:30  INFO [corr:na] 27280 --- [auth-service] [           main] com.fixlocal.AuthServiceApplication      : Started AuthServiceApplication in 5.615 seconds (process running for 5.976)
+2026-04-08T22:10:07.900+05:30  INFO [corr:na] 27280 --- [auth-service] [nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-08T22:10:07.901+05:30  INFO [corr:na] 27280 --- [auth-service] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-08T22:10:07.903+05:30  INFO [corr:na] 27280 --- [auth-service] [nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-04-08T22:11:13.579+05:30  WARN [corr:943bf9ab-3774-420a-808d-b7f7358a7023] 27280 --- [auth-service] [nio-8081-exec-6] c.f.exception.GlobalExceptionHandler     : Handled business exception [BAD_REQUEST]: Encrypted password is required
+2026-04-08T22:11:49.831+05:30  WARN [corr:5d69aa98-0921-4659-866c-b541abc21b1a] 27280 --- [auth-service] [nio-8081-exec-8] c.f.exception.GlobalExceptionHandler     : Handled business exception [BAD_REQUEST]: password is required
+2026-04-08T22:11:50.947+05:30  WARN [corr:f5edd67f-9977-4d0f-9de6-2be0f1c1032f] 27280 --- [auth-service] [io-8081-exec-10] c.f.exception.GlobalExceptionHandler     : Handled business exception [BAD_REQUEST]: Encrypted newPassword is required
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  32:19 min
+[INFO] Finished at: 2026-04-08T22:42:09+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.5.10:run (default-cli) on project auth-service: Process terminated with exit code: -1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
