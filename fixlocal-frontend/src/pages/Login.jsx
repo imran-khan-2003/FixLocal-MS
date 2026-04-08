@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
 import { useAuth } from "../context/AuthContext";
+import { encryptAuthFields } from "../utils/authEncryption";
 
 function Login() {
   const navigate = useNavigate();
@@ -16,7 +17,12 @@ function Login() {
     setError("");
     setLoading(true);
     try {
-      const { data } = await api.post("/auth/login", { email, password });
+      const { encryptionKeyId, encrypted } = await encryptAuthFields({ password });
+      const { data } = await api.post("/auth/login", {
+        email,
+        encryptedPassword: encrypted.password,
+        encryptionKeyId,
+      });
       await login({ token: data.token, user: data.user });
       navigate("/");
     } catch (err) {

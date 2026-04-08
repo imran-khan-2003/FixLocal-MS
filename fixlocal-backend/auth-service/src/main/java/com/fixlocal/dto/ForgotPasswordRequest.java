@@ -1,9 +1,10 @@
 package com.fixlocal.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 public class ForgotPasswordRequest {
@@ -12,10 +13,21 @@ public class ForgotPasswordRequest {
     @NotBlank(message = "Email is required")
     private String email;
 
-    @NotBlank(message = "New password is required")
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ToString.Exclude
     private String newPassword;
 
-    @NotBlank(message = "Confirm password is required")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ToString.Exclude
     private String confirmPassword;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ToString.Exclude
+    private String encryptedNewPassword;
+
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @ToString.Exclude
+    private String encryptedConfirmPassword;
+
+    private String encryptionKeyId;
 }

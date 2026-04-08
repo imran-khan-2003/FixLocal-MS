@@ -7,6 +7,7 @@ import com.fixlocal.entity.*;
 import com.fixlocal.enums.*;
 import com.fixlocal.repository.UserRepository;
 import com.fixlocal.security.JwtService;
+import com.fixlocal.security.PayloadEncryptionService;
 import com.fixlocal.exception.*;
 
 import lombok.RequiredArgsConstructor;
@@ -27,11 +28,18 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final UserService userService;
+    private final PayloadEncryptionService payloadEncryptionService;
 
     @Transactional
     public AuthResponse register(RegisterRequest request) {
 
         String email = request.getEmail().trim().toLowerCase();
+        String password = payloadEncryptionService.resolvePassword(
+                request.getPassword(),
+                request.getEncryptedPassword(),
+                request.getEncryptionKeyId(),
+                "password"
+        );
 
         if (userRepository.existsByEmail(email)) {
             throw new ConflictException("Email already exists");
@@ -41,7 +49,7 @@ public class AuthServiceImpl implements AuthService {
             throw new BadRequestException("Role is required");
         }
 
-        if (request.getPassword() == null || request.getPassword().length() < 6) {
+        if (password.length() < 6) {
             throw new BadRequestException("Password must be at least 6 characters");
         }
 
@@ -56,7 +64,7 @@ public class AuthServiceImpl implements AuthService {
         User user = User.builder()
                 .name(request.getName())
                 .email(email)
-                .password(passwordEncoder.encode(request.getPassword()))
+                .password(passwordEncoder.encode(password))
                 .phone(request.getPhone())
                 .role(request.getRole())
                 .occupation(request.getOccupation())
@@ -83,16 +91,21 @@ public class AuthServiceImpl implements AuthService {
     public AuthResponse login(LoginRequest request) {
 
         String email = request.getEmail().trim().toLowerCase();
+        String password = payloadEncryptionService.resolvePassword(
+                request.getPassword(),
+                request.getEncryptedPassword(),
+                request.getEncryptionKeyId(),
+                "password"
+        );
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UnauthorizedException("Invalid credentials"));
 
         if (user.isBlocked()) {
-            throw new UnauthorizedException("Your account is blocked");
+            throw new UnauthorizedException("Please contact admin for further details");
         }
 
-        if (request.getPassword() == null ||
-                !passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new UnauthorizedException("Invalid credentials");
         }
 
@@ -110,17 +123,38 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     public void forgotPassword(ForgotPasswordRequest request) {
         String email = request.getEmail().trim().toLowerCase();
+        String newPassword = payloadEncryptionService.resolvePassword(
+                request.getNewPassword(),
+                request.getEncryptedNewPassword(),
+                request.getEncryptionKeyId(),
+                "newPassword"
+        );
+        String confirmPassword = payloadEncryptionService.resolvePassword(
+                request.getConfirmPassword(),
+                request.getEncryptedConfirmPassword(),
+                request.getEncryptionKeyId(),
+                "confirmPassword"
+        );
 
-        if (!request.getNewPassword().equals(request.getConfirmPassword())) {
+        if (newPassword.length() < 6) {
+            throw new BadRequestException("Password must be at least 6 characters");
+        }
+
+        if (!newPassword.equals(confirmPassword)) {
             throw new BadRequestException("New password and confirm password must match");
         }
 
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
-        user.setPassword(passwordEncoder.encode(request.getNewPassword()));
+        user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);
 
         log.info("Password reset completed for {}", email);
+    }
+
+    @Override
+    public EncryptionKeyResponse getEncryptionKey() {
+        return payloadEncryptionService.getEncryptionKey();
     }
 }

@@ -34,6 +34,11 @@ public class AuthController {
         return ResponseEntity.ok(authService.login(request));
     }
 
+    @GetMapping("/encryption-key")
+    public ResponseEntity<EncryptionKeyResponse> getEncryptionKey() {
+        return ResponseEntity.ok(authService.getEncryptionKey());
+    }
+
     @PostMapping("/forgot-password")
     public ResponseEntity<Void> forgotPassword(
             @Valid @RequestBody ForgotPasswordRequest request) {

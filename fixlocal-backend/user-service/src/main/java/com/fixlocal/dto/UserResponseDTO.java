@@ -22,6 +22,7 @@ public class UserResponseDTO {
 
     private Status status;
     private boolean verified;
+    private boolean blocked;
 
     private String profileImage;
     private String bio;

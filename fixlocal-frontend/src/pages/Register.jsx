@@ -4,6 +4,7 @@ import api from "../api/axios";
 import "react-phone-input-2/lib/style.css";
 import PhoneInput from "react-phone-input-2";
 import { services } from "./Home";
+import { encryptAuthFields } from "../utils/authEncryption";
 const roles = [
   { value: "USER", label: "Customer" },
   { value: "TRADESPERSON", label: "Tradesperson" },
@@ -127,6 +128,13 @@ function Register() {
         delete payload.occupation;
         delete payload.experience;
       }
+
+      const { encryptionKeyId, encrypted } = await encryptAuthFields({
+        password: payload.password,
+      });
+      payload.encryptedPassword = encrypted.password;
+      payload.encryptionKeyId = encryptionKeyId;
+      delete payload.password;
 
       await api.post("/auth/register", payload);
       navigate("/login");

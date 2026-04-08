@@ -274,6 +274,7 @@ public class UserServiceImpl implements UserService {
 
         dto.setStatus(user.getStatus());
         dto.setVerified(user.isVerified());
+        dto.setBlocked(user.isBlocked());
         dto.setAvailable(user.isAvailable());
         dto.setCurrentBookingId(user.getCurrentBookingId());
 

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import api from "../api/axios";
+import { encryptAuthFields } from "../utils/authEncryption";
 
 function ForgotPassword() {
   const navigate = useNavigate();
@@ -23,10 +24,16 @@ function ForgotPassword() {
 
     setLoading(true);
     try {
-      await api.post("/auth/forgot-password", {
-        email,
+      const { encryptionKeyId, encrypted } = await encryptAuthFields({
         newPassword,
         confirmPassword,
+      });
+
+      await api.post("/auth/forgot-password", {
+        email,
+        encryptedNewPassword: encrypted.newPassword,
+        encryptedConfirmPassword: encrypted.confirmPassword,
+        encryptionKeyId,
       });
       setSuccess("Password changed successfully. Redirecting to login...");
       setTimeout(() => navigate("/login"), 1200);
