@@ -112,9 +112,11 @@ const buildReceiptMarkup = (booking) => {
     <style>
       .receipt-root { font-family: Arial, sans-serif; background: #f8fafc; padding: 24px; color: #0f172a; }
       .receipt-sheet { width: 794px; margin: 0 auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
-      .receipt-header { padding: 20px 24px; background: linear-gradient(120deg, #2563eb, #7c3aed); color: #fff; }
+      .receipt-header { padding: 20px 24px; background: linear-gradient(120deg, #2563eb, #7c3aed); color: #fff; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+      .receipt-header-text { min-width: 0; }
       .receipt-header h1 { margin: 0; font-size: 24px; }
       .receipt-header p { margin: 6px 0 0; opacity: 0.9; }
+      .receipt-logo { width: 120px; height: auto; object-fit: contain; flex-shrink: 0; }
       .receipt-meta { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding: 16px 24px; background: #eff6ff; font-size: 13px; }
       .receipt-meta-item { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
       .receipt-meta-label { font-weight: 700; line-height: 1.2; }
@@ -132,8 +134,11 @@ const buildReceiptMarkup = (booking) => {
     <article class="receipt-root">
       <section class="receipt-sheet">
         <header class="receipt-header">
-          <h1>FixLocal E-Receipt</h1>
-          <p>Digital statement for completed booking services</p>
+          <div class="receipt-header-text">
+            <h1>FixLocal E-Receipt</h1>
+            <p>Digital statement for completed booking services</p>
+          </div>
+          <img class="receipt-logo" src="/logo.png" alt="FixLocal logo" />
         </header>
 
         <section class="receipt-meta">

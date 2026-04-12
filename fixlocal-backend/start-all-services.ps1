@@ -28,9 +28,6 @@ function Test-ServiceHealth([int]$port) {
   }
 }
 
-Write-Host "Building shared common-lib..."
-& mvn -f (Join-Path $root "common-lib/pom.xml") clean install -DskipTests
-
 foreach ($svc in $services) {
   $pomPath = Join-Path $root $svc.Pom
   $logPath = Join-Path $logDir ("{0}.log" -f $svc.Name)
