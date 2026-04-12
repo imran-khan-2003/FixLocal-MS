@@ -18,8 +18,8 @@ import org.springframework.web.client.RestTemplate;
 import com.fixlocal.dto.DisputeDetailsDTO;
 import com.fixlocal.dto.DisputeMessageRequest;
 import com.fixlocal.dto.DisputeRequest;
-import com.fixlocal.exception.ResourceNotFoundException;
-import com.fixlocal.exception.UnauthorizedException;
+import com.fixlocal.exception.ErrorCode;
+import com.fixlocal.exception.DisputeException;
 import com.fixlocal.entity.Dispute;
 import com.fixlocal.repository.DisputeRepository;
 
@@ -43,7 +43,7 @@ public class DisputeServiceImpl implements DisputeService {
         if (request.getReporterId() != null) {
             reporter = getUserById(request.getReporterId());
             if (reporter == null) {
-                throw new ResourceNotFoundException("Reporter not found");
+                throw new DisputeException(ErrorCode.REPORTER_NOT_FOUND);
             }
         } else {
             reporter = getAuthenticatedUser(authentication);
@@ -51,7 +51,7 @@ public class DisputeServiceImpl implements DisputeService {
 
         Map<String, Object> booking = getBookingById(request.getBookingId());
         if (booking == null) {
-            throw new ResourceNotFoundException("Booking not found");
+            throw new DisputeException(ErrorCode.BOOKING_NOT_FOUND);
         }
 
         Dispute dispute = Dispute.builder()
@@ -76,12 +76,12 @@ public class DisputeServiceImpl implements DisputeService {
 
     public DisputeDetailsDTO getDisputeDetails(String id, Authentication authentication) {
         Dispute dispute = disputeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Dispute not found"));
+                .orElseThrow(() -> new DisputeException(ErrorCode.DISPUTE_NOT_FOUND));
 
         Map<String, Object> requester = getAuthenticatedUser(authentication);
 
         if (!isAdmin(requester) && !isParticipant(getString(requester, "id"), dispute)) {
-            throw new UnauthorizedException("Not authorized to view this dispute");
+            throw new DisputeException(ErrorCode.DISPUTE_ACCESS_FORBIDDEN);
         }
 
         return mapToDetails(dispute, new HashMap<>(), new HashMap<>());
@@ -105,12 +105,12 @@ public class DisputeServiceImpl implements DisputeService {
 
     public DisputeDetailsDTO updateDispute(String id, Dispute updatedDispute, Authentication authentication) {
         Dispute existingDispute = disputeRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Dispute not found"));
+                .orElseThrow(() -> new DisputeException(ErrorCode.DISPUTE_NOT_FOUND));
 
         Map<String, Object> requester = getAuthenticatedUser(authentication);
 
         if (!isAdmin(requester) && !Objects.equals(getString(requester, "id"), existingDispute.getReporterId())) {
-            throw new UnauthorizedException("Only admins or the reporter can update disputes");
+            throw new DisputeException(ErrorCode.DISPUTE_UPDATE_FORBIDDEN);
         }
 
         if (updatedDispute.getStatus() != null) {
@@ -130,12 +130,12 @@ public class DisputeServiceImpl implements DisputeService {
                               DisputeMessageRequest request) {
 
         Dispute dispute = disputeRepository.findById(disputeId)
-                .orElseThrow(() -> new ResourceNotFoundException("Dispute not found"));
+                .orElseThrow(() -> new DisputeException(ErrorCode.DISPUTE_NOT_FOUND));
 
         Map<String, Object> sender = getAuthenticatedUser(authentication);
 
         if (!isAdmin(sender) && !isParticipant(getString(sender, "id"), dispute)) {
-            throw new UnauthorizedException("Not authorized to add message to this dispute");
+            throw new DisputeException(ErrorCode.DISPUTE_MESSAGE_FORBIDDEN);
         }
 
         if (dispute.getMessages() == null) {
@@ -154,7 +154,7 @@ public class DisputeServiceImpl implements DisputeService {
 
     private Map<String, Object> getAuthenticatedUser(Authentication authentication) {
         if (authentication == null) {
-            throw new UnauthorizedException("Authentication required");
+            throw new DisputeException(ErrorCode.AUTHENTICATION_REQUIRED);
         }
 
         String email = authentication.getName();
@@ -374,7 +374,7 @@ public class DisputeServiceImpl implements DisputeService {
                     email
             );
         } catch (Exception e) {
-            throw new ResourceNotFoundException("User not found");
+            throw new DisputeException(ErrorCode.USER_NOT_FOUND);
         }
     }
 

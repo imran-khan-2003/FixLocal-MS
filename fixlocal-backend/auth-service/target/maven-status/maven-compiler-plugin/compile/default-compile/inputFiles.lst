@@ -1,4 +1,5 @@
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\AuthServiceApplication.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\config\HttpClientConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\config\SecurityConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\controller\AuthController.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\dto\AuthResponse.java
@@ -15,7 +16,13 @@ C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\entity\User.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\enums\Role.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\enums\Status.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\exception\AuthException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\exception\ErrorCode.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\exception\ErrorResponse.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\exception\GlobalExceptionHandler.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\observability\CorrelationIdFilter.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\repository\UserRepository.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\security\JwtService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\security\PayloadEncryptionService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\service\AuthService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\auth-service\src\main\java\com\fixlocal\service\impl\AuthServiceImpl.java

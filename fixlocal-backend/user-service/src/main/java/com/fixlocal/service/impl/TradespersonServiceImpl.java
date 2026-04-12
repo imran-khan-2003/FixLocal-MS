@@ -3,8 +3,8 @@ package com.fixlocal.service.impl;
 import com.fixlocal.service.TradespersonService;
 import com.fixlocal.dto.ServiceOfferingDTO;
 import com.fixlocal.dto.TradespersonDTO;
-import com.fixlocal.exception.BadRequestException;
-import com.fixlocal.exception.ResourceNotFoundException;
+import com.fixlocal.exception.UserException;
+import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.entity.*;
 import com.fixlocal.enums.*;
 import com.fixlocal.repository.UserRepository;
@@ -46,7 +46,7 @@ public class TradespersonServiceImpl implements TradespersonService {
     ) {
 
         if (city == null || city.isBlank()) {
-            throw new BadRequestException("City is required");
+            throw new UserException(ErrorCode.CITY_REQUIRED);
         }
 
         city = city.trim();
@@ -108,10 +108,10 @@ public class TradespersonServiceImpl implements TradespersonService {
     public TradespersonDTO getTradespersonById(String id) {
 
         User tradesperson = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Tradesperson not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.TRADESPERSON_NOT_FOUND));
 
         if (tradesperson.getRole() != Role.TRADESPERSON) {
-            throw new BadRequestException("User is not a tradesperson");
+            throw new UserException(ErrorCode.TARGET_NOT_TRADESPERSON);
         }
 
         return mapToDTO(tradesperson);

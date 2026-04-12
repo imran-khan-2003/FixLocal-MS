@@ -7,9 +7,8 @@ import com.fixlocal.dto.InternalUserDTO;
 import com.fixlocal.dto.ServiceOfferingRequest;
 import com.fixlocal.dto.UpdateUserRequest;
 import com.fixlocal.dto.UserResponseDTO;
-import com.fixlocal.exception.BadRequestException;
-import com.fixlocal.exception.ResourceNotFoundException;
-import com.fixlocal.exception.UnauthorizedException;
+import com.fixlocal.exception.UserException;
+import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.enums.Role;
 import com.fixlocal.entity.ServiceOffering;
 import com.fixlocal.enums.Status;
@@ -39,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     public InternalUserDTO getInternalUserById(String id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.USER_NOT_FOUND));
         return mapToInternalUserDTO(user);
     }
 
@@ -51,14 +50,14 @@ public class UserServiceImpl implements UserService {
     public void applyTradespersonRating(String tradespersonId, int newRating) {
 
         if (newRating < 1 || newRating > 5) {
-            throw new BadRequestException("Rating must be between 1 and 5");
+            throw new UserException(ErrorCode.INVALID_RATING_RANGE);
         }
 
         User tradesperson = userRepository.findById(tradespersonId)
-                .orElseThrow(() -> new ResourceNotFoundException("Tradesperson not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.TRADESPERSON_NOT_FOUND));
 
         if (tradesperson.getRole() != Role.TRADESPERSON) {
-            throw new BadRequestException("Target user is not a tradesperson");
+            throw new UserException(ErrorCode.TARGET_NOT_TRADESPERSON);
         }
 
         int totalReviews = tradesperson.getTotalReviews() == null ? 0 : tradesperson.getTotalReviews();
@@ -86,10 +85,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void blockUserInternal(String userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.USER_NOT_FOUND));
 
         if (user.getRole() == Role.ADMIN) {
-            throw new BadRequestException("Cannot block admin");
+            throw new UserException(ErrorCode.ADMIN_BLOCK_FORBIDDEN);
         }
 
         if (user.isBlocked()) {
@@ -103,7 +102,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void unblockUserInternal(String userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.USER_NOT_FOUND));
 
         if (!user.isBlocked()) {
             return;
@@ -116,10 +115,10 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void verifyTradespersonInternal(String userId) {
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.USER_NOT_FOUND));
 
         if (user.getRole() != Role.TRADESPERSON) {
-            throw new BadRequestException("User is not a tradesperson");
+            throw new UserException(ErrorCode.TARGET_NOT_TRADESPERSON);
         }
 
         if (user.isVerified()) {
@@ -222,7 +221,7 @@ public class UserServiceImpl implements UserService {
         ServiceOffering offering = ensureServiceOfferings(user).stream()
                 .filter(o -> o.getId().equals(serviceId))
                 .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Service offering not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.SERVICE_OFFERING_NOT_FOUND));
 
         offering.setName(request.getName().trim());
         offering.setDescription(request.getDescription());
@@ -242,7 +241,7 @@ public class UserServiceImpl implements UserService {
                 .removeIf(offering -> offering.getId().equals(serviceId));
 
         if (!removed) {
-            throw new ResourceNotFoundException("Service offering not found");
+            throw new UserException(ErrorCode.SERVICE_OFFERING_NOT_FOUND);
         }
 
         userRepository.save(user);
@@ -329,12 +328,12 @@ public class UserServiceImpl implements UserService {
 
     private User findByEmailOrThrow(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new UserException(ErrorCode.USER_NOT_FOUND));
     }
 
     private void ensureTradesperson(User user) {
         if (user.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradespersons can manage service offerings and skill tags");
+            throw new UserException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
     }
 

@@ -4,7 +4,7 @@
 
 The original backend was a **modular monolith** (single Spring Boot app, single deployable unit).
 
-A microservice split has now been scaffolded under `microservices/`:
+A microservice split has now been scaffolded under `fixlocal-backend/`:
 
 - `api-gateway` (port `8080`) – routes all client traffic
 - `auth-service` (port `8081`) – `/api/v1/auth/**`
@@ -42,21 +42,47 @@ Frontend can continue calling `http://localhost:8080`.
 Start services in separate terminals:
 
 ```bash
-mvn -f microservices/common-lib/pom.xml clean install -DskipTests
-mvn -f microservices/auth-service/pom.xml spring-boot:run
-mvn -f microservices/user-service/pom.xml spring-boot:run
-mvn -f microservices/booking-service/pom.xml spring-boot:run
-mvn -f microservices/chat-service/pom.xml spring-boot:run
-mvn -f microservices/notification-service/pom.xml spring-boot:run
-mvn -f microservices/payment-service/pom.xml spring-boot:run
-mvn -f microservices/review-service/pom.xml spring-boot:run
-mvn -f microservices/dispute-service/pom.xml spring-boot:run
-mvn -f microservices/testimonial-service/pom.xml spring-boot:run
-mvn -f microservices/admin-service/pom.xml spring-boot:run
-mvn -f microservices/api-gateway/pom.xml spring-boot:run
+mvn -f fixlocal-backend/common-lib/pom.xml clean install -DskipTests
+mvn -f fixlocal-backend/auth-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/user-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/booking-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/chat-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/notification-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/payment-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/review-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/dispute-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/testimonial-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/admin-service/pom.xml spring-boot:run
+mvn -f fixlocal-backend/api-gateway/pom.xml spring-boot:run
 ```
 
 > `common-lib` contains shared JWT and exception classes used by all services.
+
+## Build / test automation (new reactor)
+
+- A top-level aggregator POM now lives at `fixlocal-backend/pom.xml`. Run the entire backend from the repo root:
+
+  ```bash
+  cd fixlocal-backend
+  mvn clean verify
+  ```
+
+- To build/test a subset with dependencies (e.g., booking-service plus common-lib):
+
+  ```bash
+  cd fixlocal-backend
+  mvn -pl booking-service -am clean verify
+  ```
+
+  `-am` ensures shared modules such as `common-lib` are built first.
+
+- For a single service without rebuilding its dependencies (useful when artifacts are already in the local repo):
+
+  ```bash
+  mvn -f fixlocal-backend/booking-service/pom.xml clean verify
+  ```
+
+These commands replace the older `-pl` invocations that failed due to the missing reactor.
 
 Optional DB isolation env vars:
 

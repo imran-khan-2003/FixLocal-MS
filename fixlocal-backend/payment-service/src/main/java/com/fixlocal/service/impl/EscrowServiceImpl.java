@@ -1,8 +1,8 @@
 package com.fixlocal.service.impl;
 
 import com.fixlocal.service.EscrowService;
-import com.fixlocal.exception.BadRequestException;
-import com.fixlocal.exception.ResourceNotFoundException;
+import com.fixlocal.exception.PaymentException;
+import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.entity.Booking;
 import com.fixlocal.enums.BookingStatus;
 import com.fixlocal.enums.PaymentStatus;
@@ -38,11 +38,11 @@ public class EscrowServiceImpl implements EscrowService {
             }
 
             if (booking.getPaymentStatus() == PaymentStatus.CAPTURED) {
-                throw new BadRequestException("Payment already captured");
+                throw new PaymentException(ErrorCode.PAYMENT_ALREADY_CAPTURED);
             }
 
             log.info("Payment already in progress for booking {}", bookingId);
-            return booking;
+            throw new PaymentException(ErrorCode.PAYMENT_IN_PROGRESS);
         }
 
         booking.setPaymentStatus(PaymentStatus.INITIATED);
@@ -69,7 +69,7 @@ public class EscrowServiceImpl implements EscrowService {
         ensureIntentExists(booking);
 
         if (booking.getStatus() != BookingStatus.COMPLETED) {
-            throw new BadRequestException("Payment capture allowed only on completed bookings");
+            throw new PaymentException(ErrorCode.PAYMENT_CAPTURE_NOT_ALLOWED);
         }
 
         booking.setPaymentStatus(PaymentStatus.CAPTURED);
@@ -82,18 +82,22 @@ public class EscrowServiceImpl implements EscrowService {
         Booking booking = getBooking(bookingId);
         ensureIntentExists(booking);
 
+        if (booking.getPaymentStatus() == PaymentStatus.REFUNDED) {
+            throw new PaymentException(ErrorCode.PAYMENT_ALREADY_REFUNDED);
+        }
+
         booking.setPaymentStatus(PaymentStatus.REFUNDED);
         return bookingRepository.save(booking);
     }
 
     private Booking getBooking(String bookingId) {
         return bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new PaymentException(ErrorCode.BOOKING_NOT_FOUND));
     }
 
     private void ensureIntentExists(Booking booking) {
         if (booking.getPaymentIntentId() == null) {
-            throw new BadRequestException("Payment intent missing");
+            throw new PaymentException(ErrorCode.PAYMENT_INTENT_MISSING);
         }
     }
 }

@@ -5,8 +5,8 @@ import com.fixlocal.entity.Notification;
 import com.fixlocal.enums.NotificationType;
 import com.fixlocal.repository.NotificationRepository;
 import com.fixlocal.repository.UserRepository;
-import com.fixlocal.exception.ResourceNotFoundException;
-import com.fixlocal.exception.UnauthorizedException;
+import com.fixlocal.exception.NotificationException;
+import com.fixlocal.exception.ErrorCode;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -29,10 +29,14 @@ public class NotificationServiceImpl implements NotificationService {
     private final UserRepository userRepository;
 
     private String getUserIdFromAuthentication(Authentication authentication) {
+        if (authentication == null || authentication.getName() == null) {
+            throw new NotificationException(ErrorCode.UNAUTHORIZED, ErrorCode.UNAUTHORIZED.getMessage());
+        }
+
         String email = authentication.getName();
 
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"))
+                .orElseThrow(() -> new NotificationException(ErrorCode.USER_NOT_FOUND))
                 .getId();
     }
 
@@ -68,10 +72,17 @@ public class NotificationServiceImpl implements NotificationService {
         String userId = getUserIdFromAuthentication(authentication);
 
         Notification notification = notificationRepository.findById(notificationId)
-                .orElseThrow(() -> new ResourceNotFoundException("Notification not found"));
+                .orElseThrow(() -> new NotificationException(ErrorCode.NOTIFICATION_NOT_FOUND,
+                        ErrorCode.NOTIFICATION_NOT_FOUND.getMessage()));
 
         if (!notification.getUserId().equals(userId)) {
-            throw new UnauthorizedException("Not allowed");
+            throw new NotificationException(ErrorCode.NOTIFICATION_ACCESS_FORBIDDEN,
+                    ErrorCode.NOTIFICATION_ACCESS_FORBIDDEN.getMessage());
+        }
+
+        if (notification.isRead()) {
+            throw new NotificationException(ErrorCode.NOTIFICATION_ALREADY_READ,
+                    ErrorCode.NOTIFICATION_ALREADY_READ.getMessage());
         }
 
         notification.setRead(true);

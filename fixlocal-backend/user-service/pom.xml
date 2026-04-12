@@ -70,14 +70,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-    
-        <dependency>
-            <groupId>com.fixlocal.microservices</groupId>
-            <artifactId>common-lib</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
-	</dependencies>
+</dependencies>
 
     <build>
         <plugins>

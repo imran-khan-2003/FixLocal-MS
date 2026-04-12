@@ -1,6 +1,14 @@
+com\fixlocal\exception\ErrorResponse.class
 com\fixlocal\entity\Dispute$DisputeBuilder.class
+com\fixlocal\security\JwtService.class
+com\fixlocal\exception\ErrorResponse$ErrorResponseBuilder.class
+com\fixlocal\exception\GlobalExceptionHandler.class
 com\fixlocal\entity\Dispute.class
+com\fixlocal\config\HttpClientConfig.class
 com\fixlocal\service\impl\DisputeServiceImpl.class
+com\fixlocal\observability\CorrelationIdFilter.class
 com\fixlocal\entity\Dispute$DisputeMessage.class
 com\fixlocal\enums\DisputeStatus.class
+com\fixlocal\exception\ErrorCode.class
+com\fixlocal\exception\DisputeException.class
 com\fixlocal\entity\Dispute$DisputeMessage$DisputeMessageBuilder.class

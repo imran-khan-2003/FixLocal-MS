@@ -5,7 +5,8 @@ import com.fixlocal.dto.ReviewRequest;
 import com.fixlocal.dto.ReviewSummaryDTO;
 import com.fixlocal.entity.Review;
 import com.fixlocal.repository.ReviewRepository;
-import com.fixlocal.exception.*;
+import com.fixlocal.exception.ReviewException;
+import com.fixlocal.exception.ErrorCode;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -50,11 +51,11 @@ public class ReviewServiceImpl implements ReviewService {
         );
 
         if (user == null) {
-            throw new ResourceNotFoundException("User not found");
+            throw new ReviewException(ErrorCode.USER_NOT_FOUND);
         }
 
         if (getBoolean(user, "blocked")) {
-            throw new UnauthorizedException("Your account is blocked");
+            throw new ReviewException(ErrorCode.REVIEW_CREATION_FORBIDDEN);
         }
 
         return user;
@@ -68,11 +69,11 @@ public class ReviewServiceImpl implements ReviewService {
         Map<String, Object> user = getLoggedInUser(authentication);
 
         if (!"USER".equalsIgnoreCase(getString(user, "role"))) {
-            throw new UnauthorizedException("Only users can add reviews");
+            throw new ReviewException(ErrorCode.REVIEW_CREATION_FORBIDDEN);
         }
 
         if (request.getRating() < 1 || request.getRating() > 5) {
-            throw new BadRequestException("Rating must be between 1 and 5");
+            throw new ReviewException(ErrorCode.VALIDATION_ERROR, "Rating must be between 1 and 5");
         }
 
         Map<String, Object> booking = restTemplate.getForObject(
@@ -82,19 +83,19 @@ public class ReviewServiceImpl implements ReviewService {
         );
 
         if (booking == null) {
-            throw new ResourceNotFoundException("Booking not found");
+            throw new ReviewException(ErrorCode.BOOKING_NOT_FOUND);
         }
 
         if (!Objects.equals(getString(booking, "userId"), getString(user, "id"))) {
-            throw new UnauthorizedException("Booking does not belong to you");
+            throw new ReviewException(ErrorCode.REVIEW_CREATION_FORBIDDEN);
         }
 
         if (!"COMPLETED".equalsIgnoreCase(getString(booking, "status"))) {
-            throw new ConflictException("Review allowed only after completion");
+            throw new ReviewException(ErrorCode.REVIEW_STATUS_INVALID);
         }
 
         if (reviewRepository.existsByBookingId(bookingId)) {
-            throw new ConflictException("Review already exists");
+            throw new ReviewException(ErrorCode.REVIEW_ALREADY_EXISTS);
         }
 
         Review review = Review.builder()

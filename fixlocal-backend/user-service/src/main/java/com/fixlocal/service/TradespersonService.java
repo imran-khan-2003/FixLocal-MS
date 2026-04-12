@@ -2,8 +2,7 @@ package com.fixlocal.service;
 
 import com.fixlocal.dto.ServiceOfferingDTO;
 import com.fixlocal.dto.TradespersonDTO;
-import com.fixlocal.exception.BadRequestException;
-import com.fixlocal.exception.ResourceNotFoundException;
+import com.fixlocal.exception.UserException;
 import com.fixlocal.entity.*;
 import com.fixlocal.enums.*;
 import com.fixlocal.repository.UserRepository;

@@ -1,7 +1,6 @@
 package com.fixlocal.service;
 
-import com.fixlocal.exception.BadRequestException;
-import com.fixlocal.exception.ResourceNotFoundException;
+import com.fixlocal.exception.PaymentException;
 import com.fixlocal.entity.Booking;
 import com.fixlocal.enums.BookingStatus;
 import com.fixlocal.enums.PaymentStatus;

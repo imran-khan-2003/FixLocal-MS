@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.fixlocal.FixLocalApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.752 s -- in com.fixlocal.FixLocalApplicationTests

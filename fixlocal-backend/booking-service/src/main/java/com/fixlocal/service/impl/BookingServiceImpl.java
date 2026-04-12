@@ -2,7 +2,8 @@ package com.fixlocal.service.impl;
 
 import com.fixlocal.service.BookingService;
 import com.fixlocal.dto.*;
-import com.fixlocal.exception.*;
+import com.fixlocal.exception.BookingException;
+import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.entity.*;
 import com.fixlocal.enums.*;
 import com.fixlocal.repository.BookingRepository;
@@ -53,11 +54,10 @@ public class BookingServiceImpl implements BookingService {
                 .getName();
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.USER_NOT_FOUND));
 
         if (user.isBlocked()) {
-            throw new UnauthorizedException("Your account is blocked");
+            throw new BookingException(ErrorCode.USER_ACCOUNT_BLOCKED);
         }
 
         return user;
@@ -72,25 +72,24 @@ public class BookingServiceImpl implements BookingService {
         User user = getLoggedInUser();
 
         if (user.getRole() != Role.USER) {
-            throw new UnauthorizedException("Only users can create bookings");
+            throw new BookingException(ErrorCode.USER_ROLE_REQUIRED);
         }
 
         String tradespersonId = request.getTradespersonId();
 
         User tradesperson = userRepository.findById(tradespersonId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Tradesperson not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.TRADESPERSON_NOT_FOUND));
 
         if (tradesperson.getRole() != Role.TRADESPERSON) {
-            throw new BadRequestException("Selected user is not a tradesperson");
+            throw new BookingException(ErrorCode.TRADESPERSON_NOT_ELIGIBLE);
         }
 
         if (tradesperson.isBlocked()) {
-            throw new ConflictException("Tradesperson account is blocked");
+            throw new BookingException(ErrorCode.TRADESPERSON_BLOCKED);
         }
 
         if (tradesperson.getStatus() != Status.AVAILABLE) {
-            throw new ConflictException("Tradesperson is currently busy");
+            throw new BookingException(ErrorCode.TRADESPERSON_BUSY);
         }
 
         boolean alreadyPending = bookingRepository
@@ -101,9 +100,7 @@ public class BookingServiceImpl implements BookingService {
                 );
 
         if (alreadyPending) {
-            throw new ConflictException(
-                    "You already have a pending booking with this tradesperson"
-            );
+            throw new BookingException(ErrorCode.PENDING_BOOKING_EXISTS);
         }
 
         Booking booking = Booking.builder()
@@ -152,7 +149,7 @@ public class BookingServiceImpl implements BookingService {
         User actor = getLoggedInUser();
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         validateOfferState(booking, actor);
 
@@ -161,7 +158,7 @@ public class BookingServiceImpl implements BookingService {
                 : OfferSide.TRADESPERSON;
 
         if (!actorSide.equals(booking.getAwaitingResponseFrom())) {
-            throw new ConflictException("It is not your turn to respond");
+            throw new BookingException(ErrorCode.NEGOTIATION_TURN_MISMATCH);
         }
 
         PriceOffer offer = PriceOffer.builder()
@@ -195,21 +192,21 @@ public class BookingServiceImpl implements BookingService {
         User actor = getLoggedInUser();
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         validateOfferState(booking, actor);
 
         PriceOffer offer = booking.getOfferHistory().stream()
                 .filter(o -> o.getId().equals(offerId))
                 .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Offer not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.OFFER_NOT_FOUND));
 
         OfferSide actorSide = actor.getRole() == Role.USER
                 ? OfferSide.USER
                 : OfferSide.TRADESPERSON;
 
         if (offer.getOfferedBy() == actorSide) {
-            throw new ConflictException("You cannot accept your own offer");
+            throw new BookingException(ErrorCode.OFFER_SELF_ACCEPT_FORBIDDEN);
         }
 
         offer.setAccepted(true);
@@ -233,12 +230,13 @@ public class BookingServiceImpl implements BookingService {
     private void validateOfferState(Booking booking, User actor) {
 
         if (booking.getStatus() != BookingStatus.PENDING) {
-            throw new ConflictException("Negotiations only allowed for pending bookings");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "Negotiations only allowed for pending bookings");
         }
 
         if (!booking.getUserId().equals(actor.getId())
                 && !booking.getTradespersonId().equals(actor.getId())) {
-            throw new UnauthorizedException("Not authorized for this booking");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
     }
 
@@ -257,19 +255,19 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can accept booking");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("You are not authorized to accept this booking");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (booking.getStatus() != BookingStatus.PENDING) {
-            throw new BadRequestException("Only pending bookings can be accepted");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "Only pending bookings can be accepted");
         }
 
         Query query = new Query(
@@ -282,7 +280,7 @@ public class BookingServiceImpl implements BookingService {
         UpdateResult result = mongoTemplate.updateFirst(query, update, User.class);
 
         if (result.getModifiedCount() == 0) {
-            throw new ConflictException("You already have an active booking");
+            throw new BookingException(ErrorCode.ACTIVE_BOOKING_EXISTS);
         }
 
         booking.setStatus(BookingStatus.ACCEPTED);
@@ -308,19 +306,19 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can reject booking");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("You are not authorized to reject this booking");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (booking.getStatus() != BookingStatus.PENDING) {
-            throw new BadRequestException("Only pending bookings can be rejected");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "Only pending bookings can be rejected");
         }
 
         booking.setStatus(BookingStatus.REJECTED);
@@ -345,21 +343,21 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can complete booking");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("You are not authorized to complete this booking");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (booking.getStatus() != BookingStatus.ACCEPTED
                 && booking.getStatus() != BookingStatus.EN_ROUTE
                 && booking.getStatus() != BookingStatus.ARRIVED) {
-            throw new BadRequestException("Booking must be in progress to complete");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "Booking must be in progress to complete");
         }
 
         booking.setStatus(BookingStatus.COMPLETED);
@@ -397,7 +395,7 @@ public class BookingServiceImpl implements BookingService {
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                        new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         BookingStatus currentStatus = booking.getStatus();
 
@@ -405,13 +403,14 @@ public class BookingServiceImpl implements BookingService {
                 currentStatus == BookingStatus.REJECTED ||
                 currentStatus == BookingStatus.CANCELLED) {
 
-            throw new ConflictException("This booking cannot be cancelled");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "This booking cannot be cancelled");
         }
 
         if (loggedInUser.getRole() == Role.USER) {
 
             if (!booking.getUserId().equals(loggedInUser.getId())) {
-                throw new UnauthorizedException("You are not authorized to cancel this booking");
+                throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
             }
 
             booking.setCancelledBy(CancellationBy.USER);
@@ -419,13 +418,13 @@ public class BookingServiceImpl implements BookingService {
         } else if (loggedInUser.getRole() == Role.TRADESPERSON) {
 
             if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-                throw new UnauthorizedException("You are not authorized to cancel this booking");
+                throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
             }
 
             booking.setCancelledBy(CancellationBy.TRADESPERSON);
 
         } else {
-            throw new UnauthorizedException("Unauthorized role");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (currentStatus == BookingStatus.ACCEPTED ||
@@ -469,12 +468,12 @@ public class BookingServiceImpl implements BookingService {
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                        new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getUserId().equals(loggedInUser.getId()) &&
                 !booking.getTradespersonId().equals(loggedInUser.getId())) {
 
-            throw new UnauthorizedException("You are not authorized to view this booking");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         return booking;
@@ -485,7 +484,7 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.USER) {
-            throw new UnauthorizedException("Only users can view their bookings");
+            throw new BookingException(ErrorCode.USER_ROLE_REQUIRED);
         }
 
         Pageable pageable = PageRequest.of(
@@ -504,7 +503,7 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can view bookings");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Pageable pageable = PageRequest.of(
@@ -594,19 +593,20 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can start trip");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                        new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("Not authorized");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (booking.getStatus() != BookingStatus.ACCEPTED) {
-            throw new BadRequestException("Trip can start only after acceptance");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "Trip can start only after acceptance");
         }
 
         booking.setStatus(BookingStatus.EN_ROUTE);
@@ -629,19 +629,20 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can mark arrival");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                        new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("Not authorized");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (booking.getStatus() != BookingStatus.EN_ROUTE) {
-            throw new BadRequestException("Arrival requires en-route state");
+            throw new BookingException(ErrorCode.BOOKING_STATE_CONFLICT,
+                    "Arrival requires en-route state");
         }
 
         booking.setStatus(BookingStatus.ARRIVED);
@@ -664,21 +665,21 @@ public class BookingServiceImpl implements BookingService {
         User loggedInUser = getLoggedInUser();
 
         if (loggedInUser.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradesperson can update location");
+            throw new BookingException(ErrorCode.TRADESPERSON_ROLE_REQUIRED);
         }
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                        new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("Not authorized");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         if (booking.getStatus() == BookingStatus.CANCELLED ||
                 booking.getStatus() == BookingStatus.REJECTED ||
                 booking.getStatus() == BookingStatus.COMPLETED) {
-            throw new BadRequestException("Cannot update location for closed booking");
+            throw new BookingException(ErrorCode.LIVE_LOCATION_UPDATE_FORBIDDEN);
         }
 
         var liveLocation = liveLocationRepository
@@ -713,15 +714,15 @@ public class BookingServiceImpl implements BookingService {
 
         Booking booking = bookingRepository.findById(bookingId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("Booking not found"));
+                        new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         if (!booking.getUserId().equals(loggedInUser.getId())
                 && !booking.getTradespersonId().equals(loggedInUser.getId())) {
-            throw new UnauthorizedException("Not authorized to view this booking location");
+            throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
         LiveLocation liveLocation = liveLocationRepository.findByBookingId(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Live location not available"));
+                .orElseThrow(() -> new BookingException(ErrorCode.LIVE_LOCATION_NOT_FOUND));
 
         Instant updatedAt = liveLocation.getUpdatedAt();
         Instant now = Instant.now();
@@ -739,7 +740,7 @@ public class BookingServiceImpl implements BookingService {
 
     public InternalBookingDTO getInternalBookingById(String bookingId) {
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND));
 
         return toInternalBookingDTO(booking);
     }
@@ -780,7 +781,7 @@ public class BookingServiceImpl implements BookingService {
     @Transactional
     public void applyReviewUpdate(String bookingId, InternalReviewUpdateRequest request) {
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new BookingException(ErrorCode.BOOKING_NOT_FOUND, "Booking not found"));
 
         booking.setReviewSubmitted(true);
         booking.setUserRating(request.getRating());

@@ -1,3 +1,4 @@
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\config\HttpClientConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\config\JwtAuthenticationFilter.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\config\SecurityConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\config\WebConfig.java
@@ -17,11 +18,17 @@ C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\enums\PaymentStatus.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\enums\Role.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\enums\Status.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\exception\ChatException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\exception\ErrorCode.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\exception\ErrorResponse.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\exception\GlobalExceptionHandler.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\FixLocalApplication.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\observability\CorrelationIdFilter.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\repository\BookingRepository.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\repository\ChatMessageRepository.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\repository\ConversationRepository.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\repository\UserRepository.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\security\JwtService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\service\AttachmentStorageService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\service\ChatService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\chat-service\src\main\java\com\fixlocal\service\impl\AttachmentStorageServiceImpl.java

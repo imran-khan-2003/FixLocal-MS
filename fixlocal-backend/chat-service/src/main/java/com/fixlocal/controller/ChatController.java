@@ -1,8 +1,8 @@
 package com.fixlocal.controller;
 
 import com.fixlocal.dto.ChatMessageRequest;
-import com.fixlocal.exception.ResourceNotFoundException;
-import com.fixlocal.exception.UnauthorizedException;
+import com.fixlocal.exception.ErrorCode;
+import com.fixlocal.exception.ChatException;
 import com.fixlocal.entity.ChatMessage;
 import com.fixlocal.entity.Conversation;
 import com.fixlocal.service.ChatService;
@@ -62,7 +62,7 @@ public class ChatController {
                 || authentication.getName() == null
                 || authentication.getName().isBlank()
                 || "anonymousUser".equalsIgnoreCase(authentication.getName())) {
-            throw new UnauthorizedException("Authentication required");
+            throw new ChatException(ErrorCode.UNAUTHORIZED);
         }
 
         ChatService.AttachmentFile attachmentFile = chatService.getAttachment(messageId, authentication.getName());
@@ -70,7 +70,7 @@ public class ChatController {
         try {
             bytes = Files.readAllBytes(attachmentFile.filePath());
         } catch (IOException ex) {
-            throw new ResourceNotFoundException("Attachment file missing");
+            throw new ChatException(ErrorCode.ATTACHMENT_FILE_MISSING);
         }
         Resource resource = new ByteArrayResource(bytes);
 

@@ -42,22 +42,20 @@ public class AuthServiceImpl implements AuthService {
         );
 
         if (userRepository.existsByEmail(email)) {
-            throw new ConflictException("Email already exists");
+            throw new AuthException(ErrorCode.EMAIL_ALREADY_EXISTS);
         }
 
         if (request.getRole() == null) {
-            throw new BadRequestException("Role is required");
+            throw new AuthException(ErrorCode.ROLE_REQUIRED);
         }
 
         if (password.length() < 6) {
-            throw new BadRequestException("Password must be at least 6 characters");
+            throw new AuthException(ErrorCode.PASSWORD_TOO_SHORT);
         }
 
         if (request.getRole() == Role.TRADESPERSON) {
             if (request.getOccupation() == null || request.getWorkingCity() == null) {
-                throw new BadRequestException(
-                        "Occupation and working city required for tradesperson"
-                );
+                throw new AuthException(ErrorCode.TRADESPERSON_DETAILS_REQUIRED);
             }
         }
 
@@ -99,14 +97,14 @@ public class AuthServiceImpl implements AuthService {
         );
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UnauthorizedException("Invalid credentials"));
+                .orElseThrow(() -> new AuthException(ErrorCode.INVALID_CREDENTIALS));
 
         if (user.isBlocked()) {
-            throw new UnauthorizedException("Your Account has been blocked. Please contact admin for further details");
+            throw new AuthException(ErrorCode.ACCOUNT_BLOCKED);
         }
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
-            throw new UnauthorizedException("Invalid credentials");
+            throw new AuthException(ErrorCode.INVALID_CREDENTIALS);
         }
 
         String token = jwtService.generateToken(email);
@@ -137,15 +135,15 @@ public class AuthServiceImpl implements AuthService {
         );
 
         if (newPassword.length() < 6) {
-            throw new BadRequestException("Password must be at least 6 characters");
+            throw new AuthException(ErrorCode.PASSWORD_TOO_SHORT);
         }
 
         if (!newPassword.equals(confirmPassword)) {
-            throw new BadRequestException("New password and confirm password must match");
+            throw new AuthException(ErrorCode.PASSWORD_MISMATCH);
         }
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new AuthException(ErrorCode.USER_NOT_FOUND));
 
         user.setPassword(passwordEncoder.encode(newPassword));
         userRepository.save(user);

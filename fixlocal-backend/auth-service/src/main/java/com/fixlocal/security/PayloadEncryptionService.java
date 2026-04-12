@@ -1,7 +1,8 @@
 package com.fixlocal.security;
 
+import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.dto.EncryptionKeyResponse;
-import com.fixlocal.exception.BadRequestException;
+import com.fixlocal.exception.AuthException;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -72,7 +73,7 @@ public class PayloadEncryptionService {
 
     public EncryptionKeyResponse getEncryptionKey() {
         if (!payloadEncryptionEnabled || publicKey == null) {
-            throw new BadRequestException("Payload encryption is disabled");
+            throw new AuthException(ErrorCode.BAD_REQUEST, "Payload encryption is disabled");
         }
 
         return EncryptionKeyResponse.builder()
@@ -97,27 +98,27 @@ public class PayloadEncryptionService {
 
         if (hasText(plainText)) {
             if (payloadEncryptionRequired) {
-                throw new BadRequestException("Encrypted " + fieldName + " is required");
+                throw new AuthException(ErrorCode.BAD_REQUEST, "Encrypted " + fieldName + " is required");
             }
             return plainText;
         }
 
-        throw new BadRequestException(fieldName + " is required");
+        throw new AuthException(ErrorCode.BAD_REQUEST, fieldName + " is required");
     }
 
     private String requirePlain(String plainText, String fieldName) {
         if (!hasText(plainText)) {
-            throw new BadRequestException(fieldName + " is required");
+            throw new AuthException(ErrorCode.BAD_REQUEST, fieldName + " is required");
         }
         return plainText;
     }
 
     private void validateKeyId(String providedKeyId) {
         if (!hasText(providedKeyId)) {
-            throw new BadRequestException("encryptionKeyId is required");
+            throw new AuthException(ErrorCode.BAD_REQUEST, "encryptionKeyId is required");
         }
         if (!keyId.equals(providedKeyId)) {
-            throw new BadRequestException("Invalid encryption key id");
+            throw new AuthException(ErrorCode.BAD_REQUEST, "Invalid encryption key id");
         }
     }
 
@@ -129,14 +130,14 @@ public class PayloadEncryptionService {
             String decrypted = new String(cipher.doFinal(cipherBytes), StandardCharsets.UTF_8);
 
             if (!hasText(decrypted)) {
-                throw new BadRequestException(fieldName + " is required");
+                throw new AuthException(ErrorCode.BAD_REQUEST, fieldName + " is required");
             }
 
             return decrypted;
-        } catch (BadRequestException ex) {
+        } catch (AuthException ex) {
             throw ex;
         } catch (Exception ex) {
-            throw new BadRequestException("Invalid encrypted payload for " + fieldName);
+            throw new AuthException(ErrorCode.BAD_REQUEST, "Invalid encrypted payload for " + fieldName);
         }
     }
 

@@ -12,9 +12,8 @@ import com.fixlocal.repository.BookingRepository;
 import com.fixlocal.repository.ChatMessageRepository;
 import com.fixlocal.repository.ConversationRepository;
 import com.fixlocal.repository.UserRepository;
-import com.fixlocal.exception.BadRequestException;
-import com.fixlocal.exception.ResourceNotFoundException;
-import com.fixlocal.exception.UnauthorizedException;
+import com.fixlocal.exception.ChatException;
+import com.fixlocal.exception.ErrorCode;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -61,14 +60,14 @@ public class ChatServiceImpl implements ChatService {
                                    ChatMessageRequest request) {
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new ChatException(ErrorCode.BOOKING_NOT_FOUND));
 
         var sender = userRepository.findByEmail(senderEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ChatException(ErrorCode.USER_NOT_FOUND));
 
         if (!booking.getUserId().equals(sender.getId()) &&
                 !booking.getTradespersonId().equals(sender.getId())) {
-            throw new UnauthorizedException("Not part of this booking conversation");
+            throw new ChatException(ErrorCode.NOT_PART_OF_BOOKING);
         }
 
         Conversation conversation = getOrCreateConversation(bookingId);
@@ -116,7 +115,7 @@ public class ChatServiceImpl implements ChatService {
     private Conversation createConversation(String bookingId) {
 
         Booking booking = bookingRepository.findById(bookingId)
-                .orElseThrow(() -> new ResourceNotFoundException("Booking not found"));
+                .orElseThrow(() -> new ChatException(ErrorCode.BOOKING_NOT_FOUND));
 
         Conversation conversation = Conversation.builder()
                 .bookingId(bookingId)
@@ -131,7 +130,7 @@ public class ChatServiceImpl implements ChatService {
     private ChatMessage.AttachmentMetadata storeAttachment(MultipartFile attachment) {
 
         if (attachment.getSize() > 5 * 1024 * 1024) {
-            throw new BadRequestException("Attachment exceeds 5MB limit");
+            throw new ChatException(ErrorCode.ATTACHMENT_TOO_LARGE);
         }
 
         try {
@@ -144,41 +143,41 @@ public class ChatServiceImpl implements ChatService {
                     .storagePath(stored.storagePath())
                     .build();
         } catch (IOException e) {
-            throw new BadRequestException("Unable to store attachment");
+            throw new ChatException(ErrorCode.ATTACHMENT_STORAGE_FAILED);
         }
     }
 
     public AttachmentFile getAttachment(String messageId, String requesterEmail) {
         var requester = userRepository.findByEmail(requesterEmail)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ChatException(ErrorCode.USER_NOT_FOUND));
 
         ChatMessage message = chatMessageRepository.findById(messageId)
-                .orElseThrow(() -> new ResourceNotFoundException("Message not found"));
+                .orElseThrow(() -> new ChatException(ErrorCode.MESSAGE_NOT_FOUND));
 
         if (message.getAttachment() == null) {
-            throw new ResourceNotFoundException("Attachment not found");
+            throw new ChatException(ErrorCode.ATTACHMENT_NOT_FOUND);
         }
 
         ChatMessage.AttachmentMetadata attachment = message.getAttachment();
 
         if (message.getConversationId() == null || message.getConversationId().isBlank()) {
-            throw new ResourceNotFoundException("Conversation not found");
+            throw new ChatException(ErrorCode.CONVERSATION_NOT_FOUND);
         }
 
         Conversation conversation = conversationRepository.findById(message.getConversationId())
-                .orElseThrow(() -> new ResourceNotFoundException("Conversation not found"));
+                .orElseThrow(() -> new ChatException(ErrorCode.CONVERSATION_NOT_FOUND));
 
         if (!Objects.equals(requester.getId(), conversation.getUserId())
                 && !Objects.equals(requester.getId(), conversation.getTradespersonId())) {
-            throw new UnauthorizedException("Not authorized to download this attachment");
+            throw new ChatException(ErrorCode.ATTACHMENT_ACCESS_FORBIDDEN);
         }
 
         Path filePath = attachmentStorageService.resolvePath(attachment);
         if (filePath == null) {
-            throw new ResourceNotFoundException("Attachment metadata missing");
+            throw new ChatException(ErrorCode.ATTACHMENT_METADATA_MISSING);
         }
         if (!Files.exists(filePath) || !Files.isReadable(filePath)) {
-            throw new ResourceNotFoundException("Attachment file missing");
+            throw new ChatException(ErrorCode.ATTACHMENT_FILE_MISSING);
         }
 
         String fileName = attachment.getFileName();

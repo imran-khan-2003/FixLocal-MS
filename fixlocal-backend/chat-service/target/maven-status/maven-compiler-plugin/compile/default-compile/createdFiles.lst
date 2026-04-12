@@ -1,6 +1,8 @@
 com\fixlocal\entity\Booking$BookingBuilder.class
 com\fixlocal\entity\Conversation.class
+com\fixlocal\exception\ErrorResponse.class
 com\fixlocal\service\impl\ChatServiceImpl.class
+com\fixlocal\security\JwtService.class
 com\fixlocal\entity\PriceOffer$PriceOfferBuilder.class
 com\fixlocal\entity\ChatMessage$AttachmentMetadata.class
 com\fixlocal\entity\ChatMessage.class
@@ -11,12 +13,18 @@ com\fixlocal\enums\Status.class
 com\fixlocal\entity\User$UserBuilder.class
 com\fixlocal\enums\CancellationBy.class
 com\fixlocal\enums\BookingStatus.class
+com\fixlocal\exception\ErrorCode.class
 com\fixlocal\entity\User.class
 com\fixlocal\entity\ServiceOffering$ServiceOfferingBuilder.class
 com\fixlocal\entity\Booking.class
 com\fixlocal\entity\PriceOffer.class
 com\fixlocal\service\impl\AttachmentStorageServiceImpl.class
 com\fixlocal\enums\Role.class
+com\fixlocal\exception\ErrorResponse$ErrorResponseBuilder.class
+com\fixlocal\exception\GlobalExceptionHandler.class
+com\fixlocal\exception\ChatException.class
 com\fixlocal\entity\ChatMessage$ChatMessageBuilder.class
+com\fixlocal\config\HttpClientConfig.class
 com\fixlocal\entity\ServiceOffering.class
 com\fixlocal\enums\OfferSide.class
+com\fixlocal\observability\CorrelationIdFilter.class

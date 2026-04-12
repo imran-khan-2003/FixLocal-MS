@@ -1,12 +1,12 @@
 package com.fixlocal.service.impl;
 
+import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.service.UserService;
 import com.fixlocal.dto.ServiceOfferingDTO;
 import com.fixlocal.dto.ServiceOfferingRequest;
 import com.fixlocal.dto.UpdateUserRequest;
 import com.fixlocal.dto.UserResponseDTO;
-import com.fixlocal.exception.ResourceNotFoundException;
-import com.fixlocal.exception.UnauthorizedException;
+import com.fixlocal.exception.AuthException;
 import com.fixlocal.enums.Role;
 import com.fixlocal.entity.ServiceOffering;
 import com.fixlocal.enums.Status;
@@ -109,7 +109,7 @@ public class UserServiceImpl implements UserService {
         ServiceOffering offering = ensureServiceOfferings(user).stream()
                 .filter(o -> o.getId().equals(serviceId))
                 .findFirst()
-                .orElseThrow(() -> new ResourceNotFoundException("Service offering not found"));
+                .orElseThrow(() -> new AuthException(ErrorCode.RESOURCE_NOT_FOUND, "Service offering not found"));
 
         offering.setName(request.getName().trim());
         offering.setDescription(request.getDescription());
@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
                 .removeIf(offering -> offering.getId().equals(serviceId));
 
         if (!removed) {
-            throw new ResourceNotFoundException("Service offering not found");
+            throw new AuthException(ErrorCode.RESOURCE_NOT_FOUND, "Service offering not found");
         }
 
         userRepository.save(user);
@@ -202,12 +202,12 @@ public class UserServiceImpl implements UserService {
 
     private User findByEmailOrThrow(String email) {
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new AuthException(ErrorCode.RESOURCE_NOT_FOUND, "User not found"));
     }
 
     private void ensureTradesperson(User user) {
         if (user.getRole() != Role.TRADESPERSON) {
-            throw new UnauthorizedException("Only tradespersons can manage service offerings and skill tags");
+            throw new AuthException(ErrorCode.UNAUTHORIZED, "Only tradespersons can manage service offerings and skill tags");
         }
     }
 

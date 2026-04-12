@@ -1,3 +1,4 @@
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\HttpClientConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\JwtAuthenticationFilter.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\SecurityConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\config\WebConfig.java
@@ -7,7 +8,13 @@ C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\dto\DisputeRequest.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\entity\Dispute.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\enums\DisputeStatus.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\exception\DisputeException.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\exception\ErrorCode.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\exception\ErrorResponse.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\exception\GlobalExceptionHandler.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\FixLocalApplication.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\observability\CorrelationIdFilter.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\repository\DisputeRepository.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\security\JwtService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\service\DisputeService.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\dispute-service\src\main\java\com\fixlocal\service\impl\DisputeServiceImpl.java

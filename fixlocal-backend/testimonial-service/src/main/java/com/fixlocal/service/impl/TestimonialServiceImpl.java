@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.fixlocal.dto.TestimonialRequest;
 import com.fixlocal.entity.Testimonial;
+import com.fixlocal.exception.ErrorCode;
+import com.fixlocal.exception.TestimonialException;
 import com.fixlocal.repository.TestimonialRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -26,6 +28,10 @@ public class TestimonialServiceImpl implements TestimonialService {
     }
 
     public Testimonial addTestimonial(TestimonialRequest request) {
+        if (request.getName() == null || request.getName().isBlank()) {
+            throw new TestimonialException(ErrorCode.USER_NOT_FOUND);
+        }
+
         Testimonial testimonial = Testimonial.create(
                 request.getName(),
                 request.getCity(),
