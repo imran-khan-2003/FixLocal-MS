@@ -2,6 +2,7 @@ C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\config\JwtAuthenticationFilter.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\config\SecurityConfig.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\config\WebConfig.java
+C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\controller\InternalNotificationController.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\controller\NotificationController.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\entity\Notification.java
 C:\Users\ilkhan\Desktop\FixLocal\fixlocal-backend\notification-service\src\main\java\com\fixlocal\entity\ServiceOffering.java

@@ -3,6 +3,7 @@ com\fixlocal\exception\ErrorResponse.class
 com\fixlocal\service\impl\BookingServiceImpl.class
 com\fixlocal\security\JwtService.class
 com\fixlocal\entity\PriceOffer$PriceOfferBuilder.class
+com\fixlocal\service\impl\BookingServiceImpl$1.class
 com\fixlocal\enums\PaymentStatus.class
 com\fixlocal\enums\Status.class
 com\fixlocal\exception\BookingException.class

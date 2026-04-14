@@ -2,6 +2,8 @@ com\fixlocal\entity\ServiceOffering$ServiceOfferingBuilder.class
 com\fixlocal\exception\ErrorResponse.class
 com\fixlocal\exception\NotificationException.class
 com\fixlocal\entity\Notification.class
+com\fixlocal\controller\InternalNotificationController$InternalNotificationRequest.class
+com\fixlocal\controller\InternalNotificationController.class
 com\fixlocal\enums\Role.class
 com\fixlocal\security\JwtService.class
 com\fixlocal\enums\NotificationType.class
