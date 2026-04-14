@@ -16,11 +16,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.data.domain.*;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.*;
 import org.springframework.data.mongodb.core.aggregation.*;
+import org.springframework.web.client.RestTemplate;
 
 import com.mongodb.client.result.UpdateResult;
 
@@ -42,6 +44,10 @@ public class BookingServiceImpl implements BookingService {
     private final UserRepository userRepository;
     private final LiveLocationRepository liveLocationRepository;
     private final MongoTemplate mongoTemplate;
+    private final RestTemplate restTemplate;
+
+    @Value("${internal.notification-service.base-url:http://localhost:8086}")
+    private String notificationServiceBaseUrl;
 
     // ======================================================
     // 🔐 Helper: Get logged-in user (BLOCK SAFE)
@@ -794,9 +800,68 @@ public class BookingServiceImpl implements BookingService {
     private void publishBookingEvent(Booking booking,
                                      NotificationType type,
                                      String message) {
+        switch (type) {
+            case BOOKING_CREATED ->
+                    sendNotificationSafely(booking.getTradespersonId(), message, type);
 
-        // Event publication is intentionally no-op in this service cut.
-        // Notification/WebSocket fanout stays in dedicated services.
+            case BOOKING_ACCEPTED,
+                 BOOKING_REJECTED,
+                 BOOKING_COMPLETED,
+                 BOOKING_EN_ROUTE,
+                 BOOKING_ARRIVED ->
+                    sendNotificationSafely(booking.getUserId(), message, type);
+
+            case BOOKING_CANCELLED -> {
+                if (booking.getCancelledBy() == CancellationBy.USER) {
+                    sendNotificationSafely(booking.getTradespersonId(), message, type);
+                } else if (booking.getCancelledBy() == CancellationBy.TRADESPERSON) {
+                    sendNotificationSafely(booking.getUserId(), message, type);
+                } else {
+                    sendNotificationSafely(booking.getUserId(), message, type);
+                    sendNotificationSafely(booking.getTradespersonId(), message, type);
+                }
+            }
+
+            case OFFER_SUBMITTED -> {
+                if (booking.getAwaitingResponseFrom() == OfferSide.USER) {
+                    sendNotificationSafely(booking.getUserId(), message, type);
+                } else if (booking.getAwaitingResponseFrom() == OfferSide.TRADESPERSON) {
+                    sendNotificationSafely(booking.getTradespersonId(), message, type);
+                }
+            }
+
+            case OFFER_ACCEPTED -> {
+                sendNotificationSafely(booking.getUserId(), message, type);
+                sendNotificationSafely(booking.getTradespersonId(), message, type);
+            }
+        }
+    }
+
+    private void sendNotificationSafely(String userId,
+                                        String message,
+                                        NotificationType type) {
+        if (userId == null || userId.isBlank()) {
+            return;
+        }
+
+        try {
+            Map<String, Object> payload = new LinkedHashMap<>();
+            payload.put("userId", userId);
+            payload.put("message", message);
+            payload.put("type", type);
+
+            restTemplate.postForEntity(
+                    notificationServiceBaseUrl + "/internal/notifications",
+                    payload,
+                    Void.class
+            );
+
+        } catch (Exception ex) {
+            log.warn("Failed to publish notification for booking {} to user {}: {}",
+                    userId,
+                    type,
+                    ex.getMessage());
+        }
     }
 
     private InternalBookingDTO toInternalBookingDTO(Booking booking) {

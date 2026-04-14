@@ -37,6 +37,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
+                                "/internal/notifications/**",
                                 "/actuator/health",
                                 "/actuator/health/**",
                                 "/actuator/info"
