@@ -1,90 +1,99 @@
-# FixLocal Microservices Migration
+# FixLocal Backend (Microservices)
 
-## Current status
+This directory contains the complete backend for FixLocal, split into Spring Boot microservices behind a Spring Cloud API Gateway.
 
-The original backend was a **modular monolith** (single Spring Boot app, single deployable unit).
+## Stack
 
-A microservice split has now been scaffolded under `fixlocal-backend/`:
+- Java 17
+- Spring Boot 3.5.x
+- Spring Security + JWT
+- Spring Data MongoDB
+- Spring Cloud Gateway
+- Maven multi-module reactor
 
-- `api-gateway` (port `8080`) – routes all client traffic
-- `auth-service` (port `8081`) – `/api/v1/auth/**`
-- `user-service` (port `8082`) – `/api/v1/users/**`, `/api/v1/tradespersons/**`
-- `booking-service` (port `8084`) – `/api/v1/bookings/**` (except payment sub-paths)
-- `chat-service` (port `8085`) – `/api/v1/chat/**`
-- `notification-service` (port `8086`) – `/api/v1/notifications/**`
-- `payment-service` (port `8087`) – `/api/v1/bookings/{bookingId}/payments/**` and `/api/v1/payments/**`
-- `review-service` (port `8088`) – `/api/v1/reviews/**`
-- `dispute-service` (port `8089`) – `/api/v1/disputes/**`
-- `testimonial-service` (port `8090`) – `/api/v1/testimonials/**`
-- `admin-service` (port `8091`) – `/api/v1/admin/**` (aggregates admin operations via internal service contracts)
+## Service Catalog
 
-## Routing map
+| Service | Port | Main Public Base Path | Purpose |
+|---|---:|---|---|
+| `api-gateway` | 8080 | n/a (entrypoint) | Single client entrypoint + route forwarding + CORS |
+| `auth-service` | 8081 | `/api/v1/auth/**` | Register, login, forgot-password, auth payload encryption key |
+| `user-service` | 8082 | `/api/v1/users/**`, `/api/v1/tradespersons/**` | Profile CRUD, availability, skill tags, services, tradesperson discovery |
+| `booking-service` | 8084 | `/api/v1/bookings/**` | Booking lifecycle, offers, live-location REST, booking stats |
+| `chat-service` | 8085 | `/api/v1/chat/**` | Conversation creation, messages, file attachment download |
+| `notification-service` | 8086 | `/api/v1/notifications/**` | Notification listing and read state |
+| `payment-service` | 8087 | `/api/v1/bookings/{id}/payments/**`, `/api/v1/payments/**` | Escrow payment state transitions |
+| `review-service` | 8088 | `/api/v1/reviews/**` | Add review and list tradesperson reviews |
+| `dispute-service` | 8089 | `/api/v1/disputes/**` | Dispute create/list/update/messaging |
+| `testimonial-service` | 8090 | `/api/v1/testimonials/**` | Public testimonials + authenticated submission |
+| `admin-service` | 8091 | `/api/v1/admin/**` | Admin users/trades/bookings/stats aggregation |
 
-Gateway routes:
+## Gateway Routing (Configured)
 
-- `/api/v1/auth/**` -> `auth-service`
-- `/api/v1/users/**`, `/api/v1/tradespersons/**` -> `user-service`
-- `/api/v1/bookings/**/payments/**`, `/api/v1/payments/**` -> `payment-service`
-- `/api/v1/bookings/**` -> `booking-service`
-- `/api/v1/chat/**` -> `chat-service`
-- `/api/v1/notifications/**` -> `notification-service`
-- `/api/v1/reviews/**` -> `review-service`
-- `/api/v1/disputes/**` -> `dispute-service`
-- `/api/v1/testimonials/**` -> `testimonial-service`
-- `/api/v1/admin/**` -> `admin-service`
+From `api-gateway/src/main/resources/application.yml`:
 
-Frontend can continue calling `http://localhost:8080`.
+- `/api/v1/auth/**` → `auth-service`
+- `/api/v1/users/**`, `/api/v1/tradespersons/**` → `user-service`
+- `/api/v1/bookings/*/payments/**`, `/api/v1/payments/**` → `payment-service`
+- `/api/v1/bookings/**` → `booking-service`
+- `/api/v1/chat/**` → `chat-service`
+- `/api/v1/notifications/**` → `notification-service`
+- `/api/v1/reviews/**` → `review-service`
+- `/api/v1/disputes/**` → `dispute-service`
+- `/api/v1/testimonials/**` → `testimonial-service`
+- `/api/v1/admin/**` → `admin-service`
 
-## Run locally (JDK 17 required)
+Frontend should call: `http://localhost:8080`
 
-> Your current machine is using Java 8 for Maven. Switch `JAVA_HOME` to JDK 17 first.
+## Internal Service Contracts
 
-Start services in separate terminals:
+The backend already uses internal HTTP contracts for decoupling:
 
-```bash
-mvn -f fixlocal-backend/common-lib/pom.xml clean install -DskipTests
-mvn -f fixlocal-backend/auth-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/user-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/booking-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/chat-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/notification-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/payment-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/review-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/dispute-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/testimonial-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/admin-service/pom.xml spring-boot:run
-mvn -f fixlocal-backend/api-gateway/pom.xml spring-boot:run
+### user-service internal APIs
+- `GET /internal/users/{id}`
+- `GET /internal/users/by-email?email=...`
+- `GET /internal/users/admin/users?...`
+- `GET /internal/users/admin/stats`
+- `PUT /internal/users/{id}/ratings/{rating}`
+- `PUT /internal/users/{id}/block`
+- `PUT /internal/users/{id}/unblock`
+- `PUT /internal/users/{id}/verify`
+
+### booking-service internal APIs
+- `GET /internal/bookings/{bookingId}`
+- `PUT /internal/bookings/{bookingId}/review`
+- `GET /internal/bookings/admin/bookings?...`
+- `GET /internal/bookings/admin/stats`
+- `GET /internal/bookings/stats/user/{userId}`
+- `GET /internal/bookings/stats/tradesperson/{tradespersonId}`
+
+### chat-service internal APIs
+- `GET /internal/chat/admin/stats`
+
+### notification-service internal APIs
+- `POST /internal/notifications`
+
+## Security Model
+
+- Each service is **stateless** (`SessionCreationPolicy.STATELESS`)
+- JWT filter used for authenticated routes (except open/public matchers)
+- Method-level security via `@EnableMethodSecurity`
+- `auth-service` exposes `/api/v1/auth/**` publicly
+- Public/permit-all examples:
+  - `user-service`: `/api/v1/tradespersons/**`, `/internal/users/**`
+  - `booking-service`: `/internal/bookings/**`
+  - `chat-service`: `/internal/chat/**`
+  - `notification-service`: `/internal/notifications/**`
+  - `testimonial-service`: `GET /api/v1/testimonials/**`
+
+## Data & Configuration
+
+Default Mongo URI fallback in most services:
+
+```text
+mongodb://localhost:27017/fixlocal
 ```
 
-> `common-lib` contains shared JWT and exception classes used by all services.
-
-## Build / test automation (new reactor)
-
-- A top-level aggregator POM now lives at `fixlocal-backend/pom.xml`. Run the entire backend from the repo root:
-
-  ```bash
-  cd fixlocal-backend
-  mvn clean verify
-  ```
-
-- To build/test a subset with dependencies (e.g., booking-service plus common-lib):
-
-  ```bash
-  cd fixlocal-backend
-  mvn -pl booking-service -am clean verify
-  ```
-
-  `-am` ensures shared modules such as `common-lib` are built first.
-
-- For a single service without rebuilding its dependencies (useful when artifacts are already in the local repo):
-
-  ```bash
-  mvn -f fixlocal-backend/booking-service/pom.xml clean verify
-  ```
-
-These commands replace the older `-pl` invocations that failed due to the missing reactor.
-
-Optional DB isolation env vars:
+Optional per-service DB URI overrides:
 
 - `BOOKING_MONGO_URI`
 - `CHAT_MONGO_URI`
@@ -94,83 +103,333 @@ Optional DB isolation env vars:
 - `DISPUTE_MONGO_URI`
 - `TESTIMONIAL_MONGO_URI`
 
-If these are not set, each service falls back to `MONGO_URI`.
+Common environment values:
 
-## Notes
+- `MONGO_URI`
+- `JWT_SECRET`
+- `JWT_EXPIRATION`
+- `APP_CORS_ALLOWED_ORIGINS`
+- `HTTP_CLIENT_CONNECT_TIMEOUT_MS`
+- `HTTP_CLIENT_READ_TIMEOUT_MS`
 
-- This is a **strangler-style migration baseline**: domain code is split into independently deployable services, but shared model/repository code is still duplicated between services.
-- Next hardening step is to remove duplicated classes via service-owned contracts (REST/Feign/events) and separate databases per service.
-
-### ✅ Further decomposition completed
-
-As requested, the architecture was further broken down from the earlier split:
-
-- `review-service`, `dispute-service`, and `testimonial-service` were split as dedicated domain services.
-- API Gateway routes were updated to route these domains directly to their services.
-- Each new service was pruned to domain-relevant files plus minimal linkage/security files.
-
-### ✅ Internal service contracts added (review/dispute decoupling)
-
-To start removing direct cross-domain data coupling, internal contract APIs were added and wired:
-
-- `user-service`
-  - `GET /internal/users/{id}`
-  - `GET /internal/users/by-email?email=...`
-  - `PUT /internal/users/{id}/ratings/{rating}`
-
-- `booking-service`
-  - `GET /internal/bookings/{bookingId}`
-  - `PUT /internal/bookings/{bookingId}/review`
-
-`review-service` and `dispute-service` now consume these endpoints for user/booking linkage instead of requiring local domain repositories for those concerns.
-
-New internal base-url config keys:
+Internal base URL values:
 
 - `USER_SERVICE_BASE_URL` (default `http://localhost:8082`)
 - `BOOKING_SERVICE_BASE_URL` (default `http://localhost:8084`)
+- `CHAT_SERVICE_BASE_URL` (default `http://localhost:8085`)
+- `NOTIFICATION_SERVICE_BASE_URL` (used by booking-service, default `http://localhost:8086`)
 
-### ✅ Strict microservice file isolation enforced
+Auth payload encryption values:
 
-Per your requirement, `review-service` and `dispute-service` were cleaned so they no longer keep copied user/booking domain files.
+- `AUTH_PAYLOAD_ENCRYPTION_ENABLED`
+- `AUTH_PAYLOAD_ENCRYPTION_REQUIRED`
+- `AUTH_PAYLOAD_ENCRYPTION_KEY_ID`
+- `AUTH_PAYLOAD_ENCRYPTION_PUBLIC_KEY_PEM`
+- `AUTH_PAYLOAD_ENCRYPTION_PRIVATE_KEY_PEM`
 
-- Removed duplicated cross-service artifacts (DTOs, repositories, models) that belonged to other domains.
-- Kept only service-owned domain classes:
-  - `review-service`: `Review` domain + review DTOs/controllers/repository
-  - `dispute-service`: `Dispute` domain + dispute DTOs/controllers/repository
-- Cross-service linkage now happens only via HTTP contracts to owner services:
-  - user data from `user-service` internal APIs
-  - booking data from `booking-service` internal APIs
+## Build & Run
 
-Implementation note: review/dispute services now parse linked responses as generic payload maps instead of importing copied DTO classes from other services.
+> Ensure `JAVA_HOME` points to JDK 17.
 
-## Migration progress
+### Build all services
 
-### ✅ Step 1 completed: enforce service ownership boundaries
+```bash
+cd fixlocal-backend
+mvn clean verify
+```
 
-- Gateway remains the public entrypoint and routes ownership to dedicated services.
-- Auth domain is owned by `auth-service`.
-- Users/tradespersons domain is owned by `user-service`.
+### Build one service with required modules
 
-### ✅ Step 2 completed: remove duplicated auth/tradesperson code from legacy placeholder service
+```bash
+cd fixlocal-backend
+mvn -pl booking-service -am clean verify
+```
 
-The following overlap artifacts were removed from the legacy placeholder service because ownership is now in
-`auth-service` and `user-service`:
+### Run a single service
 
-- Controllers: `AuthController`, `UserController`, `TradespersonController`
-- Services: `AuthService`, `TradespersonService`
-- DTOs: `AuthResponse`, `RegisterRequest`, `LoginRequest`, `ForgotPasswordRequest`, `TradespersonDTO`
+```bash
+mvn -f fixlocal-backend/booking-service/pom.xml spring-boot:run
+```
 
-Core-domain APIs were moved into dedicated services (booking/chat/review/dispute/notification/testimonial/admin).
+### Windows orchestration scripts
 
-### ✅ Admin/core extraction completed
+- `start-all-services.ps1` — starts all services in background, logs to `logs/*.log`
+- `check-services.ps1` — checks `/actuator/health` on service ports
+- `restart-all.ps1` — kills old listeners, restarts backend + frontend, verifies health
 
-- `admin-service` is now active and owns `/api/v1/admin/**` through the gateway.
-- `user-service`, `booking-service`, and `chat-service` expose dedicated internal APIs used by admin aggregation.
-- The placeholder legacy service has been retired and removed from runtime orchestration.
+Examples:
 
-### Next steps (recommended order)
+```powershell
+powershell -ExecutionPolicy Bypass -File .\start-all-services.ps1
+powershell -ExecutionPolicy Bypass -File .\check-services.ps1
+```
 
-1. Move inter-service calls from raw `RestTemplate` to typed clients (OpenFeign / contract clients).
-2. Split persistence by service (separate Mongo DB/schema per service in all environments).
-3. Add centralized discovery/config (Eureka + Config Server) if dynamic routing is needed.
-4. Add contract tests + integration smoke tests in CI for gateway-to-service compatibility.
+## Notable Domain Behaviors
+
+- **Booking**: supports negotiation (`submitOffer`, `acceptOffer`) and lifecycle transitions (`accept`, `reject`, `start-trip`, `arrived`, `complete`, `cancel`)
+- **Payment**: escrow-style state machine (`INITIATED`, `AUTHORIZED`, `CAPTURED`, `REFUNDED`)
+- **Review**: enforces completed-booking + one-review-per-booking
+- **Dispute**: role-aware access checks, threaded dispute messages
+- **Admin**: aggregates metrics by calling user/booking/chat internal endpoints
+
+## Important Implementation Note (Realtime Live Location)
+
+Frontend includes STOMP/SockJS support for live location topics, but this backend currently exposes **REST live-location APIs only** (`POST/GET /api/v1/bookings/{id}/location`) and does not include websocket broker config classes in the present code state. Align docs/features accordingly if websocket broadcasting is later added.
+
+## Health Endpoints
+
+All services expose Actuator health/info:
+
+- `/actuator/health`
+- `/actuator/info`
+
+---
+
+For frontend integration details, see: `../fixlocal-frontend/README.md`
+
+## Deep-Dive: Public API Surface by Service
+
+This section maps directly to the controller code currently in this repo.
+
+### auth-service (`/api/v1/auth`)
+
+- `POST /register` → register user/tradesperson/admin account
+- `POST /login` → issue JWT + user DTO
+- `GET /encryption-key` → publish RSA public key + key id for frontend encryption
+- `POST /forgot-password` → reset password (encrypted payload supported)
+
+Implementation notes:
+- `PayloadEncryptionService` supports RSA-OAEP-SHA256 decryption for password fields.
+- Encryption can be toggled/required via `AUTH_PAYLOAD_ENCRYPTION_*` config.
+- If PEM keys are absent, service generates an in-memory keypair on startup.
+
+### user-service
+
+Public endpoints:
+- `GET /api/v1/users/me`
+- `PUT /api/v1/users/me`
+- `PATCH /api/v1/users/me/availability?available=true|false`
+- `PUT /api/v1/users/me/skill-tags`
+- `POST /api/v1/users/me/services`
+- `PUT /api/v1/users/me/services/{serviceId}`
+- `DELETE /api/v1/users/me/services/{serviceId}`
+- `DELETE /api/v1/users/me`
+
+Tradesperson discovery endpoints:
+- `GET /api/v1/tradespersons/search`
+- `GET /api/v1/tradespersons/{id}`
+
+Internal endpoints:
+- `/internal/users/{id}`
+- `/internal/users/by-email`
+- `/internal/users/dashboard-profile`
+- `/internal/users/{id}/ratings/{rating}`
+- `/internal/users/admin/users`
+- `/internal/users/{id}/block`
+- `/internal/users/{id}/unblock`
+- `/internal/users/{id}/verify`
+- `/internal/users/admin/stats`
+
+Implementation notes:
+- Skill tags are normalized, deduplicated, and capped at 15 entries.
+- Service offerings are owned by tradespersons and use generated IDs.
+- Admin stats include average platform rating via repository aggregation.
+
+### booking-service
+
+Public endpoints:
+- `POST /api/v1/bookings`
+- `POST /api/v1/bookings/{bookingId}/offers`
+- `PATCH /api/v1/bookings/{bookingId}/offers/{offerId}/accept`
+- `PATCH /api/v1/bookings/{bookingId}/accept`
+- `PATCH /api/v1/bookings/{bookingId}/reject`
+- `PATCH /api/v1/bookings/{bookingId}/start-trip`
+- `PATCH /api/v1/bookings/{bookingId}/arrived`
+- `PATCH /api/v1/bookings/{bookingId}/complete`
+- `PATCH /api/v1/bookings/{bookingId}/cancel`
+- `GET /api/v1/bookings/{bookingId}`
+- `GET /api/v1/bookings/user`
+- `GET /api/v1/bookings/tradesperson`
+- `GET /api/v1/bookings/stats`
+- `POST /api/v1/bookings/{bookingId}/location`
+- `GET /api/v1/bookings/{bookingId}/location`
+
+Internal endpoints:
+- `/internal/bookings/{bookingId}`
+- `/internal/bookings/{bookingId}/review`
+- `/internal/bookings/admin/bookings`
+- `/internal/bookings/admin/stats`
+- `/internal/bookings/stats/user/{userId}`
+- `/internal/bookings/stats/tradesperson/{tradespersonId}`
+
+Implementation notes:
+- Enforces role ownership checks on all booking actions.
+- Negotiation flow is turn-based (`awaitingResponseFrom`) and state-aware.
+- Accept booking uses a Mongo conditional update to transition tradesperson `AVAILABLE -> BUSY` safely.
+- Live-location stale threshold is 300 seconds (`LIVE_LOCATION_STALE_THRESHOLD_SECONDS`).
+- Booking events are sent as internal notifications to notification-service.
+- On complete/cancel, live location record is deleted.
+
+### payment-service
+
+Public endpoints (both path styles accepted):
+- `POST /api/v1/bookings/{bookingId}/payments/initiate?amount=...`
+- `POST /api/v1/bookings/{bookingId}/payments/authorize`
+- `POST /api/v1/bookings/{bookingId}/payments/capture`
+- `POST /api/v1/bookings/{bookingId}/payments/refund`
+- `POST /api/v1/payments/bookings/{bookingId}/initiate`
+- `POST /api/v1/payments/bookings/{bookingId}/authorize`
+- `POST /api/v1/payments/bookings/{bookingId}/capture`
+- `POST /api/v1/payments/bookings/{bookingId}/refund`
+
+Implementation notes:
+- Cannot capture before booking status is `COMPLETED`.
+- Prevents duplicate capture/refund operations.
+- Uses booking document fields `paymentStatus` and `paymentIntentId`.
+
+### chat-service
+
+Public endpoints:
+- `GET /api/v1/chat/conversations/{bookingId}`
+- `GET /api/v1/chat/conversations/{conversationId}/messages`
+- `POST /api/v1/chat/bookings/{bookingId}/messages` (multipart form-data)
+- `GET /api/v1/chat/messages/{messageId}/attachment`
+
+Internal endpoints:
+- `GET /internal/chat/admin/stats`
+
+Implementation notes:
+- Only booking participants can send/read chat.
+- Attachment max size is 5 MB.
+- Default attachment storage is local filesystem directory `chat_attachments`.
+- Conversation unread counters are tracked per side.
+
+### notification-service
+
+Public endpoints:
+- `GET /api/v1/notifications`
+- `PUT /api/v1/notifications/{id}/read`
+- `PUT /api/v1/notifications/read-all`
+
+Internal endpoints:
+- `POST /internal/notifications`
+
+Implementation notes:
+- Notifications are persisted in Mongo and scoped by authenticated user.
+- `markAllAsRead` bulk-updates unread notifications for current user.
+
+### review-service
+
+Public endpoints:
+- `POST /api/v1/reviews/{bookingId}`
+- `GET /api/v1/reviews/tradesperson/{tradespersonId}`
+
+Implementation notes:
+- Review creation allowed only for booking owner (`USER`).
+- Booking must be `COMPLETED`.
+- Enforces one review per booking.
+- Calls booking-service internal review update and user-service rating update.
+
+### dispute-service
+
+Public endpoints:
+- `POST /api/v1/disputes`
+- `GET /api/v1/disputes` (admin only)
+- `GET /api/v1/disputes/{id}`
+- `GET /api/v1/disputes/booking/{bookingId}`
+- `GET /api/v1/disputes/mine`
+- `PUT /api/v1/disputes/{id}`
+- `POST /api/v1/disputes/{id}/messages`
+
+Implementation notes:
+- Dispute details are enriched from user-service + booking-service.
+- Access checks allow admin and booking participants.
+- Message timeline includes sender role/name enrichment when available.
+
+### testimonial-service
+
+Public endpoints:
+- `GET /api/v1/testimonials?limit=6`
+- `POST /api/v1/testimonials`
+
+Implementation notes:
+- Write endpoint requires authenticated role among USER/TRADESPERSON/ADMIN.
+
+### admin-service
+
+Public endpoints (admin role required):
+- `GET /api/v1/admin/users`
+- `GET /api/v1/admin/tradespersons` and `GET /api/v1/admin/trades`
+- `PUT /api/v1/admin/users/{id}/block`
+- `PUT /api/v1/admin/users/{id}/unblock`
+- `PUT /api/v1/admin/tradespersons/{id}/verify`
+- `GET /api/v1/admin/bookings`
+- `GET /api/v1/admin/stats`
+
+Implementation notes:
+- Aggregates data from internal user/booking/chat services.
+- Returns combined metrics for dashboard KPIs.
+
+## Deep-Dive: Security Behavior
+
+All services:
+- Stateless JWT security
+- CSRF disabled
+- CORS enabled
+- Method security enabled (`@EnableMethodSecurity`)
+
+Notable permit-all routes:
+- auth-service: `/api/v1/auth/**`
+- user-service: `/api/v1/tradespersons/**`, `/internal/users/**`
+- booking-service: `/internal/bookings/**`
+- chat-service: `/internal/chat/**`
+- notification-service: `/internal/notifications/**`
+- testimonial-service: `/api/v1/testimonials/**`
+- all services: actuator health/info endpoints
+
+## Deep-Dive: Configuration Model
+
+### Common patterns across services
+
+- `JWT_SECRET`
+- `JWT_EXPIRATION`
+- `APP_CORS_ALLOWED_ORIGINS`
+- `HTTP_CLIENT_CONNECT_TIMEOUT_MS`
+- `HTTP_CLIENT_READ_TIMEOUT_MS`
+
+### Database URI precedence examples
+
+- booking-service: `BOOKING_MONGO_URI` → fallback `MONGO_URI`
+- chat-service: `CHAT_MONGO_URI` → fallback `MONGO_URI`
+- notification-service: `NOTIFICATION_MONGO_URI` → fallback `MONGO_URI`
+- payment-service: `PAYMENT_MONGO_URI` → fallback `MONGO_URI`
+- review-service: `REVIEW_MONGO_URI` → fallback `MONGO_URI`
+- dispute-service: `DISPUTE_MONGO_URI` → fallback `MONGO_URI`
+- testimonial-service: `TESTIMONIAL_MONGO_URI` → fallback `MONGO_URI`
+
+### Internal service base URLs
+
+- review/dispute/admin use `USER_SERVICE_BASE_URL` and/or `BOOKING_SERVICE_BASE_URL`
+- admin also uses `CHAT_SERVICE_BASE_URL`
+- booking uses `NOTIFICATION_SERVICE_BASE_URL`
+
+## Deep-Dive: Operations and Scripts
+
+### `start-all-services.ps1`
+- Starts each service via Maven `spring-boot:run` in hidden cmd process
+- Writes logs to `fixlocal-backend/logs/<service>.log`
+- Skips startup if `/actuator/health` already responds on target port
+
+### `check-services.ps1`
+- Probes `/actuator/health` on all service ports
+- Prints UP/DOWN summary and exits non-zero if any service is down
+
+### `restart-all.ps1`
+- Stops listeners on backend ports + frontend 5173
+- Restarts all backend services using start script
+- Starts frontend dev server (`npm run dev`) and verifies TCP/HTTP health
+
+## Known Limitations / Alignment Notes
+
+1. Frontend includes STOMP client plumbing, while backend currently relies on REST live-location endpoints and does not expose websocket broker config in code.
+2. API testing guide in `docs/api` may include legacy references; controller files in each service are the source of truth for active endpoints.
