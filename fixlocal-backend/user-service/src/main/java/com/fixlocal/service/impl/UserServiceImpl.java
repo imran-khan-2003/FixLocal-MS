@@ -279,7 +279,7 @@ public class UserServiceImpl implements UserService {
 
         dto.setProfileImage(user.getProfileImage());
         dto.setBio(user.getBio());
-        dto.setPhone(user.getPhone());
+        dto.setPhone(user.getResolvedPhone());
         dto.setCompletedJobs(user.getCompletedJobs());
         dto.setLastKnownLatitude(user.getLastKnownLatitude());
         dto.setLastKnownLongitude(user.getLastKnownLongitude());
@@ -318,7 +318,7 @@ public class UserServiceImpl implements UserService {
                 .id(user.getId())
                 .name(user.getName())
                 .email(user.getEmail())
-                .phone(user.getPhone())
+                .phone(user.getResolvedPhone())
                 .role(user.getRole() != null ? user.getRole().name() : null)
                 .blocked(user.isBlocked())
                 .averageRating(user.getAverageRating())

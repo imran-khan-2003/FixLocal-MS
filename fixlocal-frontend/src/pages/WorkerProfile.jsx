@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import api from "../api/axios";
 import { bookingService } from "../api/bookingService";
 import { useAuth } from "../context/AuthContext";
+import { formatPhoneForDisplay } from "../utils/phone";
 
 function WorkerProfile() {
   const { id } = useParams();
@@ -196,6 +197,10 @@ function WorkerProfile() {
   if (error && !worker) return <p className="p-10 text-red-500">{error}</p>;
   if (!worker) return <p className="p-10 text-text-secondary">Loading...</p>;
 
+  const workerPhone =
+    worker?.phone || worker?.mobile || worker?.mobileNumber || worker?.contactNumber;
+  const formattedPhone = workerPhone ? formatPhoneForDisplay(workerPhone) : "";
+
   return (
     <div className="py-12">
       <div className="max-w-4xl mx-auto px-6">
@@ -219,6 +224,10 @@ function WorkerProfile() {
             <div>
               <dt className="text-sm text-text-secondary">Experience</dt>
               <dd className="text-base">🧰 {worker.experience || 0} years</dd>
+            </div>
+            <div>
+              <dt className="text-sm text-text-secondary">Mobile</dt>
+              <dd className="text-base">📞 {formattedPhone || "Not provided"}</dd>
             </div>
             <div>
               <dt className="text-sm text-text-secondary">Rating</dt>

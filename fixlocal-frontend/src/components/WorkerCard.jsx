@@ -1,8 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import { formatPhoneForDisplay } from "../utils/phone";
 
 function WorkerCard({ worker }) {
 
   const navigate = useNavigate();
+  const workerPhone =
+    worker?.phone || worker?.mobile || worker?.mobileNumber || worker?.contactNumber;
+  const formattedPhone = workerPhone ? formatPhoneForDisplay(workerPhone) : "";
   const roundedRating = Number.isFinite(Number(worker.averageRating))
     ? Number(worker.averageRating).toFixed(1)
     : "0.0";
@@ -28,6 +32,8 @@ function WorkerCard({ worker }) {
       <p className="text-text-secondary">⭐ {roundedRating}</p>
 
       <p className="text-text-secondary">🧰 {worker.experience || 0} yrs exp</p>
+
+      <p className="text-text-secondary">📞 {formattedPhone || "Not provided"}</p>
 
       {/* ✅ Status Badge */}
       <span

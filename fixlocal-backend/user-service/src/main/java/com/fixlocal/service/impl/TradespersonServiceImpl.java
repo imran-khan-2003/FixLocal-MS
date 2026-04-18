@@ -127,6 +127,7 @@ public class TradespersonServiceImpl implements TradespersonService {
 
         dto.setId(user.getId());
         dto.setName(user.getName());
+        dto.setPhone(user.getResolvedPhone());
         dto.setOccupation(user.getOccupation());
         dto.setWorkingCity(user.getWorkingCity());
         dto.setExperience(user.getExperience());

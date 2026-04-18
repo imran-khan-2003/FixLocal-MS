@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.*;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import com.fixlocal.enums.Role;
@@ -56,7 +57,19 @@ public class User {
 
     private String bio;
 
+    // Canonical phone field used by current services.
     private String phone;
+
+    // Backward compatibility for older datasets that may have used
+    // different field names in MongoDB.
+    @Field("mobile")
+    private String mobile;
+
+    @Field("mobileNumber")
+    private String mobileNumber;
+
+    @Field("contactNumber")
+    private String contactNumber;
 
     @Builder.Default
     private Integer completedJobs = 0;
@@ -98,4 +111,20 @@ public class User {
 
     @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
+
+    public String getResolvedPhone() {
+        if (phone != null && !phone.isBlank()) {
+            return phone;
+        }
+        if (mobile != null && !mobile.isBlank()) {
+            return mobile;
+        }
+        if (mobileNumber != null && !mobileNumber.isBlank()) {
+            return mobileNumber;
+        }
+        if (contactNumber != null && !contactNumber.isBlank()) {
+            return contactNumber;
+        }
+        return null;
+    }
 }
