@@ -1,1 +1,5 @@
 /loan-service/
+
+# IDE files
+**/.idea/
+*.iml
