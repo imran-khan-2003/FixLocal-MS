@@ -146,17 +146,18 @@ function Register() {
   };
 
   return (
-    <div className="flex items-center justify-center py-12">
-      <div className="max-w-2xl w-full bg-white shadow-lg rounded-2xl p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center text-text-primary">Create an account</h1>
-        {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
+    <div className="flex items-center justify-center py-12 animate-fade-in-up">
+      <div className="glass-panel-strong animated-outline hover-tilt w-full max-w-2xl rounded-3xl p-8 shadow-2xl">
+        <h1 className="mb-2 text-center text-3xl font-bold text-gradient-fire">Create your account</h1>
+        <p className="mb-6 text-center text-sm text-slate-600">Join FixLocal to book or offer trusted local services.</p>
+        {error && <p className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-500">{error}</p>}
         <form className="grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleSubmit}>
           <input
             name="name"
             value={form.name}
             onChange={handleChange}
             placeholder="Full Name"
-            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
             required
           />
           <input
@@ -165,7 +166,7 @@ function Register() {
             value={form.email}
             onChange={handleChange}
             placeholder="Email"
-            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
             required
           />
           <input
@@ -174,7 +175,7 @@ function Register() {
             value={form.password}
             onChange={handleChange}
             placeholder="Password"
-            className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
             required
           />
           <div className="md:col-span-2">
@@ -189,8 +190,8 @@ function Register() {
                 inputProps={{ required: true, name: "phone" }}
                 countryCodeEditable={false}
                 enableSearch
-                inputClass="!w-full !h-12 !text-base !border-gray-300 !rounded-lg focus:!border-primary focus:!outline-none focus:!ring-1 focus:!ring-primary"
-                buttonClass="!h-12 !border-gray-300 !rounded-lg"
+                inputClass="!w-full !h-12 !text-base !border-slate-200 !rounded-xl !bg-white/90 focus:!border-primary focus:!outline-none focus:!ring-2 focus:!ring-primary/25"
+                buttonClass="!h-12 !border-slate-200 !rounded-xl"
                 dropdownClass="!text-sm"
               />
             </label>
@@ -201,7 +202,7 @@ function Register() {
               name="role"
               value={form.role}
               onChange={handleChange}
-              className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
             >
               {roles.map((role) => (
                 <option key={role.value} value={role.value}>
@@ -223,13 +224,13 @@ function Register() {
                     onFocus={() => form.workingCity && setShowSuggestions(citySuggestions.length > 0)}
                     placeholder="Enter your city"
                     autoComplete="off"
-                    className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                    className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
                     required
                   />
                   <button
                     type="button"
                     onClick={() => setShowSuggestions((prev) => !prev)}
-                    className="px-3 py-2 text-sm rounded-lg border border-slate-200 text-slate-700 hover:bg-slate-50"
+                    className="rounded-xl border border-slate-200 bg-white/90 px-3 py-2 text-sm text-slate-700 transition hover:-translate-y-0.5 hover:bg-white"
                     disabled={isCityLoading || !cityOptions.length}
                   >
                     {isCityLoading ? "Loading" : "Browse"}
@@ -259,7 +260,7 @@ function Register() {
                   name="occupation"
                   value={form.occupation}
                   onChange={handleChange}
-                  className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
                   required
                 >
                   <option value="" disabled>
@@ -282,7 +283,7 @@ function Register() {
                   placeholder="0"
                   min="0"
                   max="60"
-                  className="border rounded-lg p-3 w-full focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+                  className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
                   required
                 />
               </label>
@@ -292,7 +293,7 @@ function Register() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary text-white py-3 rounded-lg transition hover:bg-accent"
+              className="btn-glow shimmer relative overflow-hidden w-full rounded-xl bg-gradient-to-r from-primary via-indigo-600 to-fuchsia-600 py-3 text-white transition hover:from-indigo-600 hover:to-primary"
             >
               {loading ? "Creating account..." : "Register"}
             </button>

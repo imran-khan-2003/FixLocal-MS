@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import testimonialApi from "../api/testimonialService";
@@ -261,24 +261,27 @@ function Home() {
   };
 
   return (
-    <>
-      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+    <div className="space-y-6 animate-fade-in-up">
+      <section className="animate-aurora relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#1d4ed8] via-[#6366f1] to-[#a855f7] px-6 py-20 text-white shadow-2xl shimmer">
+        <div className="pointer-events-none absolute -left-10 top-10 h-44 w-44 rounded-full bg-white/20 blur-3xl animate-soft-float" />
+        <div className="pointer-events-none absolute -right-8 bottom-8 h-56 w-56 rounded-full bg-cyan-300/30 blur-3xl animate-soft-float-delayed" />
+
+        <div className="relative mx-auto max-w-4xl text-center">
+          <h1 className="text-4xl font-bold md:text-5xl mb-4">
             Book trusted pros for any job
           </h1>
           <p className="text-lg text-white/90 mb-8">
             Instant bookings, live tracking, secure payments, and in-app chat.
           </p>
 
-          <div className="bg-white/10 backdrop-blur p-6 rounded-2xl flex flex-col md:flex-row gap-4">
+          <div className="glass-panel-strong animated-outline mx-auto flex max-w-5xl flex-col gap-4 rounded-2xl p-6 text-left md:flex-row md:items-center">
             <div className="relative flex-1" ref={cityDropdownRef}>
               <input
                 value={city}
                 onChange={(e) => handleCityInput(e.target.value)}
                 onFocus={() => city && setShowSuggestions(citySuggestions.length > 0)}
                 placeholder="Enter city"
-                className="w-full p-3 rounded-lg text-gray-900"
+                className="w-full rounded-xl border border-white/60 bg-white px-4 py-3 text-gray-900 shadow"
                 autoComplete="off"
               />
               {showSuggestions && citySuggestions.length > 0 && (
@@ -299,7 +302,7 @@ function Home() {
             <select
               value={service}
               onChange={(e) => setService(e.target.value)}
-              className="flex-1 p-3 rounded-lg text-gray-900"
+              className="flex-1 rounded-xl border border-white/60 bg-white px-4 py-3 text-gray-900 shadow"
             >
               <option value="">All Services</option>
               {services.map((service) => (
@@ -310,7 +313,7 @@ function Home() {
             </select>
             <button
               onClick={handleSearch}
-              className="bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg"
+              className="btn-glow rounded-xl bg-white px-6 py-3 font-semibold text-blue-700"
             >
               Search
             </button>
@@ -318,31 +321,31 @@ function Home() {
               type="button"
               onClick={handleSearchByCurrentLocation}
               disabled={locationSearching}
-              className="border border-white/60 text-white font-semibold px-5 py-3 rounded-lg disabled:opacity-70"
+              className="rounded-xl border border-white/60 px-5 py-3 font-semibold text-white transition hover:bg-white/15 disabled:opacity-70"
             >
               {locationSearching ? "Detecting GPS..." : "Search by Current GPS"}
             </button>
           </div>
           {locationError && (
-            <p className="mt-3 text-sm text-amber-100">{locationError}</p>
+            <p className="mt-3 rounded-lg bg-amber-100/20 px-3 py-2 text-sm text-amber-100">{locationError}</p>
           )}
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto py-14 px-6 grid gap-6 md:grid-cols-3">
+      <section className="stagger-children mx-auto grid max-w-6xl gap-6 px-2 py-8 md:grid-cols-3">
         {trustBadges.map((badge) => (
-          <div key={badge.title} className="bg-white p-6 rounded-2xl shadow border border-slate-100">
-            <span className="text-2xl">🔒</span>
+          <div key={badge.title} className="lift-card hover-tilt gradient-border glass-panel rounded-2xl p-6 shadow-lg">
+            <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 text-2xl">🔒</span>
             <h3 className="text-xl font-semibold mt-3">{badge.title}</h3>
             <p className="text-slate-600 mt-2">{badge.copy}</p>
           </div>
         ))}
       </section>
 
-      <section className="bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto py-14 px-6 grid gap-6 md:grid-cols-3">
+      <section className="animate-aurora overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#0f172a] via-[#1d4ed8] to-[#6d28d9] text-white shadow-2xl">
+        <div className="mx-auto grid max-w-5xl gap-6 px-6 py-14 md:grid-cols-3">
           {highlights.map((item) => (
-            <div key={item.label} className="text-center">
+            <div key={item.label} className="lift-card hover-tilt rounded-2xl border border-white/20 bg-white/10 p-5 text-center backdrop-blur">
               <p className="text-4xl font-bold">{item.value}</p>
               <p className="text-sm uppercase tracking-wide mt-2 text-white/70">{item.label}</p>
               <p className="text-white/80 mt-1">{item.detail}</p>
@@ -351,16 +354,16 @@ function Home() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto py-14 px-6">
-        <h2 className="text-3xl font-bold text-slate-900 text-center mb-8">
+      <section className="mx-auto max-w-6xl px-2 py-10">
+        <h2 className="text-gradient text-center text-3xl font-bold mb-8">
           Why homeowners love FixLocal
         </h2>
         {testimonialError && (
           <p className="text-center text-sm text-red-500 mb-4">{testimonialError}</p>
         )}
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="stagger-children grid gap-6 md:grid-cols-3">
           {testimonials.map((t) => (
-            <div key={t.id || t.name} className="bg-white rounded-2xl p-6 shadow border border-slate-100">
+            <div key={t.id || t.name} className="lift-card hover-tilt gradient-border glass-panel rounded-2xl p-6 shadow-lg">
               <p className="text-slate-700 italic">“{t.quote}”</p>
               <div className="mt-4 text-sm text-slate-500">
                 <p className="font-semibold text-slate-900">{t.name}</p>
@@ -373,7 +376,7 @@ function Home() {
           {isAuthenticated ? (
             <form
               onSubmit={handleTestimonialSubmit}
-              className="bg-white rounded-2xl p-6 shadow border border-slate-100 grid gap-4 md:grid-cols-2"
+              className="glass-panel-strong animated-outline rounded-2xl p-6 shadow-lg grid gap-4 md:grid-cols-2"
             >
               <div className="col-span-1">
                 <label className="block text-sm font-semibold text-slate-700">Name</label>
@@ -423,7 +426,7 @@ function Home() {
               <div className="md:col-span-2 flex justify-end">
                 <button
                   type="submit"
-                  className="bg-primary text-white px-5 py-2 rounded-full disabled:opacity-60"
+                  className="btn-glow rounded-full bg-gradient-to-r from-primary to-violet-600 px-5 py-2 text-white disabled:opacity-60"
                   disabled={testimonialSubmitting}
                 >
                   {testimonialSubmitting ? "Saving..." : "Submit testimonial"}
@@ -438,11 +441,11 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-r from-slate-100 to-white border-y border-slate-200">
-        <div className="max-w-6xl mx-auto py-16 px-6 grid gap-6 md:grid-cols-3">
+      <section className="rounded-[2rem] border border-slate-200/70 bg-gradient-to-r from-slate-100 to-white shadow-lg">
+        <div className="stagger-children mx-auto grid max-w-6xl gap-6 px-6 py-16 md:grid-cols-3">
           {howItWorks.map((item) => (
-            <div key={item.step} className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100">
-              <div className="w-10 h-10 rounded-full bg-primary/10 text-primary font-semibold flex items-center justify-center">
+            <div key={item.step} className="lift-card hover-tilt gradient-border rounded-2xl bg-white p-6 shadow-lg">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary animate-pulse-glow">
                 {item.step}
               </div>
               <h3 className="text-xl font-semibold mt-4">{item.title}</h3>
@@ -452,8 +455,8 @@ function Home() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto py-16 px-6 grid gap-6 md:grid-cols-2">
-        <div className="bg-white p-6 rounded-2xl shadow border border-slate-100">
+      <section className="mx-auto grid max-w-6xl gap-6 px-2 py-12 md:grid-cols-2">
+        <div className="lift-card hover-tilt glass-panel-strong gradient-border rounded-2xl p-6 shadow-lg">
           <h3 className="text-2xl font-bold text-slate-900">Popular categories</h3>
           <p className="text-slate-600 mt-2">
             Trending FixLocal requests across metros — tap to explore specialists instantly.
@@ -465,14 +468,15 @@ function Home() {
                 onClick={() =>
                   navigate(`/search?city=${encodeURIComponent(city || "Bengaluru")}&service=${encodeURIComponent(item.value)}`)
                 }
-                className="text-left px-3 py-2 rounded-lg border border-slate-200 hover:bg-primary/5 text-sm"
+                className="rounded-lg border border-slate-200 bg-white/80 px-3 py-2 text-left text-sm transition hover:-translate-y-0.5 hover:bg-primary/10"
               >
                 {item.label}
               </button>
             ))}
           </div>
         </div>
-        <div className="bg-primary text-white rounded-2xl p-6 shadow-lg">
+        <div className="lift-card hover-tilt shimmer animate-aurora relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary via-indigo-600 to-fuchsia-600 p-6 text-white shadow-2xl">
+          <div className="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/20 blur-2xl" />
           <h3 className="text-2xl font-bold">FixLocal Assurance</h3>
           <p className="text-white/80 mt-2">
             Every booking includes ₹25,000 workmanship cover plus dispute mediation. Need help choosing a pro? Chat with FixLocal concierge on
@@ -485,13 +489,13 @@ function Home() {
           </ul>
           <button
             onClick={() => navigate("/register")}
-            className="mt-5 inline-flex items-center justify-center rounded-full bg-white text-primary font-semibold px-6 py-2"
+            className="mt-5 inline-flex items-center justify-center rounded-full bg-white px-6 py-2 font-semibold text-primary transition hover:-translate-y-0.5 hover:bg-slate-100"
           >
             Become a verified pro
           </button>
         </div>
       </section>
-    </>
+    </div>
   );
 }
 

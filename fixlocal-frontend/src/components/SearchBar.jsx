@@ -163,26 +163,24 @@ function SearchBar({ initialCity = "", initialService = "", onSearch }) {
   };
 
   return (
-
-    <div className="flex flex-col md:flex-row justify-center gap-4">
-
-      <div className="relative" ref={suggestionsRef}>
+    <div className="glass-panel-strong animated-outline animate-fade-in-up flex flex-col justify-center gap-4 rounded-2xl p-4 md:flex-row md:items-center md:p-5">
+      <div className="relative md:flex-1" ref={suggestionsRef}>
         <input
           type="text"
           placeholder="Enter city"
-          className="w-full md:w-64 rounded-md border border-gray-300 px-4 py-2 text-text-primary focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+          className="w-full rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-text-primary shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
           value={city}
           onChange={(e) => handleCityInput(e.target.value)}
           onFocus={() => city && setShowSuggestions(citySuggestions.length > 0)}
           autoComplete="off"
         />
         {showSuggestions && citySuggestions.length > 0 && (
-          <div className="absolute z-20 mt-1 max-h-60 w-full overflow-y-auto rounded-md border border-slate-200 bg-white shadow-lg">
+          <div className="absolute z-20 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-xl">
             {citySuggestions.map((suggestion) => (
               <button
                 key={suggestion}
                 type="button"
-                className="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-100"
+                className="block w-full px-4 py-2 text-left text-sm text-slate-700 transition hover:bg-primary/10"
                 onClick={() => handleSelectCity(suggestion)}
               >
                 {suggestion}
@@ -195,14 +193,14 @@ function SearchBar({ initialCity = "", initialService = "", onSearch }) {
       <button
         type="button"
         onClick={handleUseMyLocation}
-        className="rounded-md border border-gray-300 px-4 py-2 text-text-primary hover:bg-gray-50"
+        className="rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-text-primary transition hover:-translate-y-0.5 hover:bg-white hover:shadow-lg"
         disabled={locationLoading}
       >
         {locationLoading ? "Detecting…" : "Use My Location"}
       </button>
 
       <select
-        className="rounded-md border border-gray-300 px-4 py-2 text-text-primary focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+        className="rounded-xl border border-slate-200 bg-white/90 px-4 py-2.5 text-text-primary shadow-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
         value={service ?? ""}
         onChange={(e) => setService(e.target.value)}
       >
@@ -215,13 +213,11 @@ function SearchBar({ initialCity = "", initialService = "", onSearch }) {
 
       <button
         onClick={handleSearch}
-        className="rounded-md bg-accent px-6 py-2 text-white transition hover:bg-blue-800"
+        className="btn-glow shimmer relative overflow-hidden rounded-xl bg-gradient-to-r from-primary via-indigo-600 to-fuchsia-600 px-6 py-2.5 text-white transition hover:from-indigo-600 hover:to-primary"
       >
         Search
       </button>
-
     </div>
-
   );
 }
 

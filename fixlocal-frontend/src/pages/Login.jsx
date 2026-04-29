@@ -33,17 +33,18 @@ function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center py-16">
-      <div className="max-w-md w-full bg-white shadow-lg rounded-2xl p-8">
-        <h1 className="text-2xl font-bold mb-6 text-center text-text-primary">Login</h1>
-        {error && <p className="text-red-500 mb-4 text-sm">{error}</p>}
+    <div className="animate-fade-in-up flex items-center justify-center py-16">
+      <div className="glass-panel-strong animated-outline hover-tilt w-full max-w-md rounded-3xl p-8 shadow-2xl">
+        <h1 className="mb-2 text-center text-3xl font-bold text-gradient-fire">Welcome back</h1>
+        <p className="mb-6 text-center text-sm text-slate-600">Login to continue booking trusted local pros.</p>
+        {error && <p className="mb-4 rounded-lg bg-red-50 px-3 py-2 text-sm text-red-500">{error}</p>}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border rounded-lg p-3 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
             required
           />
           <input
@@ -51,7 +52,7 @@ function Login() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border rounded-lg p-3 focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+            className="w-full rounded-xl border border-slate-200 bg-white/90 p-3 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/25"
             required
           />
           <div className="text-right">
@@ -62,7 +63,7 @@ function Login() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-primary text-white py-3 rounded-lg transition hover:bg-accent"
+            className="btn-glow shimmer relative overflow-hidden w-full rounded-xl bg-gradient-to-r from-primary via-indigo-600 to-fuchsia-600 py-3 text-white transition hover:from-indigo-600 hover:to-primary"
           >
             {loading ? "Signing in..." : "Login"}
           </button>

@@ -12,12 +12,15 @@ function WorkerCard({ worker }) {
     : "0.0";
 
   return (
-    <div className="relative p-5 bg-white border rounded-2xl shadow hover:shadow-xl transition">
+    <div className="lift-card hover-tilt gradient-border group relative overflow-hidden rounded-2xl bg-white/90 p-5 shadow-lg backdrop-blur">
+
+      <div className="pointer-events-none absolute -right-12 -top-12 h-28 w-28 rounded-full bg-blue-100/70 blur-2xl transition group-hover:bg-fuchsia-100" />
+      <div className="pointer-events-none absolute -left-10 bottom-0 h-24 w-24 rounded-full bg-cyan-200/50 blur-2xl" />
 
       <img
         src="/tradesperson.png"
         alt="Tradesperson badge"
-        className="absolute top-1 right-1 object-contain"
+        className="animate-soft-float-delayed absolute right-1 top-1 object-contain opacity-95"
         style={{ height: "150px", width: "150px" }}
       />
 
@@ -25,9 +28,9 @@ function WorkerCard({ worker }) {
         {worker.name}
       </h2>
 
-      <p className="text-text-secondary">{worker.occupation}</p>
+      <p className="text-sm font-semibold text-gradient">{worker.occupation}</p>
 
-      <p className="text-text-secondary">📍 {worker.workingCity}</p>
+      <p className="mt-2 text-text-secondary">📍 {worker.workingCity}</p>
 
       <p className="text-text-secondary">⭐ {roundedRating}</p>
 
@@ -53,7 +56,7 @@ function WorkerCard({ worker }) {
 
       <button
         onClick={() => navigate(`/worker/${worker.id}`)}
-        className="mt-4 bg-accent text-white px-4 py-2 rounded-lg w-full transition hover:bg-blue-800"
+        className="btn-glow shimmer relative mt-4 w-full overflow-hidden rounded-xl bg-gradient-to-r from-primary via-indigo-600 to-fuchsia-600 px-4 py-2 text-white transition hover:from-indigo-600 hover:to-primary"
       >
         View Profile
       </button>

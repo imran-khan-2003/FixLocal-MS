@@ -169,33 +169,35 @@ function Navbar({ onToggleSidebar }) {
   };
 
   const authButtonClass =
-    "rounded-full bg-accent px-5 py-2 text-white transition hover:bg-blue-800";
+    "btn-glow rounded-full bg-gradient-to-r from-primary to-indigo-600 px-5 py-2 text-white transition hover:from-indigo-600 hover:to-primary";
 
   return (
-    <nav className="bg-primary shadow-md">
+    <nav className="animate-aurora sticky top-0 z-50 border-b border-white/40 bg-gradient-to-r from-[#1e3a8a]/95 via-[#2a64f5]/95 to-[#7c3aed]/95 shadow-2xl backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-3">
           <button
             type="button"
-            className="flex h-[42px] w-[42px] items-center justify-center rounded-lg border border-slate-200 p-0 text-2xl leading-none text-white hover:bg-accent"
+            className="flex h-[42px] w-[42px] items-center justify-center rounded-xl border border-white/40 bg-white/10 p-0 text-2xl leading-none text-white transition hover:bg-white/20"
             onClick={onToggleSidebar || (() => {})}
             aria-label="Toggle navigation"
           >
             ☰
           </button>
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="shimmer relative flex items-center overflow-hidden rounded-2xl px-1">
             <img src="/logo.png" alt="FixLocal logo" className="navbar-logo" />
           </Link>
         </div>
 
-        <div className="flex flex-wrap items-center justify-end gap-4 text-sm font-medium text-gray-200">
+        <div className="flex flex-wrap items-center justify-end gap-4 text-sm font-medium text-gray-100">
           {isAuthenticated ? (
             <>
               <div className="relative" ref={notificationPanelRef}>
                 <button
                   type="button"
                   onClick={handleNotificationToggle}
-                  className="relative rounded-full border border-slate-200 px-3 py-2 text-white transition hover:bg-accent"
+                  className={`relative rounded-full border border-white/40 px-3 py-2 text-white transition hover:bg-white/15 ${
+                    unreadCount > 0 ? "animate-pulse-glow" : ""
+                  }`}
                   aria-label="Toggle notifications"
                 >
                   🔔
@@ -207,7 +209,7 @@ function Navbar({ onToggleSidebar }) {
                 </button>
 
                 {notificationOpen && (
-                  <div className="absolute right-0 z-50 mt-2 w-80 rounded-xl border border-slate-200 bg-white p-3 text-left shadow-xl">
+                  <div className="glass-panel-strong animate-pop-in absolute right-0 z-50 mt-2 w-80 rounded-2xl p-3 text-left shadow-xl">
                     <div className="mb-2 flex items-center justify-between">
                       <p className="text-sm font-semibold text-slate-800">Notifications</p>
                       {notifications.length > 0 && unreadCount > 0 && (
@@ -233,7 +235,7 @@ function Navbar({ onToggleSidebar }) {
                         {notifications.map((item) => (
                           <li
                             key={item.id}
-                            className={`rounded-lg border p-2 ${
+                            className={`hover-tilt rounded-xl border p-2 ${
                               item.read
                                 ? "border-slate-200 bg-slate-50"
                                 : "border-blue-100 bg-blue-50"
@@ -251,7 +253,7 @@ function Navbar({ onToggleSidebar }) {
                               <button
                                 type="button"
                                 onClick={() => handleHideNotification(item.id)}
-                                className="rounded-md bg-slate-600 px-2 py-1 text-[11px] font-semibold text-white hover:bg-slate-700"
+                                className="rounded-md bg-slate-600 px-2 py-1 text-[11px] font-semibold text-white transition hover:bg-slate-700"
                               >
                                 Hide
                               </button>
@@ -259,7 +261,7 @@ function Navbar({ onToggleSidebar }) {
                                 type="button"
                                 onClick={() => handleMarkAsRead(item.id)}
                                 disabled={item.read}
-                                className="rounded-md bg-blue-600 px-2 py-1 text-[11px] font-semibold text-white hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
+                                className="rounded-md bg-blue-600 px-2 py-1 text-[11px] font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:bg-blue-300"
                               >
                                 {item.read ? "Read" : "Mark read"}
                               </button>
@@ -278,17 +280,17 @@ function Navbar({ onToggleSidebar }) {
 
               {!isNarrowScreen && (
                 <>
-                  <span className="text-white">
+                  <span className="text-white/90">
                     Signed in as <strong>{user?.name || "User"}</strong>
                   </span>
-                  <Link to="/profile" className="hover:text-white">
+                  <Link to="/profile" className="transition hover:text-white">
                     My Profile
                   </Link>
                 </>
               )}
               <button
                 onClick={handleLogout}
-                className="rounded-full bg-accent px-4 py-2 text-white transition hover:bg-blue-800"
+                className="btn-glow shimmer relative overflow-hidden rounded-full bg-white/15 px-4 py-2 text-white transition hover:bg-white/25"
               >
                 Logout
               </button>

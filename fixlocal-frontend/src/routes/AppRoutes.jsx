@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate, Outlet, useLocation } from "react-router-dom";
 
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -25,10 +25,22 @@ import { useAuth } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
+import PageLoader from "../components/PageLoader";
 
-function AppRoutes() {
+function AppRoutesContent() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isPageLoading, setIsPageLoading] = useState(true);
   const { isAuthenticated, user } = useAuth();
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsPageLoading(true);
+    const timeoutId = setTimeout(() => {
+      setIsPageLoading(false);
+    }, 450);
+
+    return () => clearTimeout(timeoutId);
+  }, [location.pathname, location.search, location.hash]);
 
   const toggleSidebar = () => setSidebarOpen((prev) => !prev);
   const closeSidebar = () => setSidebarOpen(false);
@@ -42,10 +54,10 @@ function AppRoutes() {
   };
 
   const Shell = ({ children }) => (
-    <div className="min-h-screen bg-slate-50">
+    <div className="app-shell-bg min-h-screen bg-slate-50">
       <Navbar onToggleSidebar={toggleSidebar} />
       <Sidebar open={sidebarOpen} onClose={closeSidebar} />
-      <div className="pt-4 px-4 pb-10">
+      <div className="animate-fade-in-up mx-auto w-full max-w-[1400px] px-3 pb-12 pt-6 md:px-5">
         {children}
       </div>
       <Footer />
@@ -59,7 +71,8 @@ function AppRoutes() {
   );
 
   return (
-    <BrowserRouter>
+    <>
+      {isPageLoading && <PageLoader />}
       <Routes>
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
@@ -231,6 +244,14 @@ function AppRoutes() {
           }
         />
       </Routes>
+    </>
+  );
+}
+
+function AppRoutes() {
+  return (
+    <BrowserRouter>
+      <AppRoutesContent />
     </BrowserRouter>
   );
 }
