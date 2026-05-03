@@ -163,8 +163,8 @@ function SearchBar({ initialCity = "", initialService = "", onSearch }) {
   };
 
   return (
-    <div className="glass-panel-strong animated-outline animate-fade-in-up flex flex-col justify-center gap-4 rounded-2xl p-4 md:flex-row md:items-center md:p-5">
-      <div className="relative md:flex-1" ref={suggestionsRef}>
+    <div className="glass-panel-strong animated-outline animate-fade-in-up relative z-30 flex flex-col justify-center gap-4 overflow-visible rounded-2xl p-4 md:flex-row md:items-center md:p-5">
+      <div className="relative z-40 md:flex-1" ref={suggestionsRef}>
         <input
           type="text"
           placeholder="Enter city"
@@ -175,7 +175,7 @@ function SearchBar({ initialCity = "", initialService = "", onSearch }) {
           autoComplete="off"
         />
         {showSuggestions && citySuggestions.length > 0 && (
-          <div className="absolute z-20 mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-xl">
+          <div className="absolute left-0 top-full z-[90] mt-1 max-h-60 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white shadow-xl">
             {citySuggestions.map((suggestion) => (
               <button
                 key={suggestion}

@@ -44,4 +44,10 @@ public interface BookingRepository extends MongoRepository<Booking, String> {
     );
 
     long countByStatus(BookingStatus status);
+
+    Optional<Booking> findByPaymentIntentId(String paymentIntentId);
+
+    Optional<Booking> findFirstByPaymentIntentIdStartingWith(String paymentIntentIdPrefix);
+
+    Optional<Booking> findFirstByPaymentIntentIdEndingWith(String paymentIntentIdSuffix);
 }

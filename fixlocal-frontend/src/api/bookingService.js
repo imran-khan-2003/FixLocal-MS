@@ -26,6 +26,8 @@ export const bookingService = {
       api.post(`/bookings/${bookingId}/payments/initiate`, null, {
         params: { amount },
       }),
+    verify: (bookingId, payload) =>
+      api.post(`/bookings/${bookingId}/payments/verify`, payload),
     authorize: (bookingId) => api.post(`/bookings/${bookingId}/payments/authorize`),
     capture: (bookingId) => api.post(`/bookings/${bookingId}/payments/capture`),
     refund: (bookingId) => api.post(`/bookings/${bookingId}/payments/refund`),

@@ -25,11 +25,110 @@ function CurrentBooking() {
     sendMessage,
   } = useCurrentBooking();
   const [chatVisible, setChatVisible] = useState(false);
+  const [paymentBusy, setPaymentBusy] = useState(false);
+
+  const normalizeInitiatePayload = (payload) => {
+    const orderId = payload?.orderId || payload?.order_id;
+    const amount = Number(payload?.amount);
+    const keyId = payload?.keyId || import.meta.env.VITE_RAZORPAY_KEY_ID;
+    const currency = payload?.currency || "INR";
+
+    if (!orderId || !Number.isFinite(amount) || amount <= 0 || !keyId) {
+      throw new Error(
+        "Payment gateway response is incomplete. Please restart payment-service with Razorpay keys and try again."
+      );
+    }
+
+    return { orderId, amount, keyId, currency };
+  };
+
+  const loadRazorpaySdk = async () => {
+    if (window.Razorpay) return true;
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.async = true;
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
+  const launchRazorpayCheckout = async (booking, initiateData) => {
+    const sdkLoaded = await loadRazorpaySdk();
+    if (!sdkLoaded || !window.Razorpay) {
+      throw new Error("Unable to load Razorpay checkout");
+    }
+
+    const userName = booking?.userName || "FixLocal User";
+
+    return new Promise((resolve, reject) => {
+      const options = {
+        key: initiateData.keyId,
+        amount: initiateData.amount,
+        currency: initiateData.currency,
+        name: "FixLocal",
+        description: booking?.serviceDescription || "Service payment",
+        order_id: initiateData.orderId,
+        handler: async function (response) {
+          try {
+            await bookingService.payments.verify(booking.id, {
+              orderId: response.razorpay_order_id,
+              paymentId: response.razorpay_payment_id,
+              signature: response.razorpay_signature,
+            });
+            resolve();
+          } catch (verifyError) {
+            reject(verifyError);
+          }
+        },
+        modal: {
+          ondismiss: () => reject(new Error("Payment cancelled")),
+        },
+        prefill: {
+          name: userName,
+        },
+        theme: {
+          color: "#2563eb",
+        },
+      };
+
+      const razorpay = new window.Razorpay(options);
+      razorpay.on("payment.failed", (err) => {
+        reject(new Error(err?.error?.description || "Payment failed"));
+      });
+      razorpay.open();
+    });
+  };
 
   const handleCancel = async (booking, reason) => {
     await bookingService.cancel(booking.id, reason);
     setActionNotice("Booking cancelled");
     refresh();
+  };
+
+  const handlePaymentAction = async (booking, action) => {
+    if (!booking || paymentBusy) return;
+    setPaymentBusy(true);
+    try {
+      if (action === "initiate") {
+        const amount = Number(booking.price ?? booking.initialOfferAmount ?? 0);
+        const { data: initiateData } = await bookingService.payments.initiate(booking.id, amount);
+        const checkoutData = normalizeInitiatePayload(initiateData);
+        await launchRazorpayCheckout(booking, checkoutData);
+      } else if (action === "capture") {
+        await bookingService.payments.capture(booking.id);
+      } else if (action === "refund") {
+        await bookingService.payments.refund(booking.id);
+      }
+
+      setActionNotice("Payment updated successfully.");
+      await refresh();
+    } catch (err) {
+      setActionNotice(err?.response?.data?.message || err?.message || "Payment action failed. Please retry.");
+    } finally {
+      setPaymentBusy(false);
+    }
   };
 
   return (
@@ -55,7 +154,13 @@ function CurrentBooking() {
               onPrimaryAction={() => handleCancel(activeBooking, "Cancelled from current view")}
               primaryLabel="Cancel booking"
             />
-            <PaymentSummary booking={activeBooking} />
+            <PaymentSummary
+              booking={activeBooking}
+              busy={paymentBusy}
+              onInitiate={(booking) => handlePaymentAction(booking, "initiate")}
+              onCapture={(booking) => handlePaymentAction(booking, "capture")}
+              onRefund={(booking) => handlePaymentAction(booking, "refund")}
+            />
             {chatVisible && (
               <ChatThread
                 conversation={chatConversation}

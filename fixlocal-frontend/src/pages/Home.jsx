@@ -262,7 +262,10 @@ function Home() {
 
   return (
     <div className="space-y-6 animate-fade-in-up">
-      <section className="animate-aurora relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#1d4ed8] via-[#6366f1] to-[#a855f7] px-6 py-20 text-white shadow-2xl shimmer">
+      <section
+        className="animate-aurora relative overflow-visible rounded-[2rem] bg-gradient-to-r from-[#1d4ed8] via-[#6366f1] to-[#a855f7] px-6 py-20 text-white shadow-2xl shimmer"
+        style={{ overflow: "visible" }}
+      >
         <div className="pointer-events-none absolute -left-10 top-10 h-44 w-44 rounded-full bg-white/20 blur-3xl animate-soft-float" />
         <div className="pointer-events-none absolute -right-8 bottom-8 h-56 w-56 rounded-full bg-cyan-300/30 blur-3xl animate-soft-float-delayed" />
 
@@ -274,8 +277,8 @@ function Home() {
             Instant bookings, live tracking, secure payments, and in-app chat.
           </p>
 
-          <div className="glass-panel-strong animated-outline mx-auto flex max-w-5xl flex-col gap-4 rounded-2xl p-6 text-left md:flex-row md:items-center">
-            <div className="relative flex-1" ref={cityDropdownRef}>
+          <div className="glass-panel-strong animated-outline relative z-30 mx-auto flex max-w-5xl flex-col gap-4 overflow-visible rounded-2xl p-6 text-left md:flex-row md:items-center">
+            <div className="relative z-40 flex-1" ref={cityDropdownRef}>
               <input
                 value={city}
                 onChange={(e) => handleCityInput(e.target.value)}
@@ -285,7 +288,7 @@ function Home() {
                 autoComplete="off"
               />
               {showSuggestions && citySuggestions.length > 0 && (
-                <div className="absolute z-20 mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white text-left shadow-lg">
+                <div className="absolute left-0 top-full z-[90] mt-2 max-h-64 w-full overflow-y-auto rounded-xl border border-slate-200 bg-white text-left shadow-lg">
                   {citySuggestions.map((option) => (
                     <button
                       key={option}

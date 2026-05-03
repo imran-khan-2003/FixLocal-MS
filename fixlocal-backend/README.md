@@ -274,10 +274,20 @@ Implementation notes:
 
 Public endpoints (both path styles accepted):
 - `POST /api/v1/bookings/{bookingId}/payments/initiate?amount=...`
+- `POST /api/v1/bookings/{bookingId}/payments/verify` with body:
+  ```json
+  {
+    "orderId": "order_xxx",
+    "paymentId": "pay_xxx",
+    "signature": "razorpay_signature"
+  }
+  ```
 - `POST /api/v1/bookings/{bookingId}/payments/authorize`
 - `POST /api/v1/bookings/{bookingId}/payments/capture`
 - `POST /api/v1/bookings/{bookingId}/payments/refund`
+- `POST /api/v1/payments/webhook` (expects `X-Razorpay-Signature` header)
 - `POST /api/v1/payments/bookings/{bookingId}/initiate`
+- `POST /api/v1/payments/bookings/{bookingId}/verify`
 - `POST /api/v1/payments/bookings/{bookingId}/authorize`
 - `POST /api/v1/payments/bookings/{bookingId}/capture`
 - `POST /api/v1/payments/bookings/{bookingId}/refund`
@@ -287,6 +297,24 @@ Implementation notes:
 - Prevents duplicate capture/refund operations.
 - Uses booking document fields `paymentStatus` and `paymentIntentId`.
 
+
+#### Razorpay configuration
+
+Set these environment variables for `payment-service`:
+
+- `RAZORPAY_KEY_ID`
+- `RAZORPAY_KEY_SECRET`
+- `RAZORPAY_WEBHOOK_SECRET`
+- `RAZORPAY_BASE_URL` (optional, default `https://api.razorpay.com`)
+- `RAZORPAY_CURRENCY` (optional, default `INR`)
+
+Recommended flow:
+
+1. Initiate payment (creates Razorpay order and marks booking as `INITIATED`)
+2. Open Razorpay Checkout on frontend with returned order id + key id
+3. Verify payment signature via `/payments/verify` (marks `AUTHORIZED`)
+4. Capture after booking completion
+5. Refund when needed
 ### chat-service
 
 Public endpoints:

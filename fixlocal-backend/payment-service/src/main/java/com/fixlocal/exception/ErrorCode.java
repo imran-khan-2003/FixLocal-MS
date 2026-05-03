@@ -16,6 +16,9 @@ public enum ErrorCode {
     FORBIDDEN(HttpStatus.FORBIDDEN, "You are not authorized to access this resource"),
 
     BOOKING_NOT_FOUND(HttpStatus.NOT_FOUND, "Booking not found"),
+    PAYMENT_OPERATION_FORBIDDEN(HttpStatus.FORBIDDEN, "You are not allowed to perform this payment action"),
+    PAYMENT_AMOUNT_INVALID(HttpStatus.BAD_REQUEST, "Payment amount must be greater than zero"),
+    PAYMENT_SIGNATURE_INVALID(HttpStatus.BAD_REQUEST, "Invalid payment signature"),
     PAYMENT_INTENT_MISSING(HttpStatus.BAD_REQUEST, "Payment intent missing"),
     PAYMENT_CAPTURE_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "Payment capture allowed only on completed bookings"),
     PAYMENT_ALREADY_CAPTURED(HttpStatus.CONFLICT, "Payment already captured"),

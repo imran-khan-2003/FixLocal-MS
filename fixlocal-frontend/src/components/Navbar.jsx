@@ -140,6 +140,15 @@ function Navbar({ onToggleSidebar }) {
     setNotifications((prev) => prev.filter((item) => item.id !== notificationId));
   };
 
+  const handleHideAllNotifications = () => {
+    setHiddenNotificationIds((prev) => {
+      const idsToHide = notifications.map((item) => item.id);
+      return Array.from(new Set([...prev, ...idsToHide]));
+    });
+    setNotifications([]);
+    setNotificationError("");
+  };
+
   const handleMarkAllAsRead = async () => {
     try {
       await notificationService.markAllAsRead();
@@ -212,14 +221,25 @@ function Navbar({ onToggleSidebar }) {
                   <div className="glass-panel-strong animate-pop-in absolute right-0 z-50 mt-2 w-80 rounded-2xl p-3 text-left shadow-xl">
                     <div className="mb-2 flex items-center justify-between">
                       <p className="text-sm font-semibold text-slate-800">Notifications</p>
-                      {notifications.length > 0 && unreadCount > 0 && (
-                        <button
-                          type="button"
-                          onClick={handleMarkAllAsRead}
-                          className="text-xs font-medium text-blue-600 hover:text-blue-700"
-                        >
-                          Mark all read
-                        </button>
+                      {notifications.length > 0 && (
+                        <div className="flex items-center gap-3">
+                          {unreadCount > 0 && (
+                            <button
+                              type="button"
+                              onClick={handleMarkAllAsRead}
+                              className="text-xs font-medium text-blue-600 hover:text-blue-700"
+                            >
+                              Mark all read
+                            </button>
+                          )}
+                          <button
+                            type="button"
+                            onClick={handleHideAllNotifications}
+                            className="text-xs font-medium text-slate-600 hover:text-slate-700"
+                          >
+                            Hide all
+                          </button>
+                        </div>
                       )}
                     </div>
                     <p className="mb-2 text-[11px] text-slate-500">
