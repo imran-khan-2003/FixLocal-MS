@@ -14,6 +14,7 @@ SERVICES = [
     "admin-service",
     "user-service",
     "booking-service",
+    "location-service",
     "chat-service",
     "dispute-service",
     "notification-service",

@@ -19,6 +19,7 @@ This directory contains the complete backend for FixLocal, split into Spring Boo
 | `auth-service` | 8081 | `/api/v1/auth/**` | Register, login, forgot-password, auth payload encryption key |
 | `user-service` | 8082 | `/api/v1/users/**`, `/api/v1/tradespersons/**` | Profile CRUD, availability, skill tags, services, tradesperson discovery |
 | `booking-service` | 8084 | `/api/v1/bookings/**` | Booking lifecycle, offers, live-location REST, booking stats |
+| `location-service` | 8092 | `/internal/location/**` | Internal live-location persistence/read/delete for bookings |
 | `chat-service` | 8085 | `/api/v1/chat/**` | Conversation creation, messages, file attachment download |
 | `notification-service` | 8086 | `/api/v1/notifications/**` | Notification listing and read state |
 | `payment-service` | 8087 | `/api/v1/bookings/{id}/payments/**`, `/api/v1/payments/**` | Escrow payment state transitions |
@@ -72,6 +73,11 @@ The backend already uses internal HTTP contracts for decoupling:
 ### notification-service internal APIs
 - `POST /internal/notifications`
 
+### location-service internal APIs
+- `PUT /internal/location/bookings/{bookingId}`
+- `GET /internal/location/bookings/{bookingId}`
+- `DELETE /internal/location/bookings/{bookingId}`
+
 ## Security Model
 
 - Each service is **stateless** (`SessionCreationPolicy.STATELESS`)
@@ -118,6 +124,7 @@ Internal base URL values:
 - `BOOKING_SERVICE_BASE_URL` (default `http://localhost:8084`)
 - `CHAT_SERVICE_BASE_URL` (default `http://localhost:8085`)
 - `NOTIFICATION_SERVICE_BASE_URL` (used by booking-service, default `http://localhost:8086`)
+- `LOCATION_SERVICE_BASE_URL` (used by booking-service, default `http://localhost:8092`)
 
 Auth payload encryption values:
 
@@ -266,9 +273,22 @@ Implementation notes:
 - Enforces role ownership checks on all booking actions.
 - Negotiation flow is turn-based (`awaitingResponseFrom`) and state-aware.
 - Accept booking uses a Mongo conditional update to transition tradesperson `AVAILABLE -> BUSY` safely.
-- Live-location stale threshold is 300 seconds (`LIVE_LOCATION_STALE_THRESHOLD_SECONDS`).
 - Booking events are sent as internal notifications to notification-service.
-- On complete/cancel, live location record is deleted.
+- Live-location persistence is delegated to `location-service` internal APIs.
+- On complete/cancel, booking-service requests location deletion from `location-service`.
+
+### location-service (`/internal/location`)
+
+Internal endpoints:
+- `PUT /internal/location/bookings/{bookingId}`
+- `GET /internal/location/bookings/{bookingId}`
+- `DELETE /internal/location/bookings/{bookingId}`
+
+Implementation notes:
+- Stores live location records in `live_locations` collection.
+- Enforces one live-location record per booking (`bookingId` unique index).
+- Applies TTL cleanup on `updatedAt` (900 seconds) for stale records.
+- Computes `stale` flag using configurable threshold (`LIVE_LOCATION_STALE_THRESHOLD_SECONDS`).
 
 ### payment-service
 
@@ -410,6 +430,7 @@ Notable permit-all routes:
 - auth-service: `/api/v1/auth/**`
 - user-service: `/api/v1/tradespersons/**`, `/internal/users/**`
 - booking-service: `/internal/bookings/**`
+- location-service: `/internal/location/**`
 - chat-service: `/internal/chat/**`
 - notification-service: `/internal/notifications/**`
 - testimonial-service: `/api/v1/testimonials/**`
@@ -439,7 +460,7 @@ Notable permit-all routes:
 
 - review/dispute/admin use `USER_SERVICE_BASE_URL` and/or `BOOKING_SERVICE_BASE_URL`
 - admin also uses `CHAT_SERVICE_BASE_URL`
-- booking uses `NOTIFICATION_SERVICE_BASE_URL`
+- booking uses `NOTIFICATION_SERVICE_BASE_URL` and `LOCATION_SERVICE_BASE_URL`
 
 ## Deep-Dive: Operations and Scripts
 

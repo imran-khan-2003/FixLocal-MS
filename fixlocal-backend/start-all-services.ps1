@@ -8,6 +8,7 @@ $services = @(
   @{ Name = "auth-service"; Pom = "auth-service/pom.xml"; Port = 8081 },
   @{ Name = "user-service"; Pom = "user-service/pom.xml"; Port = 8082 },
   @{ Name = "booking-service"; Pom = "booking-service/pom.xml"; Port = 8084 },
+  @{ Name = "location-service"; Pom = "location-service/pom.xml"; Port = 8092 },
   @{ Name = "chat-service"; Pom = "chat-service/pom.xml"; Port = 8085 },
   @{ Name = "notification-service"; Pom = "notification-service/pom.xml"; Port = 8086 },
   @{ Name = "payment-service"; Pom = "payment-service/pom.xml"; Port = 8087 },

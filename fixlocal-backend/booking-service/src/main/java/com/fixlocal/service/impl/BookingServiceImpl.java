@@ -7,7 +7,6 @@ import com.fixlocal.exception.ErrorCode;
 import com.fixlocal.entity.*;
 import com.fixlocal.enums.*;
 import com.fixlocal.repository.BookingRepository;
-import com.fixlocal.repository.LiveLocationRepository;
 import com.fixlocal.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -23,11 +22,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.*;
 import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.HttpClientErrorException;
 
 import com.mongodb.client.result.UpdateResult;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,16 +36,16 @@ import java.util.UUID;
 @Slf4j
 public class BookingServiceImpl implements BookingService {
 
-    private static final long LIVE_LOCATION_STALE_THRESHOLD_SECONDS = 300;
-
     private final BookingRepository bookingRepository;
     private final UserRepository userRepository;
-    private final LiveLocationRepository liveLocationRepository;
     private final MongoTemplate mongoTemplate;
     private final RestTemplate restTemplate;
 
     @Value("${internal.notification-service.base-url:http://localhost:8086}")
     private String notificationServiceBaseUrl;
+
+    @Value("${internal.location-service.base-url:http://localhost:8092}")
+    private String locationServiceBaseUrl;
 
     // ======================================================
     // 🔐 Helper: Get logged-in user (BLOCK SAFE)
@@ -386,7 +384,7 @@ public class BookingServiceImpl implements BookingService {
 
         log.info("Booking {} completed by tradesperson {}", bookingId, loggedInUser.getId());
 
-        liveLocationRepository.deleteByBookingId(bookingId);
+        deleteLocationSafely(bookingId);
 
         return saved;
     }
@@ -459,7 +457,7 @@ public class BookingServiceImpl implements BookingService {
 
         log.info("Booking {} cancelled by {}", bookingId, loggedInUser.getRole());
 
-        liveLocationRepository.deleteByBookingId(bookingId);
+        deleteLocationSafely(bookingId);
 
         return saved;
     }
@@ -688,30 +686,23 @@ public class BookingServiceImpl implements BookingService {
             throw new BookingException(ErrorCode.LIVE_LOCATION_UPDATE_FORBIDDEN);
         }
 
-        var liveLocation = liveLocationRepository
-                .findByBookingId(bookingId)
-                .orElseGet(() -> LiveLocation.builder()
-                        .bookingId(bookingId)
-                        .tradespersonId(loggedInUser.getId())
-                        .build());
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("tradespersonId", loggedInUser.getId());
+        payload.put("latitude", latitude);
+        payload.put("longitude", longitude);
 
-        Instant now = Instant.now();
-
-        liveLocation.setLatitude(latitude);
-        liveLocation.setLongitude(longitude);
-        liveLocation.setUpdatedAt(now);
-
-        liveLocationRepository.save(liveLocation);
-
-        LiveLocationEvent event = LiveLocationEvent.builder()
-                .bookingId(bookingId)
-                .latitude(latitude)
-                .longitude(longitude)
-                .updatedAt(now)
-                .stale(false)
-                .build();
-
-        // WebSocket publication handled by dedicated chat/notification flow.
+        try {
+            restTemplate.put(
+                    locationServiceBaseUrl + "/internal/location/bookings/{bookingId}",
+                    payload,
+                    bookingId
+            );
+        } catch (Exception ex) {
+            throw new BookingException(
+                    ErrorCode.EXTERNAL_SERVICE_ERROR,
+                    "Unable to update live location"
+            );
+        }
     }
 
     public LiveLocationEvent getLiveLocation(String bookingId) {
@@ -727,21 +718,28 @@ public class BookingServiceImpl implements BookingService {
             throw new BookingException(ErrorCode.BOOKING_ACCESS_FORBIDDEN);
         }
 
-        LiveLocation liveLocation = liveLocationRepository.findByBookingId(bookingId)
-                .orElseThrow(() -> new BookingException(ErrorCode.LIVE_LOCATION_NOT_FOUND));
+        try {
+            LiveLocationEvent event = restTemplate.getForObject(
+                    locationServiceBaseUrl + "/internal/location/bookings/{bookingId}",
+                    LiveLocationEvent.class,
+                    bookingId
+            );
 
-        Instant updatedAt = liveLocation.getUpdatedAt();
-        Instant now = Instant.now();
-        boolean stale = updatedAt == null
-                || Duration.between(updatedAt, now).getSeconds() > LIVE_LOCATION_STALE_THRESHOLD_SECONDS;
+            if (event == null) {
+                throw new BookingException(ErrorCode.LIVE_LOCATION_NOT_FOUND);
+            }
 
-        return LiveLocationEvent.builder()
-                .bookingId(bookingId)
-                .latitude(liveLocation.getLatitude())
-                .longitude(liveLocation.getLongitude())
-                .updatedAt(updatedAt)
-                .stale(stale)
-                .build();
+            return event;
+        } catch (HttpClientErrorException.NotFound ex) {
+            throw new BookingException(ErrorCode.LIVE_LOCATION_NOT_FOUND);
+        } catch (BookingException ex) {
+            throw ex;
+        } catch (Exception ex) {
+            throw new BookingException(
+                    ErrorCode.EXTERNAL_SERVICE_ERROR,
+                    "Unable to fetch live location"
+            );
+        }
     }
 
     public InternalBookingDTO getInternalBookingById(String bookingId) {
@@ -861,6 +859,21 @@ public class BookingServiceImpl implements BookingService {
                     userId,
                     type,
                     ex.getMessage());
+        }
+    }
+
+    private void deleteLocationSafely(String bookingId) {
+        if (bookingId == null || bookingId.isBlank()) {
+            return;
+        }
+
+        try {
+            restTemplate.delete(
+                    locationServiceBaseUrl + "/internal/location/bookings/{bookingId}",
+                    bookingId
+            );
+        } catch (Exception ex) {
+            log.warn("Failed to delete location for booking {}: {}", bookingId, ex.getMessage());
         }
     }
 

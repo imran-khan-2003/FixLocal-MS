@@ -5,6 +5,7 @@ $services = @(
   @{ Name = "auth-service"; Port = 8081 },
   @{ Name = "user-service"; Port = 8082 },
   @{ Name = "booking-service"; Port = 8084 },
+  @{ Name = "location-service"; Port = 8092 },
   @{ Name = "chat-service"; Port = 8085 },
   @{ Name = "notification-service"; Port = 8086 },
   @{ Name = "payment-service"; Port = 8087 },

@@ -1,28 +1,13 @@
 package com.fixlocal.service;
 
 import com.fixlocal.dto.*;
-import com.fixlocal.exception.*;
-import com.fixlocal.entity.*;
-import com.fixlocal.enums.*;
-import com.fixlocal.repository.BookingRepository;
-import com.fixlocal.repository.LiveLocationRepository;
-import com.fixlocal.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.data.domain.*;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.*;
-import org.springframework.data.mongodb.core.aggregation.*;
-import com.mongodb.client.result.UpdateResult;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
+import com.fixlocal.entity.Booking;
+import com.fixlocal.entity.PriceOffer;
+import com.fixlocal.enums.BookingStatus;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.Map;
-import java.util.UUID;
 
 public interface BookingService {
     public Booking createBooking(BookingRequest request);
