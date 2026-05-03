@@ -10,9 +10,7 @@ com\fixlocal\exception\BookingException.class
 com\fixlocal\entity\User$UserBuilder.class
 com\fixlocal\enums\CancellationBy.class
 com\fixlocal\enums\BookingStatus.class
-com\fixlocal\entity\LiveLocation.class
 com\fixlocal\exception\ErrorCode.class
-com\fixlocal\entity\LiveLocation$LiveLocationBuilder.class
 com\fixlocal\entity\User.class
 com\fixlocal\entity\ServiceOffering$ServiceOfferingBuilder.class
 com\fixlocal\entity\Booking.class
