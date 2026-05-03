@@ -40,6 +40,14 @@ app:
   cors:
     allowed-origins: ${APP_CORS_ALLOWED_ORIGINS:http://localhost:5173}
 
+payment:
+  razorpay:
+    base-url: ${RAZORPAY_BASE_URL:https://api.razorpay.com}
+    key-id: ${RAZORPAY_KEY_ID:}
+    key-secret: ${RAZORPAY_KEY_SECRET:}
+    webhook-secret: ${RAZORPAY_WEBHOOK_SECRET:}
+    currency: ${RAZORPAY_CURRENCY:INR}
+
 http:
   client:
     connect-timeout-ms: ${HTTP_CLIENT_CONNECT_TIMEOUT_MS:3000}
