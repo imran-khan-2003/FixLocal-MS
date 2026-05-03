@@ -14,7 +14,6 @@ D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\dto\Live
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\dto\LiveLocationRequest.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\dto\PriceOfferRequest.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\entity\Booking.java
-D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\entity\LiveLocation.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\entity\PriceOffer.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\entity\ServiceOffering.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\entity\User.java
@@ -32,7 +31,6 @@ D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\exceptio
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\FixLocalApplication.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\observability\CorrelationIdFilter.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\repository\BookingRepository.java
-D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\repository\LiveLocationRepository.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\repository\UserRepository.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\security\JwtService.java
 D:\FixLocal\fixlocal-backend\booking-service\src\main\java\com\fixlocal\service\BookingService.java
